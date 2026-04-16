@@ -9,7 +9,7 @@ const LocationSection = () => (
         <div className="relative w-full overflow-hidden" style={{ height: 500 }}>
           <img
             src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&q=80"
-            alt="Map of Carbis Bay area"
+            alt="Map of St Ives, Cornwall area"
             className="w-full h-full object-cover"
             style={{ filter: "saturate(0.7) brightness(1.05)" }}
           />

@@ -3,8 +3,8 @@ import treleighHero from "@/assets/treleigh-hero.jpg";
 
 export const treleighData = {
   name: "Treleigh",
-  location: "Carbis Bay",
-  region: "St Ives",
+  location: "St Ives",
+  region: "St Ives, Cornwall",
   tagline: "A striking clifftop retreat with panoramic sea views across St Ives Bay",
   sleeps: 8,
   bedrooms: 4,
@@ -28,15 +28,15 @@ export const treleighData = {
   atAGlance: [
     [
       "Sleeps 4/9 across 4 bedrooms & snug",
-      "Direct beach access to Porthkidney Beach",
+      "Direct beach access to Porthmeor Beach",
       "Situated moments from South West Coast Path",
       "One reserved parking space (5 min walk)",
     ],
     [
-      "Unrivalled views across Carbis Bay and Porthkidney Beach",
+      "Unrivalled views across St Ives Bay",
       "Barrel sauna and heated outdoor shower",
       "Open-plan kitchen/diner space",
-      "Close to St Ives",
+      "Walking distance to St Ives town",
     ],
     [
       "Striking sustainable home",
@@ -75,15 +75,15 @@ export const treleighData = {
   ],
 
   aboutText: [
-    `Treleigh, situated on the clifftop above Porthmeor Beach — a celebrated perch nestled between the award-winning white sands of Carbis Bay and the wildest windswept shores of Porthkidney Beach — is an outstanding property that combines striking contemporary architecture with unrivalled sea views and direct beachfront access. Designed by a Cornish architect with deep sensitivity to its dramatic setting, the house emerges from the headland as though it has always been there, its clean lines and expansive glazing framing the Atlantic in every room.`,
+    `Treleigh, situated on the clifftop above Porthmeor Beach in St Ives — one of Cornwall's most celebrated stretches of coastline, where the Atlantic meets golden sand beneath the watchful gaze of the Island chapel — is an outstanding property that combines striking contemporary architecture with unrivalled sea views and direct beachfront access. Designed by a Cornish architect with deep sensitivity to its dramatic setting, the house emerges from the headland as though it has always been there, its clean lines and expansive glazing framing the Atlantic in every room.`,
 
-    `The approach to Treleigh sets the tone immediately. A private path descends through salt-hardy coastal planting — sea thrift, tamarisk, wild fennel — before the house reveals itself: a long, low silhouette of natural slate and weathered timber, its floor-to-ceiling windows catching the late afternoon light that pools across Carbis Bay. The entrance, deliberately understated, opens into a double-height hallway where the first of many carefully framed sea views stops you in your tracks.`,
+    `The approach to Treleigh sets the tone immediately. A private path descends through salt-hardy coastal planting — sea thrift, tamarisk, wild fennel — before the house reveals itself: a long, low silhouette of natural slate and weathered timber, its floor-to-ceiling windows catching the late afternoon light that pools across St Ives Bay. The entrance, deliberately understated, opens into a double-height hallway where the first of many carefully framed sea views stops you in your tracks.`,
 
     `The heart of the house is the open-plan living space on the upper floor, positioned to capture the panorama from Godrevy Lighthouse in the east to the Island chapel of St Ives in the west. A wall of sliding glass doors opens onto an expansive balcony, dissolving the boundary between interior and sky. The kitchen, by a specialist Cornish joiner, is built from oiled oak and honed granite — serious enough for elaborate entertaining yet warm enough for morning coffee in bare feet. A long dining table seats ten with ease, positioned so that every guest faces the sea.`,
 
-    `Downstairs, four bedrooms are arranged with considered privacy. The principal suite occupies the western wing, its bed oriented to wake with the sunrise over Porthkidney Beach. A freestanding copper bath sits before the window — an indulgence that feels entirely natural here. The remaining bedrooms each carry their own character: driftwood headboards, linen curtains that move with the breeze, and artwork by local painters chosen for their ability to echo, rather than compete with, the view beyond the glass.`,
+    `Downstairs, four bedrooms are arranged with considered privacy. The principal suite occupies the western wing, its bed oriented to wake with the sunrise over Porthmeor Beach. A freestanding copper bath sits before the window — an indulgence that feels entirely natural here. The remaining bedrooms each carry their own character: driftwood headboards, linen curtains that move with the breeze, and artwork by local painters chosen for their ability to echo, rather than compete with, the view beyond the glass.`,
 
-    `Outside, Treleigh extends generously into its landscape. A barrel sauna sits on the lower terrace, its cedar interior fragrant and warm, with a heated outdoor shower for the brave transition between steam and sea air. Stone steps lead down through the garden to a gate that opens directly onto the coastal path — turn left for Carbis Bay's sheltered sands and beach café, or right for the wilder walk to Hayle Towans and the bird-rich estuary beyond.`,
+    `Outside, Treleigh extends generously into its landscape. A barrel sauna sits on the lower terrace, its cedar interior fragrant and warm, with a heated outdoor shower for the brave transition between steam and sea air. Stone steps lead down through the garden to a gate that opens directly onto the coastal path — turn left for Porthmeor's surf and the Tate gallery perched above, or right towards Carbis Bay's sheltered sands and the wilder walk to Hayle Towans beyond.`,
 
     `There is a quality of light at Treleigh that guests return for, year after year. The way the morning sun ignites the water to silver, the slow amber of a July sunset painting the cliffs, the drama of a winter storm watched from the warmth of the wood-burning stove. This is a house built not merely to shelter but to celebrate its extraordinary position on the Cornish coast — and to share it, generously, with those fortunate enough to stay.`,
   ],
@@ -127,13 +127,13 @@ export const treleighData = {
   },
 
   activitiesText: [
-    `Treleigh sits at the intersection of two of Cornwall's most celebrated stretches of coastline. To the east, <strong>Carbis Bay Beach</strong> — awarded Blue Flag status and recently named one of the world's most beautiful beaches — offers sheltered swimming, paddleboarding, and a beachside restaurant serving freshly caught seafood. The bay is a gentle five-minute walk from the property, following the coastal path through wildflowers and gorse.`,
+    `Treleigh sits on the clifftop above <strong>Porthmeor Beach</strong>, St Ives' most dramatic stretch of sand — a broad, north-facing surf beach beloved by locals and artists alike, with the Tate St Ives gallery perched on the headland above. The beach is a short walk from the property, and on summer evenings the light here is extraordinary: the kind of sunset that stops conversation.`,
 
-    `To the west, the mood shifts. <strong>Porthkidney Beach</strong> is a vast, elemental expanse of sand backed by the Hayle Estuary — a Site of Special Scientific Interest renowned for its birdlife. At low tide, the beach stretches for over a mile, offering the kind of solitary walks that Cornwall does better than anywhere. Surfers will find reliable breaks here, and the estuary is a haven for kayaking and wildlife watching.`,
+    `<strong>St Ives</strong> itself is arguably Cornwall's most characterful town, and Treleigh places you right at its heart. The Barbara Hepworth Museum and Sculpture Garden remains one of the most affecting small museums in the country. Beyond the galleries, St Ives rewards aimless wandering: narrow lanes opening onto harbour views, independent shops, and some of Cornwall's finest restaurants. The harbour beach and Porthminster Beach are both within easy walking distance.`,
 
-    `<strong>St Ives</strong>, arguably Cornwall's most characterful town, lies just a mile and a half along the coastal path — or a short drive. The Tate St Ives gallery, perched above Porthmeor Beach, houses an exceptional collection of modern art alongside visiting exhibitions. The Barbara Hepworth Museum and Sculpture Garden remains one of the most affecting small museums in the country. Beyond the galleries, St Ives rewards aimless wandering: narrow lanes opening onto harbour views, independent shops, and some of Cornwall's finest restaurants.`,
+    `A little further afield, <strong>Carbis Bay Beach</strong> — awarded Blue Flag status and recently named one of the world's most beautiful beaches — offers sheltered swimming, paddleboarding, and a beachside restaurant. To the west, <strong>Porthkidney Beach</strong> is a vast, elemental expanse of sand backed by the Hayle Estuary — a Site of Special Scientific Interest renowned for its birdlife and solitary walks.`,
 
-    `For dining, the area is exceptional. <strong>The Beach Restaurant</strong> at Carbis Bay offers elevated seaside dining, while <strong>Porthminster Beach Café</strong> has been a destination in its own right for over two decades. In St Ives, <strong>The Rum & Crab Shack</strong> serves generous seafood platters, and <strong>Alba</strong> offers tasting menus that celebrate the Cornish larder. Further afield, <strong>Padstow</strong> and Rick Stein's culinary empire are within easy reach, as is the acclaimed <strong>The Shore</strong> in Penzance.`,
+    `For dining, the area is exceptional. <strong>Porthminster Beach Café</strong> has been a destination in its own right for over two decades. <strong>The Rum & Crab Shack</strong> serves generous seafood platters, and <strong>Alba</strong> offers tasting menus that celebrate the Cornish larder. <strong>The Beach Restaurant</strong> at Carbis Bay offers elevated seaside dining. Further afield, <strong>Padstow</strong> and Rick Stein's culinary empire are within easy reach, as is the acclaimed <strong>The Shore</strong> in Penzance.`,
 
     `Beyond the coast, the landscape offers endless diversions. The <strong>South West Coast Path</strong> passes directly below Treleigh, connecting miles of dramatic clifftop walking in both directions. Inland, the ancient field systems and stone circles of West Penwith feel genuinely timeless, while the subtropical gardens of <strong>Tremenheere</strong> and the national collections at <strong>Trelissick</strong> offer gentler days out. Families will find <strong>Paradise Park</strong> and the <strong>Seal Sanctuary at Gweek</strong> within easy driving distance.`,
 
