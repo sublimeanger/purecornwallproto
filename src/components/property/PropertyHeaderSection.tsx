@@ -1,8 +1,9 @@
+import { LucideProps } from "lucide-react";
 import {
   Bed, Bath, Waves, Palmtree, Dog, Flame, Sparkles, Fence, Wifi,
 } from "lucide-react";
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const iconMap: Record<string, React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>> = {
   bed: Bed, bath: Bath, waves: Waves, palmtree: Palmtree,
   dog: Dog, flame: Flame, sparkles: Sparkles, fence: Fence, wifi: Wifi,
 };
