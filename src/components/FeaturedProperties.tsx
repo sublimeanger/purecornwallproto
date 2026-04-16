@@ -28,13 +28,16 @@ const FeaturedProperties = () => (
         <div className="gold-bar gold-bar--center" />
       </div>
 
-      <div className="flex flex-col" style={{ gap: "5vw" }}>
+      <div className="flex flex-col">
         {properties.map((p, i) => {
           const imgLeft = i % 2 === 0;
+          const pairIndex = Math.floor(i / 2);
+          const bgColor = pairIndex % 2 === 0 ? "#ffffff" : "#f7f5f2";
           return (
             <div
               key={p.name}
-              className={`flex flex-col ${imgLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-0`}
+              className={`flex flex-col ${imgLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+              style={{ paddingTop: i === 0 ? 0 : 40, paddingBottom: 40 }}
             >
               {/* Image */}
               <div className="w-full md:w-[60%] overflow-hidden">
@@ -47,85 +50,91 @@ const FeaturedProperties = () => (
                 />
               </div>
 
-              {/* Detail card — vertically centered stack */}
-              <div className="w-full md:w-[40%] bg-brand-light border-b-2 border-sandy-gold flex items-center justify-center p-12">
-                <div className="flex flex-col items-center text-center gap-4 w-full">
-                  {/* Location */}
-                  <p
-                    className="text-brand-dark text-xs"
-                    style={{ textTransform: "uppercase", letterSpacing: "3px" }}
-                  >
-                    {p.location}
-                  </p>
+              {/* Detail card — editorial horizontal layout */}
+              <div
+                className="w-full md:w-[40%] flex items-center"
+                style={{ backgroundColor: bgColor, padding: 48 }}
+              >
+                <div className="flex flex-col gap-4 w-full">
+                  {/* Row 1: Location + Price */}
+                  <div className="flex items-baseline justify-between">
+                    <p
+                      className="text-brand-dark"
+                      style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500 }}
+                    >
+                      {p.location}
+                    </p>
+                    <div className="text-right flex items-baseline gap-1">
+                      <span className="text-brand-muted" style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2 }}>
+                        From
+                      </span>
+                      <span className="text-sandy-gold" style={{ fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 400 }}>
+                        £{p.price.toLocaleString()}
+                      </span>
+                      <span className="text-brand-muted" style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2 }}>
+                        per week
+                      </span>
+                    </div>
+                  </div>
 
-                  {/* Name */}
-                  <h3 className="text-sandy-gold font-normal" style={{ fontSize: "clamp(28px, 2.5vw, 40px)" }}>
+                  {/* Row 2: Property name */}
+                  <h3
+                    className="text-sandy-gold"
+                    style={{ fontSize: "clamp(28px, 2.5vw, 36px)", fontWeight: 400, lineHeight: 1.2 }}
+                  >
                     {p.name}
                   </h3>
 
-                  {/* Price block */}
-                  <div className="flex flex-col items-center">
-                    <span className="text-brand-muted text-[10px]" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
-                      From
-                    </span>
-                    <span className="text-sandy-gold font-normal" style={{ fontSize: "clamp(24px, 2vw, 32px)" }}>
-                      £{p.price.toLocaleString()}
-                    </span>
-                    <span className="text-brand-muted text-[10px]" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
-                      Per Week
-                    </span>
-                  </div>
-
-                  {/* Primary stats */}
-                  <div className="flex gap-8 mt-2">
+                  {/* Row 3: Primary stats */}
+                  <div className="flex gap-6 mt-1">
                     <div className="flex items-center gap-2">
-                      <Users size={20} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Users size={18} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
                         Sleeps {p.sleeps}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bed size={20} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Bed size={18} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
                         {p.beds} Bed
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bath size={20} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Bath size={18} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
                         {p.baths} Bath
                       </span>
                     </div>
                   </div>
 
-                  {/* Feature pills */}
-                  <div className="flex flex-wrap justify-center gap-8">
+                  {/* Row 4: Secondary features */}
+                  <div className="flex flex-wrap gap-6">
                     {p.parking && (
                       <div className="flex items-center gap-2">
-                        <Car size={20} className="text-sandy-gold" />
-                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
+                        <Car size={16} className="text-brand-muted" />
+                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
                           Parking
                         </span>
                       </div>
                     )}
                     {p.pets && (
                       <div className="flex items-center gap-2">
-                        <Dog size={20} className="text-sandy-gold" />
-                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
+                        <Dog size={16} className="text-brand-muted" />
+                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
                           Pet Welcome
                         </span>
                       </div>
                     )}
                     <div className="flex items-center gap-2">
-                      <Sparkles size={20} className="text-sandy-gold" />
-                      <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Sparkles size={16} className="text-brand-muted" />
+                      <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
                         {p.feature}
                       </span>
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <div className="mt-4">
+                  {/* Row 5: CTA */}
+                  <div className="mt-4 text-right">
                     <button className="btn-flat text-xs">View Property</button>
                   </div>
                 </div>

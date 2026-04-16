@@ -1,5 +1,5 @@
 const BrandIntro = () => (
-  <section className="pc-section bg-white">
+  <section className="bg-white" style={{ paddingTop: "6vw", paddingBottom: "4vw" }}>
     <div className="mx-auto text-center" style={{ maxWidth: 900, padding: "0 2.5vw" }}>
       <h1
         className="text-sandy-gold"
