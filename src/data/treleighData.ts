@@ -1,4 +1,6 @@
 // Sample property data for Treleigh
+import treleighHero from "@/assets/treleigh-hero.jpg";
+
 export const treleighData = {
   name: "Treleigh",
   location: "Carbis Bay",
@@ -9,7 +11,7 @@ export const treleighData = {
   bathrooms: 3,
   priceFrom: 3000,
 
-  heroImage: new URL("@/assets/treleigh-hero.jpg", import.meta.url).href,
+  heroImage: treleighHero,
 
   stats: [
     { icon: "bed", label: "4 Bedrooms" },
