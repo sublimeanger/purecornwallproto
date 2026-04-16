@@ -1,8 +1,7 @@
-import { User, Heart, BookOpen, MessageSquare } from "lucide-react";
+import { User, Heart, MessageSquare } from "lucide-react";
 
 const links = [
   { label: "Customer Stories", icon: MessageSquare },
-  { label: "Latest Brochure", icon: BookOpen },
   { label: "View Wishlist", icon: Heart },
   { label: "My Account", icon: User },
 ];
