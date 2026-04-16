@@ -8,11 +8,11 @@ import { Bed, Bath, Users, Car, Dog, Sparkles } from "lucide-react";
 
 const properties = [
   { img: prop1, name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View", tagline: "A stunning clifftop retreat with panoramic sea views across St Ives Bay", highlights: ["Private garden", "Wood burner", "Minutes from beach"] },
-  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub", tagline: "Contemporary coastal living with a luxury hot tub and harbour views", highlights: ["Open-plan kitchen", "Hot tub", "Walk to town"] },
-  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden", tagline: "A grand family home overlooking Falmouth's working harbour", highlights: ["Walled garden", "Games room", "Sea views"] },
-  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool", tagline: "Surf-side living with a heated pool and direct beach access", highlights: ["Heated pool", "Surf storage", "Beach access"] },
+  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub", tagline: "Contemporary coastal living with a luxury hot tub and harbour views", highlights: ["Open-plan kitchen", "Walk to town"] },
+  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden", tagline: "A grand family home overlooking Falmouth's working harbour", highlights: ["Games room", "Sea views"] },
+  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool", tagline: "Surf-side living with a heated pool and direct beach access", highlights: ["Surf storage", "Beach access"] },
   { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views", tagline: "Elegant interiors and sweeping views from Porthminster to Godrevy", highlights: ["Designer kitchen", "Balcony", "Coastal path"] },
-  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront", tagline: "A charming beachfront bolthole for couples and small families", highlights: ["Beachfront", "Log burner", "Pet friendly"] },
+  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront", tagline: "A charming beachfront bolthole for couples and small families", highlights: ["Log burner", "Cosy interiors"] },
 ];
 
 const FeaturedProperties = () => (
@@ -133,7 +133,7 @@ const FeaturedProperties = () => (
                   </div>
 
                   {/* Row 5: Highlight pills */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2" style={{ marginBottom: 4 }}>
                     {p.highlights.map((h) => (
                       <span
                         key={h}
@@ -152,7 +152,7 @@ const FeaturedProperties = () => (
                   </div>
 
                   {/* Row 6: CTA */}
-                  <div className="text-right mt-2">
+                  <div className="text-right">
                     <button className="btn-flat text-xs">View Property</button>
                   </div>
                 </div>

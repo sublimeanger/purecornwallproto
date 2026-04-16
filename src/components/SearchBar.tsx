@@ -35,7 +35,7 @@ const SearchBar = () => {
   return (
     <div className="relative w-full" style={{ zIndex: 40 }}>
       <div style={{ backgroundColor: "#2f5550" }}>
-        <div className="pc-container">
+        <div className="pc-container" style={{ paddingRight: 0 }}>
           <div className="flex flex-col md:flex-row items-stretch" style={{ minHeight: 80 }}>
             {/* 1. Destinations / Property Search */}
             <button
