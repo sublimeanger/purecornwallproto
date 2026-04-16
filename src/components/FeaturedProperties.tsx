@@ -5,14 +5,15 @@ import prop4 from "@/assets/property-4.jpg";
 import prop5 from "@/assets/property-5.jpg";
 import prop6 from "@/assets/property-6.jpg";
 import { Bed, Bath, Users, Car, Dog, Sparkles } from "lucide-react";
+import PropertyImageCarousel from "./PropertyImageCarousel";
 
 const properties = [
-  { img: prop1, name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View", tagline: "A stunning clifftop retreat with panoramic sea views across St Ives Bay", highlights: ["Private garden", "Wood burner", "Minutes from beach"] },
-  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub", tagline: "Contemporary coastal living with a luxury hot tub and harbour views", highlights: ["Open-plan kitchen", "Walk to town"] },
-  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden", tagline: "A grand family home overlooking Falmouth's working harbour", highlights: ["Games room", "Sea views"] },
-  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool", tagline: "Surf-side living with a heated pool and direct beach access", highlights: ["Surf storage", "Beach access"] },
-  { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views", tagline: "Elegant interiors and sweeping views from Porthminster to Godrevy", highlights: ["Designer kitchen", "Balcony", "Coastal path"] },
-  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront", tagline: "A charming beachfront bolthole for couples and small families", highlights: ["Log burner", "Cosy interiors"] },
+  { images: [prop1, prop3, prop5, prop2], name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View", tagline: "A stunning clifftop retreat with panoramic sea views across St Ives Bay", highlights: ["Private garden", "Wood burner", "Minutes from beach"] },
+  { images: [prop2, prop4, prop6, prop1], name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub", tagline: "Contemporary coastal living with a luxury hot tub and harbour views", highlights: ["Open-plan kitchen", "Walk to town"] },
+  { images: [prop3, prop1, prop5, prop6], name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden", tagline: "A grand family home overlooking Falmouth's working harbour", highlights: ["Games room", "Sea views"] },
+  { images: [prop4, prop2, prop3, prop5], name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool", tagline: "Surf-side living with a heated pool and direct beach access", highlights: ["Surf storage", "Beach access"] },
+  { images: [prop5, prop6, prop1, prop4], name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views", tagline: "Elegant interiors and sweeping views from Porthminster to Godrevy", highlights: ["Designer kitchen", "Balcony", "Coastal path"] },
+  { images: [prop6, prop3, prop2, prop4], name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront", tagline: "A charming beachfront bolthole for couples and small families", highlights: ["Log burner", "Cosy interiors"] },
 ];
 
 const FeaturedProperties = () => (
@@ -41,13 +42,7 @@ const FeaturedProperties = () => (
             >
               {/* Image */}
               <div className="w-full md:w-[60%] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="w-full h-full object-cover"
-                  style={{ aspectRatio: "5/4" }}
-                  loading="lazy"
-                />
+                <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
               </div>
 
               {/* Detail — editorial layout, no card edges */}
