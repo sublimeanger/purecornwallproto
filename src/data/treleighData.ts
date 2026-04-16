@@ -1,4 +1,6 @@
 // Sample property data for Treleigh
+import treleighHero from "@/assets/treleigh-hero.jpg";
+
 export const treleighData = {
   name: "Treleigh",
   location: "Carbis Bay",
@@ -9,7 +11,7 @@ export const treleighData = {
   bathrooms: 3,
   priceFrom: 3000,
 
-  heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=85",
+  heroImage: treleighHero,
 
   stats: [
     { icon: "bed", label: "4 Bedrooms" },

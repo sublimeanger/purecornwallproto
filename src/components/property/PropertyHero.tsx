@@ -24,7 +24,7 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => (
           fontFamily: "'Jost', sans-serif",
           fontSize: "clamp(28px, 3vw, 42px)",
           fontWeight: 300,
-          fontStyle: "italic",
+          
           lineHeight: 1.3,
           maxWidth: 800,
         }}
