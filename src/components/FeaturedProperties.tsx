@@ -42,13 +42,7 @@ const FeaturedProperties = () => (
             >
               {/* Image */}
               <div className="w-full md:w-[60%] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="w-full h-full object-cover"
-                  style={{ aspectRatio: "5/4" }}
-                  loading="lazy"
-                />
+                <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
               </div>
 
               {/* Detail — editorial layout, no card edges */}
