@@ -30,11 +30,11 @@ const SearchBar = () => {
 
   const fieldLabel: React.CSSProperties = { fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#ffffff" };
   const fieldValue: React.CSSProperties = { fontSize: 16, fontWeight: 400, color: "#ffffff" };
-  const divider: React.CSSProperties = { width: 1, backgroundColor: "#5a7570", alignSelf: "stretch" };
+  const divider: React.CSSProperties = { width: 1, backgroundColor: "rgba(255,255,255,0.2)", alignSelf: "stretch" };
 
   return (
     <div className="relative w-full" style={{ zIndex: 40 }}>
-      <div style={{ backgroundColor: "#2f5550" }}>
+      <div style={{ backgroundColor: "#6fb6ae" }}>
         <div className="pc-container" style={{ paddingRight: 0 }}>
           <div className="flex flex-col md:flex-row items-stretch" style={{ minHeight: 80 }}>
             {/* 1. Destinations / Property Search */}
