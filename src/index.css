@@ -1,95 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --font-body: 'Jost', sans-serif;
+
+    /* Brand colours in HSL */
+    --primary: 172 28% 56%;           /* #6fb6ae teal */
+    --primary-foreground: 0 0% 100%;
+    --accent: 28 52% 63%;             /* #d3a36e sandy gold */
+    --accent-foreground: 0 0% 100%;
+    --dark: 168 26% 23%;              /* #2d4a46 deep teal */
+    --dark-foreground: 0 0% 100%;
+
+    --background: 30 18% 96%;         /* #f7f5f2 */
+    --foreground: 0 0% 23%;           /* #3a3a3a */
+    --muted: 0 0% 48%;               /* #7a7a7a */
+    --muted-foreground: 0 0% 48%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 23%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 23%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --border: 30 14% 87%;             /* #e5e0da */
+    --input: 30 14% 87%;
+    --ring: 172 28% 56%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 30 18% 96%;
+    --secondary-foreground: 0 0% 23%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --radius: 0px;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Spacing system (vw units) */
+    --space-tiny: 1.25vw;
+    --space-sm: 2.5vw;
+    --space-md: 5vw;
+    --space-lg: 7.5vw;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -98,8 +58,135 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+  body {
+    font-family: var(--font-body);
+    @apply bg-background text-foreground;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+}
+
+/* Gold bar motif */
+.gold-bar {
+  width: 200px;
+  height: 2px;
+  background-color: #d3a36e;
+  margin-top: 25px;
+}
+.gold-bar--left {
+  width: 80px;
+}
+.gold-bar--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flat button style */
+.btn-flat {
+  display: inline-block;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #d3a36e;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 4px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  color: #3a3a3a;
+}
+.btn-flat:hover {
+  border-bottom-color: #2d4a46;
+  color: #2d4a46;
+}
+
+/* Container */
+.pc-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+}
+@media (max-width: 767px) {
+  .pc-container {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
+/* Section padding */
+.pc-section {
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+/* Property card */
+.property-card {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+.property-card__img {
+  overflow: hidden;
+}
+.property-card__img img {
+  transition: transform 300ms ease;
+}
+.property-card:hover .property-card__img img {
+  transform: scale(1.04);
+}
+
+/* Destination card */
+.dest-card {
+  overflow: hidden;
+}
+.dest-card img {
+  transition: transform 300ms ease;
+}
+.dest-card:hover img {
+  transform: scale(1.04);
+}
+.dest-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 100%);
+  transition: background 300ms ease;
+}
+.dest-card:hover::after {
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+/* Nav link hover */
+.nav-link {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 300ms ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #6fb6ae;
+  transition: width 300ms ease;
+}
+.nav-link:hover::after {
+  width: 100%;
 }
