@@ -21,7 +21,7 @@ const tiles = [
 ];
 
 const FeatureTiles = () => (
-  <section className="pc-section bg-white">
+  <section className="bg-white" style={{ paddingTop: "4vw", paddingBottom: "6vw" }}>
     <div className="pc-container">
       {/* Section heading */}
       <div className="text-center mb-[3vw]">
@@ -68,17 +68,9 @@ const FeatureTiles = () => (
               >
                 {t.title}
               </h3>
-              <p className="text-white/95 mt-2" style={{ fontSize: "clamp(12px, 1vw, 14px)", fontWeight: 400 }}>
+              <p className="mt-2" style={{ fontSize: "clamp(12px, 1vw, 14px)", fontWeight: 400, color: "rgba(255,255,255,0.95)" }}>
                 {t.subtitle}
               </p>
-              {t.isGuide && (
-                <span
-                  className="mt-3 text-sandy-gold italic"
-                  style={{ fontSize: "clamp(20px, 1.8vw, 28px)", fontWeight: 300 }}
-                >
-                  Cornwall
-                </span>
-              )}
             </div>
           </a>
         ))}
