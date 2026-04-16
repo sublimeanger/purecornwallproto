@@ -67,26 +67,7 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
         >
           View Gallery
         </button>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center">
-          <div
-            style={{
-              width: 1,
-              height: 40,
-              backgroundColor: "#d3a36e",
-              animation: "scrollPulse 2s ease-in-out infinite",
-            }}
-          />
-        </div>
       </div>
-
-      <style>{`
-        @keyframes scrollPulse {
-          0%, 100% { opacity: 0.4; transform: scaleY(1); }
-          50% { opacity: 1; transform: scaleY(1.1); }
-        }
-      `}</style>
     </section>
   );
 };
