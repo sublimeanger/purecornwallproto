@@ -3,8 +3,8 @@ import treleighHero from "@/assets/treleigh-hero.jpg";
 
 export const treleighData = {
   name: "Treleigh",
-  location: "Carbis Bay",
-  region: "St Ives",
+  location: "St Ives",
+  region: "St Ives, Cornwall",
   tagline: "A striking clifftop retreat with panoramic sea views across St Ives Bay",
   sleeps: 8,
   bedrooms: 4,
@@ -28,15 +28,15 @@ export const treleighData = {
   atAGlance: [
     [
       "Sleeps 4/9 across 4 bedrooms & snug",
-      "Direct beach access to Porthkidney Beach",
+      "Direct beach access to Porthmeor Beach",
       "Situated moments from South West Coast Path",
       "One reserved parking space (5 min walk)",
     ],
     [
-      "Unrivalled views across Carbis Bay and Porthkidney Beach",
+      "Unrivalled views across St Ives Bay",
       "Barrel sauna and heated outdoor shower",
       "Open-plan kitchen/diner space",
-      "Close to St Ives",
+      "Walking distance to St Ives town",
     ],
     [
       "Striking sustainable home",
@@ -75,15 +75,15 @@ export const treleighData = {
   ],
 
   aboutText: [
-    `Treleigh, situated on the clifftop above Porthmeor Beach — a celebrated perch nestled between the award-winning white sands of Carbis Bay and the wildest windswept shores of Porthkidney Beach — is an outstanding property that combines striking contemporary architecture with unrivalled sea views and direct beachfront access. Designed by a Cornish architect with deep sensitivity to its dramatic setting, the house emerges from the headland as though it has always been there, its clean lines and expansive glazing framing the Atlantic in every room.`,
+    `Treleigh, situated on the clifftop above Porthmeor Beach in St Ives — one of Cornwall's most celebrated stretches of coastline, where the Atlantic meets golden sand beneath the watchful gaze of the Island chapel — is an outstanding property that combines striking contemporary architecture with unrivalled sea views and direct beachfront access. Designed by a Cornish architect with deep sensitivity to its dramatic setting, the house emerges from the headland as though it has always been there, its clean lines and expansive glazing framing the Atlantic in every room.`,
 
-    `The approach to Treleigh sets the tone immediately. A private path descends through salt-hardy coastal planting — sea thrift, tamarisk, wild fennel — before the house reveals itself: a long, low silhouette of natural slate and weathered timber, its floor-to-ceiling windows catching the late afternoon light that pools across Carbis Bay. The entrance, deliberately understated, opens into a double-height hallway where the first of many carefully framed sea views stops you in your tracks.`,
+    `The approach to Treleigh sets the tone immediately. A private path descends through salt-hardy coastal planting — sea thrift, tamarisk, wild fennel — before the house reveals itself: a long, low silhouette of natural slate and weathered timber, its floor-to-ceiling windows catching the late afternoon light that pools across St Ives Bay. The entrance, deliberately understated, opens into a double-height hallway where the first of many carefully framed sea views stops you in your tracks.`,
 
     `The heart of the house is the open-plan living space on the upper floor, positioned to capture the panorama from Godrevy Lighthouse in the east to the Island chapel of St Ives in the west. A wall of sliding glass doors opens onto an expansive balcony, dissolving the boundary between interior and sky. The kitchen, by a specialist Cornish joiner, is built from oiled oak and honed granite — serious enough for elaborate entertaining yet warm enough for morning coffee in bare feet. A long dining table seats ten with ease, positioned so that every guest faces the sea.`,
 
-    `Downstairs, four bedrooms are arranged with considered privacy. The principal suite occupies the western wing, its bed oriented to wake with the sunrise over Porthkidney Beach. A freestanding copper bath sits before the window — an indulgence that feels entirely natural here. The remaining bedrooms each carry their own character: driftwood headboards, linen curtains that move with the breeze, and artwork by local painters chosen for their ability to echo, rather than compete with, the view beyond the glass.`,
+    `Downstairs, four bedrooms are arranged with considered privacy. The principal suite occupies the western wing, its bed oriented to wake with the sunrise over Porthmeor Beach. A freestanding copper bath sits before the window — an indulgence that feels entirely natural here. The remaining bedrooms each carry their own character: driftwood headboards, linen curtains that move with the breeze, and artwork by local painters chosen for their ability to echo, rather than compete with, the view beyond the glass.`,
 
-    `Outside, Treleigh extends generously into its landscape. A barrel sauna sits on the lower terrace, its cedar interior fragrant and warm, with a heated outdoor shower for the brave transition between steam and sea air. Stone steps lead down through the garden to a gate that opens directly onto the coastal path — turn left for Carbis Bay's sheltered sands and beach café, or right for the wilder walk to Hayle Towans and the bird-rich estuary beyond.`,
+    `Outside, Treleigh extends generously into its landscape. A barrel sauna sits on the lower terrace, its cedar interior fragrant and warm, with a heated outdoor shower for the brave transition between steam and sea air. Stone steps lead down through the garden to a gate that opens directly onto the coastal path — turn left for Porthmeor's surf and the Tate gallery perched above, or right towards Carbis Bay's sheltered sands and the wilder walk to Hayle Towans beyond.`,
 
     `There is a quality of light at Treleigh that guests return for, year after year. The way the morning sun ignites the water to silver, the slow amber of a July sunset painting the cliffs, the drama of a winter storm watched from the warmth of the wood-burning stove. This is a house built not merely to shelter but to celebrate its extraordinary position on the Cornish coast — and to share it, generously, with those fortunate enough to stay.`,
   ],
