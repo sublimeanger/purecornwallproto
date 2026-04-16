@@ -66,7 +66,18 @@ const Journal = () => (
               </span>
             </div>
             <div className="pt-5 pb-6">
-              <h3 className="text-brand-dark text-2xl font-normal">{p.title}</h3>
+              <h3
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontStyle: "italic",
+                  fontSize: 22,
+                  fontWeight: 400,
+                  color: "#3a3a3a",
+                  lineHeight: 1.3,
+                }}
+              >
+                {p.title}
+              </h3>
               <p className="text-brand-body mt-3 leading-relaxed line-clamp-2" style={{ fontSize: 15, lineHeight: 1.6 }}>
                 {p.excerpt}
               </p>

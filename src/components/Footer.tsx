@@ -81,8 +81,21 @@ const Footer = () => (
         </div>
       </div>
 
+      {/* Editorial sign-off */}
+      <p
+        className="text-center mt-12"
+        style={{
+          fontFamily: "var(--font-serif)",
+          fontStyle: "italic",
+          fontSize: 14,
+          color: "rgba(211,163,110,0.85)",
+        }}
+      >
+        Pure Cornwall — handpicked holiday cottages, beautifully curated.
+      </p>
+
       {/* Bottom bar */}
-      <div className="mt-12 pt-6 border-t border-sandy-gold flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="mt-6 pt-6 border-t border-sandy-gold flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-white/50 text-xs">© 2026 Pure Cornwall. All rights reserved.</p>
         <div className="flex gap-6">
           {["Privacy Policy", "Terms & Conditions", "Cookie Policy"].map((l) => (

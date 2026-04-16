@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -25,6 +25,17 @@ const testimonials = [
 const Testimonials = () => {
   const [active, setActive] = useState(0);
   const t = testimonials[active];
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section style={{ backgroundColor: "#6fb6ae", paddingTop: "7vw", paddingBottom: "7vw" }}>
@@ -34,7 +45,15 @@ const Testimonials = () => {
         </h2>
         <div className="gold-bar gold-bar--center" />
 
-        <div className="mt-14 max-w-[720px] mx-auto">
+        <div
+          ref={ref}
+          className="mt-14 max-w-[720px] mx-auto"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 600ms ease-out, transform 600ms ease-out",
+          }}
+        >
           {/* Decorative quote mark — larger */}
           <div className="flex justify-center mb-8">
             <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.7 }}>
@@ -47,7 +66,17 @@ const Testimonials = () => {
               <Star key={i} size={22} className="text-sandy-gold fill-sandy-gold" />
             ))}
           </div>
-          <p className="text-white italic leading-relaxed" style={{ fontSize: "clamp(24px, 2.2vw, 28px)", fontWeight: 300, lineHeight: 1.6, textShadow: "0 1px 2px rgba(47,85,80,0.15)" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontStyle: "italic",
+              fontSize: "clamp(22px, 2vw, 28px)",
+              fontWeight: 300,
+              lineHeight: 1.6,
+              color: "#ffffff",
+              textShadow: "0 1px 2px rgba(47,85,80,0.15)",
+            }}
+          >
             "{t.quote}"
           </p>
           <p
@@ -56,7 +85,17 @@ const Testimonials = () => {
           >
             {t.name}
           </p>
-          <p className="text-white/85 text-sm mt-2">{t.property}</p>
+          <p
+            className="mt-2"
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontStyle: "italic",
+              fontSize: 16,
+              color: "rgba(255,255,255,0.85)",
+            }}
+          >
+            {t.property}
+          </p>
           <p className="text-white/70 mt-2" style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3 }}>
             {t.since}
           </p>
