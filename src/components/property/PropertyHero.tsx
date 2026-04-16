@@ -19,7 +19,7 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative w-full overflow-hidden" <section ref={heroRef} className="relative w-full overflow-hidden" style={{ minHeight: "85vh" }}>>
+    <section ref={heroRef} className="relative w-full overflow-hidden" style={{ minHeight: "85vh" }}>
       <img
         src={image}
         alt="Treleigh clifftop retreat"
@@ -32,7 +32,7 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
           background: "linear-gradient(180deg, rgba(47,85,80,0.2) 0%, rgba(47,85,80,0.6) 100%)",
         }}
       />
-      <div className="relative h-full flex flex-col items-center justify-end" <div className="relative h-full flex flex-col items-center justify-end" style={{ minHeight: "85vh", paddingBottom: "8vh" }}>>
+      <div className="relative h-full flex flex-col items-center justify-end" style={{ minHeight: "85vh", paddingBottom: "8vh" }}>
         <p
           className="text-center text-white px-6"
           style={{
