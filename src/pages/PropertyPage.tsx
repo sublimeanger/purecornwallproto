@@ -15,11 +15,22 @@ import PricingSection from "@/components/property/PricingSection";
 import GuestReview from "@/components/property/GuestReview";
 import RelatedProperties from "@/components/property/RelatedProperties";
 import { treleighData } from "@/data/treleighData";
-import { useRef, useCallback } from "react";
+import { useCallback } from "react";
+
+/* Decorative section divider — thin gold line centred with gradient blend */
+const SectionDivider = ({ from = "#ffffff", to = "#f7f5f2" }: { from?: string; to?: string }) => (
+  <div
+    className="flex items-center justify-center"
+    style={{
+      height: 40,
+      background: `linear-gradient(180deg, ${from} 0%, ${to} 100%)`,
+    }}
+  >
+    <div style={{ width: 200, height: 1, backgroundColor: "#d3a36e", opacity: 0.4 }} />
+  </div>
+);
 
 const PropertyPage = () => {
-  const galleryRef = useRef<HTMLElement | null>(null);
-
   const scrollToGallery = useCallback(() => {
     const el = document.getElementById("gallery");
     if (el) {
@@ -45,19 +56,28 @@ const PropertyPage = () => {
       <PropertyStickyNav />
       <AtAGlance columns={treleighData.atAGlance} />
       <GalleryRow images={treleighData.galleryRowImages} />
+      <SectionDivider from="#ffffff" to="#f7f5f2" />
       <AboutSection paragraphs={treleighData.aboutText} />
+      <SectionDivider from="#f7f5f2" to="#ffffff" />
       <GallerySection images={treleighData.galleryImages} />
+      <SectionDivider from="#ffffff" to="#f7f5f2" />
       <VideoFloorplan />
+      <SectionDivider from="#f7f5f2" to="#ffffff" />
       <FacilitiesSection facilities={treleighData.facilities} />
+      <SectionDivider from="#ffffff" to="#f7f5f2" />
       <LocationSection />
+      <SectionDivider from="#f7f5f2" to="#ffffff" />
       <ActivitiesSection paragraphs={treleighData.activitiesText} />
+      <SectionDivider from="#ffffff" to="#f7f5f2" />
       <PricingSection />
+      <SectionDivider from="#f7f5f2" to="#ffffff" />
       <GuestReview
         image={treleighData.reviewImage}
         quote={treleighData.reviewQuote}
         body={treleighData.reviewBody}
         attribution={treleighData.reviewAttribution}
       />
+      <SectionDivider from="#ffffff" to="#f7f5f2" />
       <RelatedProperties properties={treleighData.relatedProperties} />
       <Footer />
     </>
