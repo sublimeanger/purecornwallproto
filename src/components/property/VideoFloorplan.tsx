@@ -28,7 +28,7 @@ const VideoFloorplan = () => (
                   fontFamily: "'Jost', sans-serif",
                   fontSize: 22,
                   fontWeight: 300,
-                  fontStyle: "italic",
+                  
                   color: "white",
                   textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }}
@@ -43,18 +43,46 @@ const VideoFloorplan = () => (
         <div>
           <SectionHeading title="Floorplan" small />
           <div
-            className="relative mt-8 bg-white flex items-center justify-center cursor-pointer border border-brand-border"
+            className="relative mt-8 bg-white flex items-center justify-center cursor-pointer border border-brand-border overflow-hidden"
             style={{ aspectRatio: "16/9" }}
           >
-            <div className="text-center p-8">
-              <div style={{ fontSize: 48, color: "#e5e0da", marginBottom: 16 }}>⬡</div>
-              <p style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 3, color: "#7a7a7a" }}>
-                Floorplan
-              </p>
-              <p style={{ fontSize: 13, color: "#7a7a7a", marginTop: 8 }}>
-                Click to enlarge
-              </p>
+            <img
+              src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
+              alt="Treleigh floorplan"
+              className="w-full h-full object-contain p-4"
+              style={{ filter: "grayscale(1) contrast(1.2) brightness(1.1)", opacity: 0.85 }}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+            {/* Overlay with architectural line drawing placeholder */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <svg width="80%" height="70%" viewBox="0 0 400 280" fill="none" opacity="0.6">
+                {/* Outer walls */}
+                <rect x="20" y="20" width="360" height="240" stroke="#3a3a3a" strokeWidth="2" fill="none" />
+                {/* Room divisions */}
+                <line x1="200" y1="20" x2="200" y2="260" stroke="#3a3a3a" strokeWidth="1.5" />
+                <line x1="20" y1="140" x2="200" y2="140" stroke="#3a3a3a" strokeWidth="1.5" />
+                <line x1="200" y1="160" x2="380" y2="160" stroke="#3a3a3a" strokeWidth="1.5" />
+                <line x1="300" y1="160" x2="300" y2="260" stroke="#3a3a3a" strokeWidth="1.5" />
+                <line x1="120" y1="140" x2="120" y2="260" stroke="#3a3a3a" strokeWidth="1.5" />
+                {/* Door arcs */}
+                <path d="M200 120 Q 215 120 215 140" stroke="#7a7a7a" strokeWidth="1" fill="none" strokeDasharray="3 2" />
+                <path d="M180 140 Q 180 155 200 155" stroke="#7a7a7a" strokeWidth="1" fill="none" strokeDasharray="3 2" />
+                {/* Room labels */}
+                <text x="100" y="85" textAnchor="middle" fontSize="10" fill="#7a7a7a" fontFamily="Jost, sans-serif">LIVING</text>
+                <text x="290" y="95" textAnchor="middle" fontSize="10" fill="#7a7a7a" fontFamily="Jost, sans-serif">KITCHEN</text>
+                <text x="65" y="205" textAnchor="middle" fontSize="9" fill="#7a7a7a" fontFamily="Jost, sans-serif">BED 1</text>
+                <text x="160" y="205" textAnchor="middle" fontSize="9" fill="#7a7a7a" fontFamily="Jost, sans-serif">BED 2</text>
+                <text x="250" y="215" textAnchor="middle" fontSize="9" fill="#7a7a7a" fontFamily="Jost, sans-serif">BED 3</text>
+                <text x="340" y="215" textAnchor="middle" fontSize="9" fill="#7a7a7a" fontFamily="Jost, sans-serif">BATH</text>
+                {/* Compass */}
+                <text x="360" y="45" fontSize="10" fill="#d3a36e" fontFamily="Jost, sans-serif" fontWeight="500">N ↑</text>
+              </svg>
             </div>
+            <p className="absolute bottom-3 right-4" style={{ fontSize: 12, color: "#7a7a7a", letterSpacing: 2, textTransform: "uppercase" }}>
+              Click to enlarge
+            </p>
           </div>
         </div>
       </div>

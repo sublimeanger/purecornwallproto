@@ -58,11 +58,11 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
             </span>
           </div>
           <button
-            className="mt-6 transition-all duration-300 hover:bg-brand-body hover:text-white"
+            className="mt-6 transition-all duration-300 hover:bg-sandy-gold hover:text-white"
             style={{
               background: "transparent",
-              border: "2px solid #3a3a3a",
-              color: "#3a3a3a",
+              border: "2px solid #d3a36e",
+              color: "#d3a36e",
               fontFamily: "'Jost', sans-serif",
               fontSize: 14,
               textTransform: "uppercase",
@@ -94,7 +94,7 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
               >
                 {Icon && <Icon size={24} className="text-sandy-gold" />}
               </div>
-              <span style={{ fontSize: 13, color: "#3a3a3a", fontFamily: "'Jost', sans-serif" }}>
+              <span style={{ fontSize: 14, color: "#3a3a3a", fontFamily: "'Jost', sans-serif" }}>
                 {stat.label}
               </span>
             </div>
