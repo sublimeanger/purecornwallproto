@@ -1,25 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import logo from "@/assets/pure-cornwall-logo.png";
 import { Menu, X } from "lucide-react";
 
 const navItems = ["Destinations", "Collections", "Journal", "About", "Contact"];
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-sm" : "bg-transparent"
-      }`}
-    >
+    <header className="relative z-50 bg-white">
       <div className="pc-container flex items-center justify-between" style={{ height: 90 }}>
         <a href="/">
           <img src={logo} alt="Pure Cornwall" style={{ height: 60 }} />
@@ -31,7 +20,7 @@ const Header = () => {
             <a
               key={item}
               href="#"
-              className={`nav-link ${scrolled ? "text-brand-dark" : "text-white"}`}
+              className="nav-link text-brand-dark"
             >
               {item}
             </a>
@@ -45,9 +34,9 @@ const Header = () => {
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <X size={28} className={scrolled ? "text-brand-dark" : "text-white"} />
+            <X size={28} className="text-brand-dark" />
           ) : (
-            <Menu size={28} className={scrolled ? "text-brand-dark" : "text-white"} />
+            <Menu size={28} className="text-brand-dark" />
           )}
         </button>
       </div>
