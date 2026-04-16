@@ -13,7 +13,7 @@
     --primary-foreground: 0 0% 100%;
     --accent: 28 52% 63%;             /* #d3a36e sandy gold */
     --accent-foreground: 0 0% 100%;
-    --dark: 168 26% 23%;              /* #2d4a46 deep teal */
+    --dark: 163 28% 25%;              /* #2f5550 deep teal */
     --dark-foreground: 0 0% 100%;
 
     --background: 30 18% 96%;         /* #f7f5f2 */
@@ -105,8 +105,8 @@
   color: #3a3a3a;
 }
 .btn-flat:hover {
-  border-bottom-color: #2d4a46;
-  color: #2d4a46;
+  border-bottom-color: #2f5550;
+  color: #2f5550;
 }
 
 /* Container */
@@ -125,8 +125,8 @@
 
 /* Section padding */
 .pc-section {
-  padding-top: 5vw;
-  padding-bottom: 5vw;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
 }
 
 /* Property card */

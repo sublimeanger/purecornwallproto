@@ -1,7 +1,7 @@
 import logo from "@/assets/pure-cornwall-logo.png";
 
 const Footer = () => (
-  <footer className="bg-brand-dark text-white" style={{ paddingTop: "5vw", paddingBottom: "2.5vw" }}>
+  <footer className="bg-brand-dark text-white" style={{ paddingTop: "7vw", paddingBottom: "2.5vw" }}>
     <div className="pc-container">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
         {/* Col 1 */}
@@ -67,7 +67,12 @@ const Footer = () => (
               placeholder="Your email"
               className="flex-1 bg-transparent border-b-2 border-sandy-gold text-white text-sm px-1 py-2 outline-none placeholder:text-white/40"
             />
-            <button className="btn-flat text-white text-xs ml-2">Subscribe</button>
+            <button
+              className="ml-2 bg-sandy-gold text-white px-7 py-3 hover:opacity-90 transition-opacity"
+              style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "3px" }}
+            >
+              Subscribe
+            </button>
           </div>
           <div className="flex gap-4 mt-6">
             <a href="#" className="text-white/70 hover:text-brand-teal transition-colors text-sm">Instagram</a>

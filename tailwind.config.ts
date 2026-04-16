@@ -63,7 +63,7 @@ export default {
         },
         "sandy-gold": "#d3a36e",
         "brand-teal": "#6fb6ae",
-        "brand-dark": "#2d4a46",
+        "brand-dark": "#2f5550",
         "brand-body": "#3a3a3a",
         "brand-muted": "#7a7a7a",
         "brand-light": "#f7f5f2",

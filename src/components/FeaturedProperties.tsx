@@ -16,7 +16,7 @@ const properties = [
 ];
 
 const FeaturedProperties = () => (
-  <section className="pc-section">
+  <section style={{ paddingTop: "6vw", paddingBottom: "6vw" }}>
     <div className="pc-container">
       <div className="text-center mb-[3vw]">
         <h2
@@ -47,9 +47,9 @@ const FeaturedProperties = () => (
                 />
               </div>
 
-              {/* Detail card */}
-              <div className="w-full md:w-[40%] bg-brand-light border-b-2 border-sandy-gold flex flex-col justify-between p-8 md:p-10">
-                <div>
+              {/* Detail card — vertically centered stack */}
+              <div className="w-full md:w-[40%] bg-brand-light border-b-2 border-sandy-gold flex items-center justify-center p-12">
+                <div className="flex flex-col items-center text-center gap-4 w-full">
                   {/* Location */}
                   <p
                     className="text-brand-dark text-xs"
@@ -58,76 +58,76 @@ const FeaturedProperties = () => (
                     {p.location}
                   </p>
 
-                  {/* Name & Price row */}
-                  <div className="flex items-start justify-between mt-3 gap-4">
-                    <h3 className="text-sandy-gold font-normal" style={{ fontSize: "clamp(28px, 2.5vw, 40px)" }}>
-                      {p.name}
-                    </h3>
-                    <div className="text-right flex-shrink-0">
-                      <span className="text-brand-muted text-[10px] block" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
-                        From
-                      </span>
-                      <span className="text-sandy-gold font-normal" style={{ fontSize: "clamp(24px, 2vw, 32px)" }}>
-                        £{p.price.toLocaleString()}
-                      </span>
-                      <span className="text-brand-muted text-[10px] block" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
-                        Per Week
-                      </span>
-                    </div>
+                  {/* Name */}
+                  <h3 className="text-sandy-gold font-normal" style={{ fontSize: "clamp(28px, 2.5vw, 40px)" }}>
+                    {p.name}
+                  </h3>
+
+                  {/* Price block */}
+                  <div className="flex flex-col items-center">
+                    <span className="text-brand-muted text-[10px]" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
+                      From
+                    </span>
+                    <span className="text-sandy-gold font-normal" style={{ fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      £{p.price.toLocaleString()}
+                    </span>
+                    <span className="text-brand-muted text-[10px]" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
+                      Per Week
+                    </span>
                   </div>
 
-                  {/* Primary specs */}
-                  <div className="flex gap-6 mt-6">
+                  {/* Primary stats */}
+                  <div className="flex gap-8 mt-2">
                     <div className="flex items-center gap-2">
-                      <Users size={16} className="text-sandy-gold" />
-                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Users size={20} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
                         Sleeps {p.sleeps}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bed size={16} className="text-sandy-gold" />
-                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Bed size={20} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
                         {p.beds} Bed
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bath size={16} className="text-sandy-gold" />
-                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Bath size={20} className="text-sandy-gold" />
+                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: "2px" }}>
                         {p.baths} Bath
                       </span>
                     </div>
                   </div>
 
-                  {/* Secondary specs */}
-                  <div className="flex gap-6 mt-4">
+                  {/* Feature pills */}
+                  <div className="flex flex-wrap justify-center gap-8">
                     {p.parking && (
                       <div className="flex items-center gap-2">
-                        <Car size={16} className="text-sandy-gold" />
-                        <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        <Car size={20} className="text-sandy-gold" />
+                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
                           Parking
                         </span>
                       </div>
                     )}
                     {p.pets && (
                       <div className="flex items-center gap-2">
-                        <Dog size={16} className="text-sandy-gold" />
-                        <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        <Dog size={20} className="text-sandy-gold" />
+                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
                           Pet Welcome
                         </span>
                       </div>
                     )}
                     <div className="flex items-center gap-2">
-                      <Sparkles size={16} className="text-sandy-gold" />
-                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                      <Sparkles size={20} className="text-sandy-gold" />
+                      <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "2px" }}>
                         {p.feature}
                       </span>
                     </div>
                   </div>
-                </div>
 
-                {/* CTA */}
-                <div className="mt-8 flex justify-end">
-                  <button className="btn-flat text-xs">View Property</button>
+                  {/* CTA */}
+                  <div className="mt-4">
+                    <button className="btn-flat text-xs">View Property</button>
+                  </div>
                 </div>
               </div>
             </div>

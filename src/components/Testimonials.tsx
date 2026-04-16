@@ -24,24 +24,31 @@ const Testimonials = () => {
   const t = testimonials[active];
 
   return (
-    <section className="pc-section bg-brand-dark">
+    <section className="bg-brand-dark" style={{ paddingTop: "7vw", paddingBottom: "7vw" }}>
       <div className="pc-container text-center">
         <h2 className="text-white" style={{ fontSize: "clamp(32px, 3vw, 42px)" }}>
           What Our Guests Say
         </h2>
         <div className="gold-bar gold-bar--center" />
 
-        <div className="mt-12 max-w-[720px] mx-auto">
+        <div className="mt-14 max-w-[720px] mx-auto">
+          {/* Decorative quote mark */}
+          <div className="flex justify-center mb-6">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.4 }}>
+              <path d="M14 40C14 35.6 15.4 31.8 18.2 28.6C21.1 25.4 24.9 23.2 29.6 22L31 25.4C27.5 26.5 24.9 28.2 23.2 30.6C21.5 33 20.7 35.5 20.7 38.2H28V48H14V40ZM38 40C38 35.6 39.4 31.8 42.2 28.6C45.1 25.4 48.9 23.2 53.6 22L55 25.4C51.5 26.5 48.9 28.2 47.2 30.6C45.5 33 44.7 35.5 44.7 38.2H52V48H38V40Z" fill="#d3a36e"/>
+            </svg>
+          </div>
+
           <div className="flex justify-center gap-1 mb-8">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={20} className="text-sandy-gold fill-sandy-gold" />
             ))}
           </div>
-          <p className="text-white text-2xl font-light italic leading-relaxed">
+          <p className="text-white italic leading-relaxed" style={{ fontSize: "clamp(22px, 2vw, 28px)", fontWeight: 300, lineHeight: 1.6 }}>
             "{t.quote}"
           </p>
           <p
-            className="text-white mt-8 text-sm"
+            className="text-white mt-10 text-sm"
             style={{ textTransform: "uppercase", letterSpacing: "3px" }}
           >
             {t.name}
@@ -49,7 +56,7 @@ const Testimonials = () => {
           <p className="text-white/50 text-sm mt-2">{t.property}</p>
         </div>
 
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-3 mt-12">
           {testimonials.map((_, i) => (
             <button
               key={i}
