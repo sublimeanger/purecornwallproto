@@ -144,9 +144,6 @@ const PricingSection = () => {
             >
               Click on an arrival date highlighted in bold to begin your booking.
             </div>
-            <p className="text-right mt-2" style={{ fontSize: 11, color: "#7a7a7a" }}>
-              Powered by Anytime Booking
-            </p>
           </div>
 
           {/* Right info */}
