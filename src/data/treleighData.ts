@@ -9,7 +9,7 @@ export const treleighData = {
   bathrooms: 3,
   priceFrom: 3000,
 
-  heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=85",
+  heroImage: new URL("@/assets/treleigh-hero.jpg", import.meta.url).href,
 
   stats: [
     { icon: "bed", label: "4 Bedrooms" },
