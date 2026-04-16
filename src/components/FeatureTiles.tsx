@@ -17,7 +17,7 @@ const tiles = [
   { img: collSurfing, title: "Surfing Escapes", subtitle: "Surf's up with these retreats" },
   { img: collBeach, title: "Cornwall Beach Retreats", subtitle: "Coastal cottages by the sea" },
   { img: collPools, title: "Cottages with Pools", subtitle: "Dive into our swimming pool collection" },
-  { img: collGuide, title: "The Great Cornwall Guide", subtitle: "The essential guide for visiting Cornwall", isGuide: true },
+  { img: collGuide, title: "The Great Cornwall Guide", subtitle: "The essential guide for visiting Cornwall" },
 ];
 
 const FeatureTiles = () => (
@@ -55,16 +55,13 @@ const FeatureTiles = () => (
             <div
               className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-80"
               style={{
-                background: t.isGuide
-                  ? "linear-gradient(180deg, rgba(47,85,80,0.4) 0%, rgba(47,85,80,0.85) 100%)"
-                  : "linear-gradient(180deg, rgba(47,85,80,0.3) 0%, rgba(47,85,80,0.7) 100%)",
+                background: "linear-gradient(180deg, rgba(47,85,80,0.3) 0%, rgba(47,85,80,0.7) 100%)",
               }}
             />
             {/* Text */}
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-[20%] px-4 text-center">
               <h3
-                className="text-white"
-                style={{ fontSize: "clamp(14px, 1.2vw, 18px)", textTransform: "uppercase", letterSpacing: 3, fontWeight: 500 }}
+                style={{ fontSize: "clamp(14px, 1.2vw, 18px)", textTransform: "uppercase", letterSpacing: 4, fontWeight: 500, color: "#ffffff" }}
               >
                 {t.title}
               </h3>

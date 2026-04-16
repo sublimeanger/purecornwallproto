@@ -7,12 +7,12 @@ import prop6 from "@/assets/property-6.jpg";
 import { Bed, Bath, Users, Car, Dog, Sparkles } from "lucide-react";
 
 const properties = [
-  { img: prop1, name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View" },
-  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub" },
-  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden" },
-  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool" },
-  { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views" },
-  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront" },
+  { img: prop1, name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View", tagline: "A stunning clifftop retreat with panoramic sea views across St Ives Bay", highlights: ["Private garden", "Wood burner", "Minutes from beach"] },
+  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub", tagline: "Contemporary coastal living with a luxury hot tub and harbour views", highlights: ["Open-plan kitchen", "Hot tub", "Walk to town"] },
+  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden", tagline: "A grand family home overlooking Falmouth's working harbour", highlights: ["Walled garden", "Games room", "Sea views"] },
+  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool", tagline: "Surf-side living with a heated pool and direct beach access", highlights: ["Heated pool", "Surf storage", "Beach access"] },
+  { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views", tagline: "Elegant interiors and sweeping views from Porthminster to Godrevy", highlights: ["Designer kitchen", "Balcony", "Coastal path"] },
+  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront", tagline: "A charming beachfront bolthole for couples and small families", highlights: ["Beachfront", "Log burner", "Pet friendly"] },
 ];
 
 const FeaturedProperties = () => (
@@ -32,12 +32,12 @@ const FeaturedProperties = () => (
         {properties.map((p, i) => {
           const imgLeft = i % 2 === 0;
           const pairIndex = Math.floor(i / 2);
-          const bgColor = pairIndex % 2 === 0 ? "#ffffff" : "#f7f5f2";
+          const bgColor = pairIndex % 2 === 0 ? "#f7f5f2" : "#ffffff";
           return (
             <div
               key={p.name}
               className={`flex flex-col ${imgLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
-              style={{ paddingTop: i === 0 ? 0 : 40, paddingBottom: 40 }}
+              style={{ backgroundColor: bgColor, paddingTop: i === 0 ? 0 : 40, paddingBottom: 40 }}
             >
               {/* Image */}
               <div className="w-full md:w-[60%] overflow-hidden">
@@ -50,58 +50,57 @@ const FeaturedProperties = () => (
                 />
               </div>
 
-              {/* Detail card — editorial horizontal layout */}
+              {/* Detail — editorial layout, no card edges */}
               <div
                 className="w-full md:w-[40%] flex items-center"
-                style={{ backgroundColor: bgColor, padding: 48 }}
+                style={{ padding: 48 }}
               >
-                <div className="flex flex-col gap-4 w-full">
+                <div className="flex flex-col w-full" style={{ gap: 20 }}>
                   {/* Row 1: Location + Price */}
                   <div className="flex items-baseline justify-between">
-                    <p
-                      className="text-brand-dark"
-                      style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500 }}
-                    >
+                    <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#2f5550" }}>
                       {p.location}
                     </p>
                     <div className="text-right flex items-baseline gap-1">
-                      <span className="text-brand-muted" style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>
                         From
                       </span>
-                      <span className="text-sandy-gold" style={{ fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 400 }}>
+                      <span style={{ fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 400, color: "#d3a36e" }}>
                         £{p.price.toLocaleString()}
                       </span>
-                      <span className="text-brand-muted" style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>
                         per week
                       </span>
                     </div>
                   </div>
 
                   {/* Row 2: Property name */}
-                  <h3
-                    className="text-sandy-gold"
-                    style={{ fontSize: "clamp(28px, 2.5vw, 36px)", fontWeight: 400, lineHeight: 1.2 }}
-                  >
+                  <h3 style={{ fontSize: "clamp(28px, 2.5vw, 40px)", fontWeight: 400, lineHeight: 1.2, color: "#d3a36e" }}>
                     {p.name}
                   </h3>
 
+                  {/* Row 2.5: Tagline */}
+                  <p style={{ fontSize: 16, fontStyle: "italic", color: "#7a7a7a", lineHeight: 1.5 }}>
+                    {p.tagline}
+                  </p>
+
                   {/* Row 3: Primary stats */}
-                  <div className="flex gap-6 mt-1">
+                  <div className="flex gap-6">
                     <div className="flex items-center gap-2">
-                      <Users size={18} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <Users size={18} style={{ color: "#d3a36e" }} />
+                      <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>
                         Sleeps {p.sleeps}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bed size={18} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <Bed size={18} style={{ color: "#d3a36e" }} />
+                      <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>
                         {p.beds} Bed
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Bath size={18} className="text-sandy-gold" />
-                      <span className="text-brand-dark" style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <Bath size={18} style={{ color: "#d3a36e" }} />
+                      <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>
                         {p.baths} Bath
                       </span>
                     </div>
@@ -111,30 +110,49 @@ const FeaturedProperties = () => (
                   <div className="flex flex-wrap gap-6">
                     {p.parking && (
                       <div className="flex items-center gap-2">
-                        <Car size={16} className="text-brand-muted" />
-                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
+                        <Car size={16} style={{ color: "#7a7a7a" }} />
+                        <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>
                           Parking
                         </span>
                       </div>
                     )}
                     {p.pets && (
                       <div className="flex items-center gap-2">
-                        <Dog size={16} className="text-brand-muted" />
-                        <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
+                        <Dog size={16} style={{ color: "#7a7a7a" }} />
+                        <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>
                           Pet Welcome
                         </span>
                       </div>
                     )}
                     <div className="flex items-center gap-2">
-                      <Sparkles size={16} className="text-brand-muted" />
-                      <span className="text-brand-muted" style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2 }}>
+                      <Sparkles size={16} style={{ color: "#7a7a7a" }} />
+                      <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>
                         {p.feature}
                       </span>
                     </div>
                   </div>
 
-                  {/* Row 5: CTA */}
-                  <div className="mt-4 text-right">
+                  {/* Row 5: Highlight pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {p.highlights.map((h) => (
+                      <span
+                        key={h}
+                        style={{
+                          fontSize: 11,
+                          textTransform: "uppercase",
+                          letterSpacing: 2,
+                          color: "#2f5550",
+                          border: "1px solid #e5e0da",
+                          padding: "4px 12px",
+                        }}
+                      >
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Row 6: CTA */}
+                  <div className="text-right mt-2">
                     <button className="btn-flat text-xs">View Property</button>
                   </div>
                 </div>

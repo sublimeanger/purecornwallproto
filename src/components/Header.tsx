@@ -11,7 +11,7 @@ const Header = () => {
     <header className="relative z-50 bg-white">
       <div className="pc-container flex items-center justify-between" style={{ height: 90 }}>
         <a href="/">
-          <img src={logo} alt="Pure Cornwall" style={{ height: 60 }} />
+          <img src={logo} alt="Pure Cornwall" style={{ height: 56 }} />
         </a>
 
         {/* Desktop nav */}
