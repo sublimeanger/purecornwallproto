@@ -189,9 +189,8 @@ const FeaturedProperties = () => (
                       <button className="btn-flat text-xs">View Property</button>
                     </div>
                   </div>
-                </div>
-              </AnimatedCard>
-            </div>
+                </AnimatedCard>
+              </div>
           );
         })}
       </div>
