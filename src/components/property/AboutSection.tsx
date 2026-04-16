@@ -67,20 +67,6 @@ const AboutSection = ({ paragraphs }: AboutSectionProps) => {
           <div style={{ flex: "0 0 80px", height: 1, backgroundColor: "#d3a36e" }} />
         </div>
 
-        <p
-          className="text-right"
-          style={{
-            fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
-            fontSize: 14,
-            color: "#d3a36e",
-            maxWidth: 900,
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          — Pure Cornwall editorial
-        </p>
       </div>
     </section>
   );
