@@ -19,7 +19,6 @@ const Index = () => (
     <Header />
     <SearchBar />
     <Hero />
-    <SectionDivider />
     <BrandIntro />
     <SectionDivider />
     <FeatureTiles />
