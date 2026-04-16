@@ -4,7 +4,7 @@ import treleighHero from "@/assets/treleigh-hero.jpg";
 export const treleighData = {
   name: "Treleigh",
   location: "Carbis Bay",
-  region: "Hawkes Point, Carbis Bay",
+  region: "St Ives",
   tagline: "A striking clifftop retreat with panoramic sea views across St Ives Bay",
   sleeps: 8,
   bedrooms: 4,
