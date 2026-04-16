@@ -30,7 +30,7 @@ const posts = [
 ];
 
 const Journal = () => (
-  <section className="pc-section">
+  <section style={{ paddingTop: "6vw", paddingBottom: "6vw" }}>
     <div className="pc-container">
       <div className="text-center mb-[2.5vw]">
         <p
@@ -67,17 +67,20 @@ const Journal = () => (
             </div>
             <div className="pt-5 pb-6">
               <h3 className="text-brand-dark text-2xl font-normal">{p.title}</h3>
-              <p className="text-brand-muted text-sm mt-3 leading-relaxed line-clamp-2">{p.excerpt}</p>
-              <div className="flex gap-4 mt-4">
+              <p className="text-brand-body mt-3 leading-relaxed line-clamp-2" style={{ fontSize: 15, lineHeight: 1.6 }}>
+                {p.excerpt}
+              </p>
+              <div className="flex items-center gap-0 mt-4">
                 <span
-                  className="text-brand-muted text-xs"
-                  style={{ textTransform: "uppercase", letterSpacing: "3px" }}
+                  className="text-brand-muted"
+                  style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "3px" }}
                 >
                   {p.date}
                 </span>
+                <span className="text-brand-muted mx-2" style={{ fontSize: 12 }}>•</span>
                 <span
-                  className="text-brand-muted text-xs"
-                  style={{ textTransform: "uppercase", letterSpacing: "3px" }}
+                  className="text-brand-muted"
+                  style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "3px" }}
                 >
                   {p.readTime}
                 </span>
