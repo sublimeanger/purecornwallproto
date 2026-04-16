@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <>
-    <UtilityBar />
+    
     <Header />
     <SearchBar />
     <Hero />
