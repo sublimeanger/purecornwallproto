@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import Hero from "@/components/Hero";
+import BrandIntro from "@/components/BrandIntro";
 import FeatureTiles from "@/components/FeatureTiles";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import Testimonials from "@/components/Testimonials";
@@ -9,10 +10,10 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <>
-    
     <Header />
     <SearchBar />
     <Hero />
+    <BrandIntro />
     <FeatureTiles />
     <FeaturedProperties />
     <Testimonials />
