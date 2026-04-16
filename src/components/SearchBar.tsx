@@ -45,7 +45,7 @@ const SearchBar = () => {
               style={destOpen ? { backgroundColor: "rgba(0,0,0,0.15)" } : {}}
             >
               <div>
-                <span className="block" style={fieldLabel}>Destinations / Property Search</span>
+                <span className="block whitespace-nowrap" style={fieldLabel}>Destinations</span>
                 <span className="block mt-1" style={fieldValue}>{selectedDest}</span>
               </div>
               <ChevronDown size={18} style={{ color: "#ffffff", transform: destOpen ? "rotate(180deg)" : "rotate(0)", transition: "transform 200ms" }} />
