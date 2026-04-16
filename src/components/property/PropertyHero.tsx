@@ -67,7 +67,7 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
         >
           View Gallery
         </button>
-
+      </div>
     </section>
   );
 };
