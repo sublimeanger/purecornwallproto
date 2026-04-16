@@ -1,25 +1,23 @@
+import UtilityBar from "@/components/UtilityBar";
 import Header from "@/components/Header";
+import SearchBar from "@/components/SearchBar";
 import Hero from "@/components/Hero";
+import FeatureTiles from "@/components/FeatureTiles";
 import FeaturedProperties from "@/components/FeaturedProperties";
-import Destinations from "@/components/Destinations";
-import Collections from "@/components/Collections";
-import AboutSection from "@/components/AboutSection";
 import Testimonials from "@/components/Testimonials";
 import Journal from "@/components/Journal";
-import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 const Index = () => (
   <>
+    <UtilityBar />
     <Header />
+    <SearchBar />
     <Hero />
+    <FeatureTiles />
     <FeaturedProperties />
-    <Destinations />
-    <Collections />
-    <AboutSection />
     <Testimonials />
     <Journal />
-    <Newsletter />
     <Footer />
   </>
 );

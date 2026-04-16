@@ -4,89 +4,135 @@ import prop3 from "@/assets/property-3.jpg";
 import prop4 from "@/assets/property-4.jpg";
 import prop5 from "@/assets/property-5.jpg";
 import prop6 from "@/assets/property-6.jpg";
+import { Bed, Bath, Users, Car, Dog, Sparkles } from "lucide-react";
 
 const properties = [
-  { img: prop1, name: "Treleigh", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1850 },
-  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450 },
-  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200 },
-  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350 },
-  { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950 },
-  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995 },
+  { img: prop1, name: "Treleigh", location: "Carbis Bay", beds: 4, baths: 3, sleeps: 8, price: 1850, parking: true, pets: true, feature: "Sea View" },
+  { img: prop2, name: "Porthmeor Retreat", location: "Padstow", beds: 3, baths: 2, sleeps: 6, price: 1450, parking: true, pets: false, feature: "Hot Tub" },
+  { img: prop3, name: "Harbour View", location: "Falmouth", beds: 5, baths: 4, sleeps: 10, price: 2200, parking: true, pets: true, feature: "Garden" },
+  { img: prop4, name: "Atlantic Haven", location: "Newquay", beds: 3, baths: 2, sleeps: 6, price: 1350, parking: false, pets: true, feature: "Pool" },
+  { img: prop5, name: "Sea View House", location: "St Ives", beds: 4, baths: 3, sleeps: 8, price: 1950, parking: true, pets: false, feature: "Panoramic Views" },
+  { img: prop6, name: "Driftwood Cottage", location: "Padstow", beds: 2, baths: 1, sleeps: 4, price: 995, parking: true, pets: true, feature: "Beachfront" },
 ];
 
 const FeaturedProperties = () => (
   <section className="pc-section">
     <div className="pc-container">
-      <div className="text-center mb-[2.5vw]">
-        <h2 className="text-brand-dark" style={{ fontSize: "clamp(32px, 3vw, 42px)" }}>
-          Exceptional Cottages
+      <div className="text-center mb-[3vw]">
+        <h2
+          className="text-brand-dark"
+          style={{ fontSize: "clamp(28px, 2.5vw, 36px)", textTransform: "uppercase", letterSpacing: "3px" }}
+        >
+          Showcased &amp; Latest Properties
         </h2>
         <div className="gold-bar gold-bar--center" />
-        <p className="text-brand-muted mt-6 max-w-[600px] mx-auto">
-          Each property in our collection has been personally inspected and chosen for its character, location and quality
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[2.5vw]">
-        {properties.map((p) => (
-          <a key={p.name} href="#" className="property-card block cursor-pointer border-b-2 border-sandy-gold">
-            <div className="property-card__img" style={{ aspectRatio: "755/508" }}>
-              <img
-                src={p.img}
-                alt={p.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="pt-5 pb-6">
-              <h3 className="text-sandy-gold text-[32px] font-normal">{p.name}</h3>
-              <p
-                className="text-brand-dark text-base mt-1"
-                style={{ textTransform: "uppercase", letterSpacing: "3px", fontSize: 16 }}
-              >
-                {p.location}
-              </p>
-              <div className="flex gap-6 mt-4">
-                {[
-                  { label: "Bedrooms", val: p.beds },
-                  { label: "Bathrooms", val: p.baths },
-                  { label: "Sleeps", val: p.sleeps },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <span
-                      className="text-brand-muted text-xs block"
-                      style={{ textTransform: "uppercase", letterSpacing: "2px" }}
-                    >
-                      {s.label}
-                    </span>
-                    <span className="text-sandy-gold text-lg font-normal">{s.val}</span>
+      <div className="flex flex-col" style={{ gap: "5vw" }}>
+        {properties.map((p, i) => {
+          const imgLeft = i % 2 === 0;
+          return (
+            <div
+              key={p.name}
+              className={`flex flex-col ${imgLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-0`}
+            >
+              {/* Image */}
+              <div className="w-full md:w-[60%] overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="w-full h-full object-cover"
+                  style={{ aspectRatio: "5/4" }}
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Detail card */}
+              <div className="w-full md:w-[40%] bg-brand-light border-b-2 border-sandy-gold flex flex-col justify-between p-8 md:p-10">
+                <div>
+                  {/* Location */}
+                  <p
+                    className="text-brand-dark text-xs"
+                    style={{ textTransform: "uppercase", letterSpacing: "3px" }}
+                  >
+                    {p.location}
+                  </p>
+
+                  {/* Name & Price row */}
+                  <div className="flex items-start justify-between mt-3 gap-4">
+                    <h3 className="text-sandy-gold font-normal" style={{ fontSize: "clamp(28px, 2.5vw, 40px)" }}>
+                      {p.name}
+                    </h3>
+                    <div className="text-right flex-shrink-0">
+                      <span className="text-brand-muted text-[10px] block" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
+                        From
+                      </span>
+                      <span className="text-sandy-gold font-normal" style={{ fontSize: "clamp(24px, 2vw, 32px)" }}>
+                        £{p.price.toLocaleString()}
+                      </span>
+                      <span className="text-brand-muted text-[10px] block" style={{ textTransform: "uppercase", letterSpacing: "3px" }}>
+                        Per Week
+                      </span>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span
-                  className="text-brand-muted text-xs"
-                  style={{ textTransform: "uppercase", letterSpacing: "3px" }}
-                >
-                  From
-                </span>
-                <span className="text-sandy-gold text-[40px] font-normal leading-none">
-                  £{p.price.toLocaleString()}
-                </span>
-                <span
-                  className="text-brand-muted text-xs"
-                  style={{ textTransform: "uppercase", letterSpacing: "3px" }}
-                >
-                  per week
-                </span>
+
+                  {/* Primary specs */}
+                  <div className="flex gap-6 mt-6">
+                    <div className="flex items-center gap-2">
+                      <Users size={16} className="text-sandy-gold" />
+                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        Sleeps {p.sleeps}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Bed size={16} className="text-sandy-gold" />
+                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        {p.beds} Bed
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Bath size={16} className="text-sandy-gold" />
+                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        {p.baths} Bath
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Secondary specs */}
+                  <div className="flex gap-6 mt-4">
+                    {p.parking && (
+                      <div className="flex items-center gap-2">
+                        <Car size={16} className="text-sandy-gold" />
+                        <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                          Parking
+                        </span>
+                      </div>
+                    )}
+                    {p.pets && (
+                      <div className="flex items-center gap-2">
+                        <Dog size={16} className="text-sandy-gold" />
+                        <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                          Pet Welcome
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2">
+                      <Sparkles size={16} className="text-sandy-gold" />
+                      <span className="text-brand-muted text-xs" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+                        {p.feature}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-8 flex justify-end">
+                  <button className="btn-flat text-xs">View Property</button>
+                </div>
               </div>
             </div>
-          </a>
-        ))}
-      </div>
-
-      <div className="text-center mt-[2.5vw]">
-        <button className="btn-flat">View All Cottages</button>
+          );
+        })}
       </div>
     </div>
   </section>

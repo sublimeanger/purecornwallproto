@@ -50,26 +50,28 @@ const Footer = () => (
           </ul>
         </div>
 
-        {/* Col 4 */}
+        {/* Col 4 — Newsletter */}
         <div>
           <h4
             className="text-white text-sm mb-6"
             style={{ textTransform: "uppercase", letterSpacing: "3px" }}
           >
-            Follow Us
+            Newsletter
           </h4>
-          <div className="flex gap-4 mb-6">
-            <a href="#" className="text-white/70 hover:text-brand-teal transition-colors text-sm">Instagram</a>
-            <a href="#" className="text-white/70 hover:text-brand-teal transition-colors text-sm">Facebook</a>
-          </div>
-          <p className="text-white/70 text-sm mb-3">Get updates:</p>
+          <p className="text-white/70 text-sm mb-4 leading-relaxed">
+            Join for seasonal guides and exclusive property previews
+          </p>
           <div className="flex">
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Your email"
               className="flex-1 bg-transparent border-b-2 border-sandy-gold text-white text-sm px-1 py-2 outline-none placeholder:text-white/40"
             />
-            <button className="btn-flat text-white text-xs ml-2">Go</button>
+            <button className="btn-flat text-white text-xs ml-2">Subscribe</button>
+          </div>
+          <div className="flex gap-4 mt-6">
+            <a href="#" className="text-white/70 hover:text-brand-teal transition-colors text-sm">Instagram</a>
+            <a href="#" className="text-white/70 hover:text-brand-teal transition-colors text-sm">Facebook</a>
           </div>
         </div>
       </div>
