@@ -28,7 +28,7 @@ const VideoFloorplan = () => (
                   fontFamily: "'Jost', sans-serif",
                   fontSize: 22,
                   fontWeight: 300,
-                  fontStyle: "italic",
+                  
                   color: "white",
                   textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }}
