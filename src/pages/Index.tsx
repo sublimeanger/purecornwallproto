@@ -1,4 +1,3 @@
-import UtilityBar from "@/components/UtilityBar";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import Hero from "@/components/Hero";
