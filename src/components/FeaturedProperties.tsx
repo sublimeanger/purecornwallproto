@@ -87,18 +87,18 @@ const FeaturedProperties = () => (
               style={{ backgroundColor: bgColor, paddingTop: i === 0 ? 0 : 40, paddingBottom: 40 }}
             >
               {/* Image */}
-              <AnimatedCard>
-                <div className="w-full overflow-hidden">
+              <div className="w-full md:w-[60%] overflow-hidden">
+                <AnimatedCard>
                   <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
-                </div>
-              </AnimatedCard>
+                </AnimatedCard>
+              </div>
 
               {/* Detail */}
-              <AnimatedCard delay={200}>
-                <div
-                  className="w-full flex items-center"
-                  style={{ padding: 48 }}
-                >
+              <div
+                className="w-full md:w-[40%] flex items-center"
+                style={{ padding: 48 }}
+              >
+                <AnimatedCard delay={200}>
                   <div className="flex flex-col w-full" style={{ gap: 20 }}>
                     <div className="flex items-baseline justify-between">
                       <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#2f5550" }}>
