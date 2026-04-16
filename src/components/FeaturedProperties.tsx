@@ -191,6 +191,7 @@ const FeaturedProperties = () => (
                   </div>
                 </AnimatedCard>
               </div>
+            </div>
           );
         })}
       </div>
