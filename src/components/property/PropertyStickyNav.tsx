@@ -56,9 +56,9 @@ const PropertyStickyNav = () => {
       <nav
         ref={navRef}
         className={`bg-white border-b border-brand-border z-40 transition-shadow duration-300 ${
-          isSticky ? "fixed top-0 left-0 right-0 shadow-sm" : ""
+          isSticky ? "fixed top-0 left-0 right-0 shadow-md" : ""
         }`}
-        style={{ height: 60 }}
+        style={{ height: 56 }}
       >
         <div className="pc-container h-full flex items-center overflow-x-auto scrollbar-hide">
           <div className="flex items-center gap-6 lg:gap-8 mx-auto whitespace-nowrap">
@@ -88,7 +88,7 @@ const PropertyStickyNav = () => {
           </div>
         </div>
       </nav>
-      {isSticky && <div style={{ height: 60 }} />}
+      {isSticky && <div style={{ height: 56 }} />}
     </>
   );
 };
