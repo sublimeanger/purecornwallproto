@@ -20,7 +20,7 @@ const AccordionRow = ({ title, items }: { title: string; items: string[] }) => {
         onClick={() => setOpen(!open)}
         style={{ background: "none", border: "none", cursor: "pointer" }}
       >
-        <span style={{ fontSize: 16, color: "#3a3a3a", fontFamily: "'Jost', sans-serif" }}>
+        <span style={{ fontSize: 16, color: "#3a3a3a", fontFamily: "var(--font-body)" }}>
           {title}:
         </span>
         <ChevronDown
@@ -47,12 +47,32 @@ const AccordionRow = ({ title, items }: { title: string; items: string[] }) => {
 };
 
 const FacilitiesSection = ({ facilities }: FacilitiesSectionProps) => (
-  <section id="facilities" className="bg-white" style={{ paddingTop: "5vw", paddingBottom: "5vw" }}>
-    <div className="pc-container">
+  <section
+    id="facilities"
+    className="relative overflow-hidden"
+    style={{
+      paddingTop: "5vw",
+      paddingBottom: "5vw",
+      background: "linear-gradient(180deg, #ffffff 0%, #f7f5f2 100%)",
+    }}
+  >
+    {/* Decorative wave watermark */}
+    <svg
+      className="absolute top-8 right-8 opacity-[0.06]"
+      width="180"
+      height="80"
+      viewBox="0 0 180 80"
+      fill="none"
+    >
+      <path d="M10 40C30 15 50 15 70 40C90 65 110 65 130 40C150 15 170 15 180 30" stroke="#d3a36e" strokeWidth="3" strokeLinecap="round" />
+      <path d="M10 55C30 30 50 30 70 55C90 80 110 80 130 55C150 30 170 30 180 45" stroke="#d3a36e" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+
+    <div className="pc-container relative">
       <SectionHeading title="Facilities" />
       <p
         className="text-center mx-auto mt-8"
-        style={{ maxWidth: 700, fontSize: 15, color: "#d3a36e", fontStyle: "italic", lineHeight: 1.7 }}
+        style={{ maxWidth: 700, fontSize: 15, color: "#d3a36e", fontStyle: "italic", lineHeight: 1.7, fontFamily: "var(--font-serif)" }}
       >
         High-quality bed linen and towels are provided at all Pure Cornwall properties. Where a cot is supplied, guests are kindly asked to bring their own cot bedding.
       </p>

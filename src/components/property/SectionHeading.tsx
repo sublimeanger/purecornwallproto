@@ -20,7 +20,7 @@ const SectionHeading = ({ title, small }: SectionHeadingProps) => (
       className="mx-auto"
       style={{
         width: small ? 120 : 200,
-        height: 2,
+        height: 1,
         backgroundColor: "#d3a36e",
         marginTop: 25,
       }}

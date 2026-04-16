@@ -33,10 +33,10 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
         <div className="lg:w-[60%]">
           <h1
             style={{
-              fontFamily: "'Jost', sans-serif",
+              fontFamily: "var(--font-serif)",
               fontSize: "clamp(52px, 5.5vw, 84px)",
               fontWeight: 300,
-              
+              fontStyle: "italic",
               lineHeight: 1.1,
               color: "#d3a36e",
               marginBottom: 32,
@@ -50,7 +50,7 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
             From:
           </p>
           <div className="flex items-baseline lg:justify-end gap-2">
-            <span style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 400, color: "#d3a36e" }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 400, color: "#d3a36e" }}>
               £{priceFrom.toLocaleString()}
             </span>
             <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 3, color: "#7a7a7a" }}>
@@ -63,7 +63,7 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
               background: "transparent",
               border: "2px solid #d3a36e",
               color: "#d3a36e",
-              fontFamily: "'Jost', sans-serif",
+              fontFamily: "var(--font-body)",
               fontSize: 14,
               textTransform: "uppercase",
               letterSpacing: 3,
@@ -82,19 +82,19 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
         {stats.map((stat) => {
           const Icon = iconMap[stat.icon];
           return (
-            <div key={stat.label} className="flex flex-col items-center gap-3">
+            <div key={stat.label} className="flex flex-col items-center gap-3 group cursor-pointer">
               <div
-                className="flex items-center justify-center"
+                className="flex items-center justify-center transition-all duration-300 group-hover:bg-sandy-gold group-hover:scale-105"
                 style={{
                   width: 48,
                   height: 48,
                   borderRadius: "50%",
-                  border: "1.5px solid #d3a36e",
+                  border: "1px solid #d3a36e",
                 }}
               >
-                {Icon && <Icon size={24} className="text-sandy-gold" />}
+                {Icon && <Icon size={24} className="text-sandy-gold transition-colors duration-300 group-hover:text-white" />}
               </div>
-              <span style={{ fontSize: 14, color: "#3a3a3a", fontFamily: "'Jost', sans-serif" }}>
+              <span style={{ fontSize: 13, color: "#3a3a3a", fontFamily: "var(--font-serif)", fontWeight: 400, letterSpacing: 0.5 }}>
                 {stat.label}
               </span>
             </div>

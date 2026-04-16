@@ -9,37 +9,29 @@ const generateMonth = (year: number, month: number) => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const weeks: (number | null)[][] = [];
   let week: (number | null)[] = Array(firstDay).fill(null);
-
   for (let d = 1; d <= daysInMonth; d++) {
     week.push(d);
-    if (week.length === 7) {
-      weeks.push(week);
-      week = [];
-    }
+    if (week.length === 7) { weeks.push(week); week = []; }
   }
-  if (week.length > 0) {
-    while (week.length < 7) week.push(null);
-    weeks.push(week);
-  }
+  if (week.length > 0) { while (week.length < 7) week.push(null); weeks.push(week); }
   return weeks;
 };
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
-// Sample booked dates
 const bookedDates = new Set([5, 6, 7, 12, 13, 14, 19, 20, 21, 26, 27, 28]);
 
 const MonthCalendar = ({ year, month }: { year: number; month: number }) => {
   const weeks = generateMonth(year, month);
   return (
     <div>
-      <p className="text-center mb-4" style={{ fontSize: 16, color: "#3a3a3a", fontFamily: "'Jost', sans-serif" }}>
+      <p className="text-center mb-4" style={{ fontSize: 24, color: "#3a3a3a", fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic" }}>
         {monthNames[month]} {year}
       </p>
       <div className="grid grid-cols-7 gap-1">
         {daysOfWeek.map((d, i) => (
-          <div key={i} className="text-center" style={{ fontSize: 12, color: "#7a7a7a", paddingBottom: 8 }}>
+          <div key={i} className="text-center" style={{ fontSize: 11, color: "#7a7a7a", paddingBottom: 8, letterSpacing: 4 }}>
             {d}
           </div>
         ))}
@@ -49,13 +41,22 @@ const MonthCalendar = ({ year, month }: { year: number; month: number }) => {
           return (
             <div
               key={i}
-              className="flex items-center justify-center cursor-pointer transition-colors"
+              className="flex items-center justify-center cursor-pointer transition-all duration-200"
               style={{
                 aspectRatio: "1",
-                backgroundColor: booked ? "#d3a36e" : "white",
+                backgroundColor: booked ? "rgba(211,163,110,0.9)" : "white",
                 color: booked ? "white" : "#3a3a3a",
                 fontSize: 14,
                 fontWeight: booked ? 400 : 500,
+                border: "none",
+              }}
+              onMouseEnter={(e) => {
+                if (!booked) {
+                  (e.target as HTMLElement).style.outline = "1px solid #d3a36e";
+                }
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.outline = "none";
               }}
             >
               {day}
@@ -68,16 +69,14 @@ const MonthCalendar = ({ year, month }: { year: number; month: number }) => {
 };
 
 const PricingSection = () => {
-  const [startMonth, setStartMonth] = useState(3); // April
+  const [startMonth, setStartMonth] = useState(3);
   const year = 2026;
 
   return (
     <section id="pricing" style={{ paddingTop: "5vw", paddingBottom: "5vw", backgroundColor: "#f7f5f2" }}>
       <div className="pc-container">
         <SectionHeading title="Pricing & Availability" />
-
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr_1fr] gap-10 mt-12">
-          {/* Left info */}
           <div className="flex flex-col gap-4">
             <p style={{ fontSize: 15, color: "#3a3a3a", lineHeight: 1.6 }}>
               <strong style={{ fontWeight: 500 }}>Treleigh</strong> is available weekly from a Monday.
@@ -101,35 +100,32 @@ const PricingSection = () => {
             </div>
           </div>
 
-          {/* Centre calendars */}
           <div>
-            {/* Legend */}
             <div className="flex items-center justify-center gap-6 mb-6">
               <div className="flex items-center gap-2">
                 <div style={{ width: 16, height: 16, backgroundColor: "white", border: "1px solid #e5e0da" }} />
                 <span style={{ fontSize: 12, color: "#7a7a7a", textTransform: "uppercase", letterSpacing: 2 }}>Available</span>
               </div>
               <div className="flex items-center gap-2">
-                <div style={{ width: 16, height: 16, backgroundColor: "#d3a36e" }} />
+                <div style={{ width: 16, height: 16, backgroundColor: "rgba(211,163,110,0.9)" }} />
                 <span style={{ fontSize: 12, color: "#7a7a7a", textTransform: "uppercase", letterSpacing: 2 }}>Booked</span>
               </div>
             </div>
 
-            {/* Nav */}
             <div className="flex justify-between items-center mb-6">
               <button
                 onClick={() => setStartMonth((m) => Math.max(0, m - 2))}
                 className="flex items-center gap-1 transition-colors hover:opacity-70"
-                style={{ fontSize: 13, color: "#d3a36e", textTransform: "uppercase", letterSpacing: 2, background: "none", border: "none", cursor: "pointer" }}
+                style={{ fontSize: 13, color: "#d3a36e", background: "none", border: "none", cursor: "pointer" }}
               >
-                <ChevronLeft size={16} /> Previous
+                <ChevronLeft size={16} />
               </button>
               <button
                 onClick={() => setStartMonth((m) => Math.min(10, m + 2))}
                 className="flex items-center gap-1 transition-colors hover:opacity-70"
-                style={{ fontSize: 13, color: "#d3a36e", textTransform: "uppercase", letterSpacing: 2, background: "none", border: "none", cursor: "pointer" }}
+                style={{ fontSize: 13, color: "#d3a36e", background: "none", border: "none", cursor: "pointer" }}
               >
-                Next <ChevronRight size={16} />
+                <ChevronRight size={16} />
               </button>
             </div>
 
@@ -138,15 +134,11 @@ const PricingSection = () => {
               <MonthCalendar year={year} month={startMonth + 1} />
             </div>
 
-            <div
-              className="mt-6 text-center py-3"
-              style={{ backgroundColor: "#d3a36e", color: "white", fontSize: 13, letterSpacing: 1 }}
-            >
+            <div className="mt-6 text-center py-3" style={{ backgroundColor: "#d3a36e", color: "white", fontSize: 13, letterSpacing: 1 }}>
               Click on an arrival date highlighted in bold to begin your booking.
             </div>
           </div>
 
-          {/* Right info */}
           <div className="flex flex-col gap-4">
             <p style={{ fontSize: 14, color: "#3a3a3a", lineHeight: 1.6 }}>
               Short breaks or alternative arrival dates may also be available.
@@ -160,7 +152,7 @@ const PricingSection = () => {
                 background: "transparent",
                 border: "1px solid #d3a36e",
                 color: "#d3a36e",
-                fontFamily: "'Jost', sans-serif",
+                fontFamily: "var(--font-body)",
                 fontSize: 13,
                 textTransform: "uppercase",
                 letterSpacing: 3,

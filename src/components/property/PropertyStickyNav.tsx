@@ -14,7 +14,6 @@ const sections = [
 const PropertyStickyNav = () => {
   const [active, setActive] = useState("");
   const [isSticky, setIsSticky] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,37 +53,48 @@ const PropertyStickyNav = () => {
     <>
       <div ref={sentinelRef} />
       <nav
-        ref={navRef}
-        className={`bg-white border-b border-brand-border z-40 transition-shadow duration-300 ${
-          isSticky ? "fixed top-0 left-0 right-0 shadow-md" : ""
+        className={`bg-white z-40 transition-all duration-300 ${
+          isSticky ? "fixed top-0 left-0 right-0" : ""
         }`}
-        style={{ height: 56 }}
+        style={{
+          height: 56,
+          borderBottom: isSticky ? "none" : "1px solid #e5e0da",
+          boxShadow: isSticky ? "0 4px 12px rgba(0,0,0,0.06)" : "none",
+        }}
       >
         <div className="pc-container h-full flex items-center overflow-x-auto scrollbar-hide">
           <div className="flex items-center gap-6 lg:gap-8 mx-auto whitespace-nowrap">
-            {sections.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => scrollTo(s.id)}
-                className="transition-colors duration-200"
-                style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontSize: 14,
-                  letterSpacing: 2,
-                  color: active === s.id ? "#3a3a3a" : "#d3a36e",
-                  borderBottom: active === s.id ? "2px solid #3a3a3a" : "2px solid transparent",
-                  paddingBottom: 4,
-                  background: "none",
-                  border: "none",
-                  borderBottomWidth: 2,
-                  borderBottomStyle: "solid",
-                  borderBottomColor: active === s.id ? "#3a3a3a" : "transparent",
-                  cursor: "pointer",
-                }}
-              >
-                {s.label}
-              </button>
-            ))}
+            {sections.map((s) => {
+              const isActive = active === s.id;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => scrollTo(s.id)}
+                  className="relative transition-colors duration-200 pb-1"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 13,
+                    textTransform: "uppercase",
+                    letterSpacing: 3,
+                    color: isActive ? "#d3a36e" : "#3a3a3a",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  {s.label}
+                  <span
+                    className="absolute bottom-0 left-0 right-0 transition-all duration-300"
+                    style={{
+                      height: 2,
+                      backgroundColor: "#d3a36e",
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                    }}
+                  />
+                </button>
+              );
+            })}
           </div>
         </div>
       </nav>

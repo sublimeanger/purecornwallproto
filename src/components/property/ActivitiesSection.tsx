@@ -17,33 +17,37 @@ const ActivitiesSection = ({ paragraphs }: ActivitiesSectionProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           <div className="flex flex-col gap-6">
             {left.map((p, i) => (
-              <p
-                key={i}
-                style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }}
-                dangerouslySetInnerHTML={{ __html: p }}
-              />
+              <p key={i} style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }} dangerouslySetInnerHTML={{ __html: p }} />
             ))}
           </div>
           <div className="flex flex-col gap-6">
             {right.map((p, i) => (
-              <p
-                key={i}
-                style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }}
-                dangerouslySetInnerHTML={{ __html: p }}
-              />
+              <p key={i} style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }} dangerouslySetInnerHTML={{ __html: p }} />
             ))}
           </div>
         </div>
+
+        {/* Interstitial cinematic image */}
+        <div className="my-12">
+          <div style={{ aspectRatio: "21/9", overflow: "hidden" }}>
+            <img
+              src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1400&q=80"
+              alt="The South West Coast Path at dusk"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p
+            className="text-center mt-4"
+            style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 16, color: "#d3a36e" }}
+          >
+            The South West Coast Path at dusk
+          </p>
+        </div>
+
         <p className="mt-8" style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }}>
           {closing.replace(/<[^>]*>/g, "").replace("Read more, here.", "")}{" "}
-          <a
-            href="#"
-            style={{
-              color: "#d3a36e",
-              textDecoration: "underline",
-              textUnderlineOffset: 4,
-            }}
-          >
+          <a href="#" style={{ color: "#d3a36e", textDecoration: "underline", textUnderlineOffset: 4 }}>
             Read more, here.
           </a>
         </p>
