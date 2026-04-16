@@ -11,7 +11,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ height: "clamp(400px, 60vh, 680px)" }}>
+    <section className="relative w-full overflow-hidden" style={{ height: "clamp(500px, 80vh, 900px)" }}>
       <img
         src={heroImg}
         alt="Cornwall coastline"
