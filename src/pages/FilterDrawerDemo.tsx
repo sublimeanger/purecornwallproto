@@ -174,17 +174,26 @@ const FilterDrawerDemo = () => {
       <section
         style={{
           height: 320,
-          background: "linear-gradient(135deg, #2f5550 0%, #6fb6ae 100%)",
+          background: "#f7f5f2",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#ffffff",
           textAlign: "center",
           padding: "0 24px",
         }}
       >
         <div>
-          <p style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#d3a36e", marginBottom: 12, fontWeight: 500 }}>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 11,
+              fontWeight: 500,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              color: "#d3a36e",
+              marginBottom: 12,
+            }}
+          >
             Filter drawer playground
           </p>
           <h1
@@ -193,6 +202,7 @@ const FilterDrawerDemo = () => {
               fontStyle: "italic",
               fontSize: 48,
               fontWeight: 400,
+              color: "#2f5550",
               maxWidth: 720,
               margin: "0 auto",
             }}

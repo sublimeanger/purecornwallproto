@@ -251,6 +251,7 @@ const FilterDrawer = ({ open, onClose, filters, onChange, filteredCount }: Filte
             style={{
               background: "transparent",
               border: "none",
+              borderRadius: 0,
               color: "#3a3a3a",
               fontSize: 13,
               fontWeight: 500,
@@ -275,6 +276,7 @@ const FilterDrawer = ({ open, onClose, filters, onChange, filteredCount }: Filte
               flex: 1,
               background: "#d3a36e",
               border: "none",
+              borderRadius: 0,
               color: "#ffffff",
               fontSize: 13,
               fontWeight: 500,
