@@ -12,7 +12,7 @@ const DestinationRelated = ({ items }: DestinationRelatedProps) => (
           fontFamily: "var(--font-body)",
           fontSize: 11,
           fontWeight: 500,
-          color: "#d3a36e",
+          color: "#6fb6ae",
           letterSpacing: 3,
           textTransform: "uppercase",
           textAlign: "center",

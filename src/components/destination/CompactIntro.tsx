@@ -3,7 +3,7 @@ interface CompactIntroProps {
 }
 
 const CompactIntro = ({ text }: CompactIntroProps) => (
-  <section style={{ background: "#ffffff", padding: "4vw 0" }}>
+  <section style={{ background: "#ffffff", padding: "4vw 0", borderTop: "2px solid #6fb6ae" }}>
     <div className="pc-container">
       <p
         style={{

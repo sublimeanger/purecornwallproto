@@ -57,7 +57,7 @@ const DestinationBreadcrumb = ({ items }: DestinationBreadcrumbProps) => (
               {!last && (
                 <span
                   aria-hidden="true"
-                  style={{ color: "#d3a36e", margin: "0 10px", fontSize: 13 }}
+                  style={{ color: "#6fb6ae", margin: "0 10px", fontSize: 13 }}
                 >
                   ›
                 </span>

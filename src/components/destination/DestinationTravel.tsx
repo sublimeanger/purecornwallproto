@@ -27,7 +27,7 @@ const DestinationTravel = ({ items }: DestinationTravelProps) => (
             fontFamily: "var(--font-body)",
             fontSize: "clamp(24px, 2.2vw, 32px)",
             fontWeight: 500,
-            color: "#2f5550",
+            color: "#6fb6ae",
             letterSpacing: 3,
             textTransform: "uppercase",
             margin: 0,
@@ -56,13 +56,13 @@ const DestinationTravel = ({ items }: DestinationTravelProps) => (
           const Icon = ICONS[it.mode];
           return (
             <div key={it.mode}>
-              <Icon size={28} strokeWidth={1.5} style={{ color: "#d3a36e" }} />
+              <Icon size={28} strokeWidth={1.5} style={{ color: "#6fb6ae" }} />
               <p
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: 11,
                   fontWeight: 500,
-                  color: "#d3a36e",
+                  color: "#6fb6ae",
                   letterSpacing: 3,
                   textTransform: "uppercase",
                   marginTop: 20,

@@ -32,7 +32,7 @@ const RelatedProperties = ({ properties }: RelatedPropertiesProps) => (
               <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
             </div>
             <div style={{ padding: "24px 24px 28px" }}>
-              <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, color: "#7a7a7a", marginBottom: 8 }}>
+              <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#6fb6ae", marginBottom: 8 }}>
                 {p.location}
               </p>
               <h3 style={{ fontSize: 24, fontWeight: 400, color: "#d3a36e", marginBottom: 8 }}>
@@ -43,15 +43,15 @@ const RelatedProperties = ({ properties }: RelatedPropertiesProps) => (
               </p>
               <div className="flex gap-4 mb-4">
                 <div className="flex items-center gap-1.5">
-                  <Users size={16} className="text-sandy-gold" />
+                  <Users size={16} style={{ color: "#6fb6ae" }} />
                   <span style={{ fontSize: 13, color: "#3a3a3a" }}>Sleeps {p.sleeps}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Bed size={16} className="text-sandy-gold" />
+                  <Bed size={16} style={{ color: "#6fb6ae" }} />
                   <span style={{ fontSize: 13, color: "#3a3a3a" }}>{p.beds} Bed</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Bath size={16} className="text-sandy-gold" />
+                  <Bath size={16} style={{ color: "#6fb6ae" }} />
                   <span style={{ fontSize: 13, color: "#3a3a3a" }}>{p.baths} Bath</span>
                 </div>
               </div>

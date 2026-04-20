@@ -20,7 +20,7 @@ const PreviewCard = ({ c }: { c: MiniCollectionCottage }) => (
           fontFamily: "var(--font-body)",
           fontSize: 11,
           fontWeight: 500,
-          color: "#d3a36e",
+          color: "#6fb6ae",
           letterSpacing: 3,
           textTransform: "uppercase",
           marginBottom: 6,
@@ -78,7 +78,7 @@ const DestinationMiniCollections = ({ collections }: DestinationMiniCollectionsP
                     fontFamily: "var(--font-body)",
                     fontSize: 10,
                     fontWeight: 500,
-                    color: "#d3a36e",
+                    color: "#6fb6ae",
                     letterSpacing: 3,
                     textTransform: "uppercase",
                   }}
@@ -118,7 +118,7 @@ const DestinationMiniCollections = ({ collections }: DestinationMiniCollectionsP
                   fontFamily: "var(--font-body)",
                   fontSize: 13,
                   fontWeight: 500,
-                  color: "#d3a36e",
+                  color: "#6fb6ae",
                   letterSpacing: 2,
                   textTransform: "uppercase",
                   textDecoration: "none",
@@ -127,7 +127,7 @@ const DestinationMiniCollections = ({ collections }: DestinationMiniCollectionsP
                   borderBottom: "1px solid transparent",
                   transition: "border-color 200ms ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = "#d3a36e")}
+                onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = "#6fb6ae")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderBottomColor = "transparent")}
               >
                 View all {col.count} cottages →

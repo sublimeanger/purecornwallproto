@@ -6,7 +6,7 @@ interface DestinationStatsProps {
 }
 
 const DestinationStats = ({ name, stats }: DestinationStatsProps) => (
-  <section style={{ background: "#f7f5f2", padding: "5vw 0" }}>
+  <section style={{ background: "#f7f5f2", padding: "5vw 0", borderTop: "2px solid #6fb6ae" }}>
     <div className="pc-container">
       <div style={{ textAlign: "center" }}>
         <p
@@ -14,7 +14,7 @@ const DestinationStats = ({ name, stats }: DestinationStatsProps) => (
             fontFamily: "var(--font-body)",
             fontSize: 11,
             fontWeight: 500,
-            color: "#d3a36e",
+            color: "#6fb6ae",
             letterSpacing: 3,
             textTransform: "uppercase",
           }}
@@ -63,7 +63,7 @@ const DestinationStats = ({ name, stats }: DestinationStatsProps) => (
                 fontFamily: "var(--font-body)",
                 fontSize: 11,
                 fontWeight: 500,
-                color: "#d3a36e",
+                color: "#6fb6ae",
                 letterSpacing: 3,
                 textTransform: "uppercase",
                 marginTop: 12,

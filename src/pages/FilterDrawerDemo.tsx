@@ -124,7 +124,7 @@ const PropertyCard = ({ c }: { c: MockCottage }) => (
       />
     </div>
     <div style={{ padding: "16px 4px" }}>
-      <p style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#d3a36e", marginBottom: 6, fontWeight: 500 }}>
+      <p style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#6fb6ae", marginBottom: 6, fontWeight: 500 }}>
         {c.location}
       </p>
       <h3
@@ -190,7 +190,7 @@ const FilterDrawerDemo = () => {
               fontWeight: 500,
               letterSpacing: 3,
               textTransform: "uppercase",
-              color: "#d3a36e",
+              color: "#6fb6ae",
               marginBottom: 12,
             }}
           >
