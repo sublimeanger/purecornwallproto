@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 import { DestinationPin } from "@/data/stIvesData";
 
 interface DestinationMapProps {

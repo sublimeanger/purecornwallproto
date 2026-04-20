@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 interface DestinationHeroProps {
   image: string;
   eyebrow: string;

@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 interface DestinationAtmosphereProps {
   images: { src: string; alt: string }[];
   caption: string;

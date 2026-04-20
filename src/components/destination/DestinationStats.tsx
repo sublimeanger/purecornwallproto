@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 import { DestinationStat } from "@/data/stIvesData";
 
 interface DestinationStatsProps {
