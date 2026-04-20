@@ -6,7 +6,7 @@
 
 **Repo:** https://github.com/sublimeanger/purecornwallproto
 **Raw map URL:** https://raw.githubusercontent.com/sublimeanger/purecornwallproto/main/PROJECT_MAP.md
-**Last updated:** 20 April 2026
+**Last updated:** 20 April 2026 (v2 — data architecture locked, amenity map added)
 
 ---
 
@@ -62,13 +62,15 @@
 - **Domain:** purecornwall.co.uk
 - **Status:** owned, not yet pointed at staging. Launch is post-design/dev/integration.
 
-### SuperControl (integration — final phase)
+### SuperControl (write authority — see §3b for architecture)
 
 - **API base:** `https://api.supercontrol.co.uk/v3/`
 - **SC-TOKEN:** `aac3f13b-fb87-4f16-9677-8f9955736ff4`
 - **IP whitelist:** `134.209.22.220` (Cloudways server — already whitelisted)
-- **API endpoints:** `/Properties/Index`, `/Properties/ContentIndex/{accountId}`, `/Properties/Listing/{propertyId}`, `/Properties/PropertyConfiguration/{propertyId}`, `/Reviews/Index`, etc.
-- **Status:** ON HOLD — integrate last, after all design/dev/content is signed off.
+- **Role:** **Read-only for us** — we pull property data via API on a cron (see §3b). We never push data to SC. SC's own admin UI remains the owner's workflow for managing properties. Bookings are the only live call path from PC → SC at use time.
+- **Key endpoints:** `/Properties/Index`, `/Properties/ContentIndex/{accountId}`, `/Properties/Listing/{propertyId}`, `/Properties/PropertyConfiguration/{propertyId}`, `/Prices/*`, `/Reviews/Index`, `/Reviews/Content/{reviewId}`
+- **Test property ID:** `669466` (Compass Point — use for sync development and smoke tests)
+- **Status:** Integration ON HOLD until all design/dev sign-off complete. Sync plugin `pc-supercontrol-sync` is the next phase after templates are built and signed off.
 
 ---
 
@@ -189,6 +191,76 @@
 
 ---
 
+## §3b — Data architecture (locked)
+
+**The core decision: WordPress is the filter engine and SEO surface. SuperControl is the write authority for property data and the booking handshake only.** Sync is unidirectional: SC → WP. Filters query WP's local database via `WP_Query` with `meta_query`. **No filter, listing, or search UI ever hits SuperControl live.** Only the final booking step (availability check + payment) talks live to SuperControl.
+
+### Why
+
+1. SuperControl's V3 API is a **data-fetch** API, not a query API. Endpoints return full records; there is no filter-by-amenities endpoint. Any filtering happens locally.
+2. The filter taxonomy (16 filters) is a product decision — includes fields like "EV Charger" that SuperControl does not model in its standard amenity enums. Path A literally cannot deliver these filters.
+3. Performance: local filtering is 0ms; live SC calls are 300–800ms per interaction.
+4. SEO: collection and destination pages must render server-side with real property listings. Only local data enables this.
+5. Resilience: SC downtime leaves filter working; only the booking handshake degrades.
+6. SuperControl themselves recommend caching; Path B is the cache.
+
+### Sync schedule (unidirectional SC → WP)
+
+- **Property content (descriptions, images, amenities, room configs):** cron every 6 hours via `/v3/Properties/ContentIndex/{accountId}` for change detection, then `/v3/Properties/Listing/{propertyId}` for changed records only
+- **Property configuration (check-in times, occupancy, pets allowed):** cron every 6 hours via `/v3/Properties/PropertyConfiguration/{propertyId}` for changed records
+- **Prices:** cron every 30 minutes via `/v3/Prices/*`
+- **Availability:** on-demand at the moment of booking (not cached)
+- **Reviews:** cron nightly via `/v3/Reviews/*`
+
+### Sync infrastructure
+
+- Runs as WP-Cron on the Cloudways server (IP 134.209.22.220 — already whitelisted by SuperControl)
+- Failures log to a `pc_sc_sync_log` DB table
+- `wp sc sync` WP-CLI command provides manual trigger
+- Idempotent: re-running a sync produces the same DB state
+- Implementation lives in a custom plugin `pc-supercontrol-sync` (NOT the theme — keeps sync logic independent of design iterations)
+
+### The 16-filter → ACF field → SuperControl source map
+
+This is the authoritative mapping for Claude Code when building the sync layer. "Auto" = populated by SC sync; "Manual" = owner sets in WP admin; "Manual review" = SC sync provides a best-guess default, owner reviews/corrects.
+
+| Filter         | ACF field (on `cottage` CPT) | Type      | Source                                                             | Strategy       |
+| -------------- | ---------------------------- | --------- | ------------------------------------------------------------------ | -------------- |
+| Sleeps         | `sleeps`                     | number    | `configuration.maximumOccupancy.guests`                            | Auto           |
+| Bedrooms       | `bedrooms_count`             | number    | `property.bedrooms[].length`                                       | Auto           |
+| Bathrooms      | `bathrooms_count`            | number    | `property.bathrooms[].length`                                      | Auto           |
+| Price per week | `price_from_per_week`        | number    | SC Prices endpoint (base weekly rate, off-peak)                    | Auto           |
+| Sea View       | `has_sea_view`               | true/false| Not in SC standard amenities                                       | Manual         |
+| Dog Friendly   | `dog_friendly`               | true/false| `configuration.petsAllowed`                                        | Auto           |
+| Hot Tub        | `has_hot_tub`                | true/false| amenity enum `POOL_SPA_HOT_TUB`                                    | Auto           |
+| Pool           | `has_pool`                   | true/false| amenity enum `POOL_SPA_PRIVATE_POOL` or `POOL_SPA_SHARED_POOL`     | Auto           |
+| Parking        | `has_parking`                | true/false| amenity enum `AMENITIES_PARKING`                                   | Auto           |
+| Pet Welcome    | `pet_welcome`                | true/false| `configuration.petsAllowed` (same as Dog Friendly — dedupe or alias) | Auto         |
+| Wood Burner    | `has_wood_burner`            | true/false| amenity enum `AMENITIES_FIREPLACE`                                 | Manual review  |
+| Garden         | `has_garden`                 | true/false| amenity enum `OUTDOORS_GARDEN`                                     | Manual review  |
+| EV Charger     | `has_ev_charger`             | true/false| Not in SC standard amenities                                       | Manual         |
+| Sauna          | `has_sauna`                  | true/false| amenity enum `POOL_SPA_SAUNA`                                      | Auto           |
+| Balcony        | `has_balcony`                | true/false| amenity enum `OUTDOORS_BALCONY`                                    | Manual review  |
+| WiFi           | `has_wifi`                   | true/false| amenity enum `AMENITIES_FREE_WIFI`                                 | Auto           |
+
+**Notes for the sync builder:**
+- "Pet Welcome" and "Dog Friendly" currently map to the same SC source. Product decision pending: treat as one filter (dedupe) or allow owner to distinguish (e.g. dogs yes, cats no) via a second manual ACF field. For v1, treat as one filter labelled "Dog Friendly".
+- "Manual review" fields: sync should populate a best-guess value AND set a meta flag `_pc_amenity_needs_review` so the admin UI can surface "N properties have sync-provided values that may need review."
+- Never let the sync overwrite "Manual" fields once they've been set in WP. Sync writes Manual fields on first sync only (if the field is empty), never on subsequent syncs.
+
+### What about the homepage search bar fields?
+
+Homepage search accepts: destination, arrival date, length of stay, guests, additional filters.
+
+- **Destination** — queries `property-locations` taxonomy on WP. No SC involvement.
+- **Arrival date + length of stay** — these are availability queries. On submit, redirect to `/search/?loc=X&arrive=Y&nights=Z&guests=N`. The search results page then does a two-step: (1) local filter by `sleeps >= N` + destination, (2) for each candidate, live SC availability check against the date range, and show only those available. Fallback: if SC API unreachable, show all candidates and flag "live availability unavailable — contact for booking."
+- **Guests** — maps to `sleeps` filter, local query.
+- **Additional filters** — passes state into filter drawer pre-populated.
+
+This means the homepage search IS the only place where SC availability is queried at browse time, and only for a narrow candidate set (maybe 5–30 cottages), not the whole portfolio.
+
+---
+
 ## §4 — Build status (LIVING — overwrite each session)
 
 ### Design (Lovable)
@@ -267,6 +339,7 @@ Items waiting on Jamie. When resolved, move the decision into the relevant stati
 | ------------------------------------------------------------------------------------------------------- | -------- | -------------- |
 | Current WP theme homepage and property templates do not match signed-off Lovable designs                | High     | WordPress      |
 | CPT slug is `property` not `cottage` — URL refactor required before any external links are published     | High     | WordPress      |
+| `pc-supercontrol-sync` plugin does not yet exist — required before filter drawer has real data flowing from SC. ACF fields per §3b table must be created and populated. Content already migrated from CS (119 cottages) provides a starting dataset but not synced to live SC state yet. | High     | WordPress      |
 | Mapbox integration stub only — maps are placeholder images                                              | Medium   | WordPress      |
 | No image carousels on cottage cards yet (spec: swipeable carousel with dots)                             | Medium   | WordPress      |
 | No Rank Math / SEO plugin installed                                                                      | Medium   | WordPress      |
@@ -284,6 +357,7 @@ Format: `YYYY-MM-DD — [who] — [what]`
 - **2026-04 (various) — Claude Code + Lovable — Initial build** — WP staging stood up, ACF PRO installed, custom `pure-cornwall` theme scaffolded. All CS content migrated (119 cottages, 59 destinations, 12 collections, 3,208 images). Lovable prototyping begun for homepage.
 - **2026-04-16 — Claude chat — Handover document created** — Full handover doc written for cross-session context transfer. Property page flagged as stub requiring rebuild. Homepage and property page Lovable signed off.
 - **2026-04-20 — Claude chat — Project reset & IA lock** — Reviewed current state. Confirmed "nuclear" means rebuild theme's template layer only; DB and media library preserved. Locked URL structure (`/destinations/`, `/collections/`, `/cottages/`, `/journal/`). Locked IA per-template content slots. Locked filter drawer as first priority component because it appears on 4 templates. Hybrid URL-sync rule decided (sync on `/cottages/` and `/search/`, no sync on destination/collection pages to protect canonical). Wrote Lovable Prompt 01 (filter drawer). Created this PROJECT_MAP.md as the permanent living context.
+- **2026-04-20 — Claude chat — Data architecture locked** — Decided: WordPress is the filter/SEO surface; SuperControl is write authority + booking only. Sync is unidirectional SC→WP, via dedicated `pc-supercontrol-sync` plugin. Filters always hit local `WP_Query` + `meta_query`, never live SC. Added §3b to this map with full rationale, sync schedule, and authoritative 16-filter → ACF → SC source mapping table. Lovable filter drawer prompt confirmed unaffected (it's a UI component; data source is orthogonal).
 
 ---
 
