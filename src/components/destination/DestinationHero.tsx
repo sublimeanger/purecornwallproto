@@ -12,7 +12,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
     style={{
       position: "relative",
       width: "100%",
-      minHeight: "70vh",
+      minHeight: "50vh",
       backgroundImage: `url(${image})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -23,7 +23,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
       color: "#ffffff",
       overflow: "hidden",
     }}
-    className="min-h-[60vh] md:min-h-[70vh]"
+    className="min-h-[35vh] md:min-h-[50vh]"
   >
     {/* Gradient overlay */}
     <div

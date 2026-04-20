@@ -61,18 +61,40 @@ export interface DestinationData {
   name: string;
   region: string;
   hero: { image: string; eyebrow: string; tagline: string; caption: string };
-  opening: { eyebrow: string; paragraphs: string[] };
-  stats: DestinationStat[];
-  map: { imageUrl: string; caption: string; pins: DestinationPin[] };
-  editorial: { heading: string; paragraphs: string[]; pullQuote: string };
-  atmosphere: { images: { src: string; alt: string }[]; caption: string };
+  compactIntro: string;
   cottagesIntro: { eyebrow: string; leadIn: string; totalCount: number };
-  miniCollections: DestinationMiniCollection[];
-  thingsToDo: DestinationThingToDo[];
-  travel: DestinationTravelItem[];
   related: DestinationRelated[];
   faqs: DestinationFAQ[];
+  // Optional — render only if present and meeting threshold
+  opening?: { eyebrow: string; paragraphs: string[] };
+  stats?: DestinationStat[];
+  map?: { imageUrl: string; caption: string; pins: DestinationPin[] };
+  editorial?: { heading: string; paragraphs: string[]; pullQuote?: string };
+  atmosphere?: { images: { src: string; alt: string }[]; caption: string };
+  miniCollections?: DestinationMiniCollection[];
+  thingsToDo?: DestinationThingToDo[];
+  travel?: DestinationTravelItem[];
 }
+
+// Reliable Unsplash photo IDs — generic Cornwall coast imagery
+// To be replaced with commissioned St Ives photography post-launch
+const CORNWALL_IMAGES = {
+  heroCoastCliff:
+    "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?auto=format&fit=crop&w=1920&q=70",
+  harbourBoats:
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=70",
+  coastalPath:
+    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=70",
+  beachSunset:
+    "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&q=70",
+  cottageExterior:
+    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
+  cottageInterior:
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
+};
+
+const PLACEHOLDER_CAPTION =
+  "Placeholder imagery — generic Cornwall coast photography, to be replaced with commissioned St Ives imagery.";
 
 // ---- Mock cottages for St Ives -------------------------------------------
 
@@ -158,20 +180,13 @@ export const stIvesData: DestinationData = {
   name: "St Ives",
   region: "West Cornwall",
   hero: {
-    image:
-      "https://images.unsplash.com/photo-1599982734856-3ed1f6c2f7e0?auto=format&fit=crop&w=2400&q=80",
+    image: CORNWALL_IMAGES.heroCoastCliff,
     eyebrow: "West Cornwall",
     tagline: "A light-washed harbour town on Cornwall's western edge",
-    caption: "Placeholder imagery — St Ives photography to be sourced",
+    caption: PLACEHOLDER_CAPTION,
   },
-  opening: {
-    eyebrow: "The light at the end of Cornwall",
-    paragraphs: [
-      "St Ives has been drawing painters to its waterline since the 1880s and it's no mystery why. The town sits where the Atlantic light turns almost Mediterranean — particularly in late afternoon, when the harbour walls gold over and the water turns the pale green of a bottle held up to the sun. Hepworth worked here. Heron worked here. The Tate plants itself on the old gasworks site as if this were entirely the expected place for a world-class gallery.",
-      "What makes St Ives work as a holiday is the compression. Four beaches ring the town, each with its own character — Porthmeor facing the surf, Porthgwidden in its sheltered pocket, Porthminster with the long sunset sweep, the harbour itself at the centre of everything. You can walk between them in under twenty minutes. A morning swim, a lunchtime pasty, an afternoon at the Tate, dinner on the harbour — the day falls naturally into place.",
-      "The cottages we keep in St Ives range from clifftop contemporaries to cobble-lane fishermen's houses. What they share is proximity — to water, to food, to the particular kind of holiday where you forget what day it is on day three.",
-    ],
-  },
+  compactIntro:
+    "Twenty-seven handpicked cottages in St Ives — from clifftop retreats with panoramic bay views to cobble-lane fishermen's houses a minute from the harbour. Filter below to narrow by size, features, or price.",
   stats: [
     { value: "27", label: "Cottages in St Ives" },
     { value: "4", label: "Beaches within walking distance" },
@@ -180,9 +195,8 @@ export const stIvesData: DestinationData = {
     { value: "56 miles", label: "To Newquay airport" },
   ],
   map: {
-    imageUrl:
-      "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=70",
-    caption: "Placeholder map — Mapbox integration to follow",
+    imageUrl: CORNWALL_IMAGES.harbourBoats,
+    caption: PLACEHOLDER_CAPTION,
     pins: [
       { n: 1, name: "Porthmeor Beach", description: "Surfers' beach, north-facing, big skies" },
       { n: 2, name: "Porthminster Beach", description: "Sheltered sunset cove with café landmark" },
@@ -197,31 +211,19 @@ export const stIvesData: DestinationData = {
   editorial: {
     heading: "Why St Ives",
     paragraphs: [
-      "There are a handful of British seaside towns that have somehow managed to grow into themselves rather than away from themselves, and St Ives is the clearest example. The fishermen's cottages are still fishermen's cottages — they happen to also be **holiday cottages in St Ives** now, but the bones, the lanes, the granite walls and the light wells haven't been smoothed over. You can stand on the harbour at six in the morning in late October and watch the gig rowers head out across a glassy bay, and it feels like a town doing what a town does, not a town performing for visitors.",
-      "The painters knew. Whistler came in the 1880s, Sickert followed, then the Newlyn school spilled over. By the 1930s Ben Nicholson and Barbara Hepworth had moved down full-time, and St Ives became, briefly and weirdly, one of the most important centres of modernism in Europe. The Tate, opened in 1993 on the old gasworks site overlooking Porthmeor, makes the case in concrete: this little town earned its place in the international story.",
-      "**Things to do in St Ives** divide neatly between the four beaches and everything else. Porthmeor for surf and sunsets — the lessons at the Wavehunters school are excellent if you've never tried. Porthminster for the long sweep, the sunsets, and lunch at the Beach Café (book; it fills). Porthgwidden for the sheltered family swim. The harbour beach is the social one, where the children learn to crab and the adults learn to nap on a bench.",
-      "The food has caught up with the setting. Porthminster Beach Café and the Porthmeor Beach Café are the two anchors — both serve the catch, both with the sea as their backdrop. For dinner, Ugly Butterfly does serious tasting menus, Black Rock does small plates and natural wine, and the harbour pubs (the Sloop, the Lifeboat) do honest food and a pint of Tribute. The pasties — the proper Cornish ones, hand-crimped — are at Pengenna or St Ives Bakery. Sunday morning, walk Porthmeor at low tide and end at Porthminster for breakfast.",
-      "Winter is its own argument. The light gets shorter and stranger, the storms come in over Clodgy Point, the Tate café has tables free, and the cottages with wood burners earn their keep. There are ten or twelve really good winter weekends a year in St Ives, and we'd take a January storm-watching weekend over a packed July anytime.",
+      "St Ives has been drawing painters to its waterline since the 1880s and it's no mystery why. The town sits where the Atlantic light turns almost Mediterranean — particularly in late afternoon, when the harbour walls gold over and the water turns the pale green of a bottle held up to the sun. Hepworth worked here. Heron worked here. The Tate plants itself on the old gasworks site as if this were entirely the expected place for a world-class gallery.",
+      "What makes St Ives work as a holiday is the compression. Four beaches ring the town — Porthmeor facing the surf, Porthgwidden in its sheltered pocket, Porthminster with the long sunset sweep, the harbour itself at the centre. You can walk between them in under twenty minutes, with a lunchtime pasty, an afternoon at the Tate, and dinner on the harbour falling naturally into place.",
     ],
     pullQuote:
       "The light here is unlike anywhere else on the Cornish coast — painters have known this since the 1880s.",
   },
   atmosphere: {
     images: [
-      {
-        src: "https://images.unsplash.com/photo-1591608971362-f08b2a75731a?auto=format&fit=crop&w=1200&q=70",
-        alt: "St Ives harbour with fishing boats",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1565060169187-5284f2c0d2bb?auto=format&fit=crop&w=1200&q=70",
-        alt: "Tate St Ives gallery building",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=70",
-        alt: "Porthmeor beach surfers",
-      },
+      { src: CORNWALL_IMAGES.harbourBoats, alt: "Cornwall harbour with fishing boats" },
+      { src: CORNWALL_IMAGES.coastalPath, alt: "Cornwall coastal path" },
+      { src: CORNWALL_IMAGES.beachSunset, alt: "Cornwall beach at sunset" },
     ],
-    caption: "Placeholder imagery — to be swapped with commissioned St Ives photography",
+    caption: PLACEHOLDER_CAPTION,
   },
   cottagesIntro: {
     eyebrow: "Now for the cottages",
@@ -375,4 +377,23 @@ export const stIvesData: DestinationData = {
       a: "Cornwall Airport Newquay is 30 miles, about 45 minutes by car. Exeter airport is 2.5 hours. If you're flying from elsewhere in Europe, Bristol (3.5h) is often the cheapest entry point.",
     },
   ],
+};
+
+// Minimal-data variant — proves graceful degradation works for low-content towns.
+// Renders only: hero, breadcrumb, compact intro, cottage grid, related, FAQ, footer.
+export const stIvesDataMinimal: DestinationData = {
+  slug: "st-ives",
+  name: "St Ives",
+  region: "West Cornwall",
+  hero: {
+    image: CORNWALL_IMAGES.heroCoastCliff,
+    eyebrow: "West Cornwall",
+    tagline: "A light-washed harbour town on Cornwall's western edge",
+    caption: PLACEHOLDER_CAPTION,
+  },
+  compactIntro:
+    "Twenty-seven handpicked cottages in St Ives. Filter below to find yours.",
+  cottagesIntro: { eyebrow: "Cottages", leadIn: "", totalCount: 27 },
+  related: stIvesData.related,
+  faqs: stIvesData.faqs.slice(0, 5),
 };

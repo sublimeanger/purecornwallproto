@@ -18,7 +18,9 @@ const PIN_POSITIONS = [
   { left: 72, top: 62 },
 ];
 
-const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => (
+const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => {
+  const visiblePins = pins.slice(0, 6);
+  return (
   <section style={{ background: "#ffffff", padding: "6vw 0" }}>
     <div
       style={{
@@ -61,6 +63,7 @@ const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => (
             style={{
               position: "relative",
               width: "100%",
+              maxHeight: 420,
               aspectRatio: "4/3",
               backgroundImage: `url(${imageUrl})`,
               backgroundSize: "cover",
@@ -68,7 +71,7 @@ const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => (
               filter: "saturate(0.7)",
             }}
           >
-            {pins.map((pin, i) => {
+            {visiblePins.map((pin, i) => {
               const pos = PIN_POSITIONS[i] ?? PIN_POSITIONS[0];
               return (
                 <div
@@ -115,7 +118,7 @@ const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => (
         {/* Legend */}
         <div className="lg:col-span-2">
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {pins.map((pin) => (
+            {visiblePins.map((pin) => (
               <li
                 key={pin.n}
                 style={{
@@ -174,6 +177,7 @@ const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default DestinationMap;

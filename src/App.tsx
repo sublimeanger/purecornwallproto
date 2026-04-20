@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import PropertyPage from "./pages/PropertyPage.tsx";
 import FilterDrawerDemo from "./pages/FilterDrawerDemo.tsx";
 import DestinationPage from "./pages/DestinationPage.tsx";
+import DestinationPageMinimal from "./pages/DestinationPageMinimal.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/properties/treleigh" element={<PropertyPage />} />
           <Route path="/filter-drawer-demo" element={<FilterDrawerDemo />} />
           <Route path="/destinations/st-ives" element={<DestinationPage />} />
+          <Route path="/destinations/st-ives-minimal" element={<DestinationPageMinimal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
