@@ -3,12 +3,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DestinationHero from "@/components/destination/DestinationHero";
 import DestinationBreadcrumb from "@/components/destination/DestinationBreadcrumb";
-import DestinationOpening from "@/components/destination/DestinationOpening";
+import CompactIntro from "@/components/destination/CompactIntro";
 import DestinationStats from "@/components/destination/DestinationStats";
 import DestinationMap from "@/components/destination/DestinationMap";
 import DestinationEditorial from "@/components/destination/DestinationEditorial";
 import DestinationAtmosphere from "@/components/destination/DestinationAtmosphere";
-import DestinationCottageIntro from "@/components/destination/DestinationCottageIntro";
 import DestinationMiniCollections from "@/components/destination/DestinationMiniCollections";
 import DestinationGrid from "@/components/destination/DestinationGrid";
 import DestinationThingsToDo from "@/components/destination/DestinationThingsToDo";
@@ -28,7 +27,7 @@ const DestinationPage = ({ data = stIvesData }: DestinationPageProps) => {
     <div className="bg-background min-h-screen">
       <Header />
 
-      {/* Act 1 — Arrival */}
+      {/* Above-the-fold: arrival → start shopping */}
       <DestinationHero
         image={data.hero.image}
         eyebrow={data.hero.eyebrow}
@@ -44,44 +43,41 @@ const DestinationPage = ({ data = stIvesData }: DestinationPageProps) => {
           { label: data.name },
         ]}
       />
-      <DestinationOpening
-        eyebrow={data.opening.eyebrow}
-        paragraphs={data.opening.paragraphs}
-      />
+      <CompactIntro text={data.compactIntro} />
 
-      {/* Act 2 — Sense of place */}
-      <DestinationStats name={data.name} stats={data.stats} />
-      <DestinationMap
-        imageUrl={data.map.imageUrl}
-        caption={data.map.caption}
-        pins={data.map.pins}
-      />
-      <DestinationEditorial
-        name={data.name}
-        paragraphs={data.editorial.paragraphs}
-        pullQuote={data.editorial.pullQuote}
-      />
-      <DestinationAtmosphere
-        images={data.atmosphere.images}
-        caption={data.atmosphere.caption}
-      />
-
-      {/* Act 3 — Choose your cottage */}
-      <DestinationCottageIntro
-        eyebrow={data.cottagesIntro.eyebrow}
-        name={data.name}
-        leadIn={data.cottagesIntro.leadIn}
-      />
-      <DestinationMiniCollections collections={data.miniCollections} />
+      {/* Primary shopping surface */}
       <DestinationGrid
         name={data.name}
         cottages={cottages}
         totalCount={data.cottagesIntro.totalCount}
       />
 
-      {/* Act 4 — Support content */}
-      <DestinationThingsToDo items={data.thingsToDo} />
-      <DestinationTravel items={data.travel} />
+      {/* Supplementary shopping */}
+      {data.miniCollections && data.miniCollections.length >= 1 && (
+        <DestinationMiniCollections collections={data.miniCollections} />
+      )}
+
+      {/* Supporting content — each optional */}
+      {data.stats && data.stats.length >= 3 && (
+        <DestinationStats name={data.name} stats={data.stats} />
+      )}
+      {data.map && data.map.pins.length >= 3 && (
+        <DestinationMap {...data.map} />
+      )}
+      {data.editorial && data.editorial.paragraphs.length >= 1 && (
+        <DestinationEditorial name={data.name} {...data.editorial} />
+      )}
+      {data.atmosphere && data.atmosphere.images.length === 3 && (
+        <DestinationAtmosphere {...data.atmosphere} />
+      )}
+      {data.thingsToDo && data.thingsToDo.length >= 3 && (
+        <DestinationThingsToDo items={data.thingsToDo} />
+      )}
+      {data.travel && data.travel.length >= 1 && (
+        <DestinationTravel items={data.travel} />
+      )}
+
+      {/* Always render */}
       <DestinationRelated items={data.related} />
       <DestinationFAQ faqs={data.faqs} />
 

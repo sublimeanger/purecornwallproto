@@ -59,37 +59,39 @@ const DestinationEditorial = ({ name, paragraphs, pullQuote }: DestinationEditor
           />
         </div>
 
-        {/* Pull quote — floated right on desktop */}
-        <div
-          className="md:float-right md:ml-10 md:mb-6"
-          style={{
-            maxWidth: 480,
-            marginTop: 40,
-            marginBottom: 24,
-          }}
-        >
+        {/* Pull quote — floated right on desktop, only if provided */}
+        {pullQuote && (
           <div
+            className="md:float-right md:ml-10 md:mb-6"
             style={{
-              width: 80,
-              height: 1,
-              background: "#d3a36e",
-              marginBottom: 20,
-            }}
-          />
-          <blockquote
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: 28,
-              color: "#2f5550",
-              lineHeight: 1.3,
-              margin: 0,
+              maxWidth: 480,
+              marginTop: 40,
+              marginBottom: 24,
             }}
           >
-            {pullQuote}
-          </blockquote>
-        </div>
+            <div
+              style={{
+                width: 80,
+                height: 1,
+                background: "#d3a36e",
+                marginBottom: 20,
+              }}
+            />
+            <blockquote
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: 28,
+                color: "#2f5550",
+                lineHeight: 1.3,
+                margin: 0,
+              }}
+            >
+              {pullQuote}
+            </blockquote>
+          </div>
+        )}
 
         <div
           className="grid grid-cols-1 md:grid-cols-2"
