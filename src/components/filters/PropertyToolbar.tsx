@@ -94,12 +94,12 @@ const PropertyToolbar = ({
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#d3a36e",
+                  color: "#6fb6ae",
                   display: "flex",
                   alignItems: "center",
                 }}
               >
-                <LayoutGrid size={20} fill="#d3a36e" strokeWidth={1.5} />
+                <LayoutGrid size={20} fill="#6fb6ae" strokeWidth={1.5} />
               </button>
               <div
                 style={{ position: "relative" }}

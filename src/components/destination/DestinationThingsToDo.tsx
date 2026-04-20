@@ -73,7 +73,7 @@ const DestinationThingsToDo = ({ items }: DestinationThingsToDoProps) => (
                   fontFamily: "var(--font-body)",
                   fontSize: 10,
                   fontWeight: 500,
-                  color: "#d3a36e",
+                  color: "#6fb6ae",
                   letterSpacing: 3,
                   textTransform: "uppercase",
                 }}

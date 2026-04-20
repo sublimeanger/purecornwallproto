@@ -26,7 +26,7 @@ const DestinationFAQ = ({ faqs }: DestinationFAQProps) => {
               fontFamily: "var(--font-body)",
               fontSize: 11,
               fontWeight: 500,
-              color: "#d3a36e",
+              color: "#6fb6ae",
               letterSpacing: 3,
               textTransform: "uppercase",
               margin: 0,
@@ -128,8 +128,8 @@ const DestinationFAQ = ({ faqs }: DestinationFAQProps) => {
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      border: "1px solid #d3a36e",
-                      color: "#d3a36e",
+                      border: "1px solid #6fb6ae",
+                      color: "#6fb6ae",
                       transform: isOpen ? "rotate(45deg)" : "rotate(0)",
                       transition: "transform 250ms ease",
                     }}
@@ -192,11 +192,11 @@ const DestinationFAQ = ({ faqs }: DestinationFAQProps) => {
           <a
             href="#"
             style={{
-              color: "#d3a36e",
+              color: "#6fb6ae",
               textDecoration: "none",
               fontWeight: 500,
               letterSpacing: 1,
-              borderBottom: "1px solid #d3a36e",
+              borderBottom: "1px solid #6fb6ae",
               paddingBottom: 1,
             }}
           >

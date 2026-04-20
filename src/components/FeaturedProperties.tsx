@@ -101,7 +101,7 @@ const FeaturedProperties = () => (
                 <AnimatedCard delay={200}>
                   <div className="flex flex-col w-full" style={{ gap: 20 }}>
                     <div className="flex items-baseline justify-between">
-                      <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#2f5550" }}>
+                      <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#6fb6ae" }}>
                         {p.location}
                       </p>
                       <div className="text-right flex items-baseline gap-1">
@@ -135,15 +135,15 @@ const FeaturedProperties = () => (
 
                     <div className="flex gap-6">
                       <div className="flex items-center gap-2">
-                        <Users size={18} style={{ color: "#d3a36e" }} />
+                        <Users size={18} style={{ color: "#6fb6ae" }} />
                         <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>Sleeps {p.sleeps}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Bed size={18} style={{ color: "#d3a36e" }} />
+                        <Bed size={18} style={{ color: "#6fb6ae" }} />
                         <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.beds} Bed</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Bath size={18} style={{ color: "#d3a36e" }} />
+                        <Bath size={18} style={{ color: "#6fb6ae" }} />
                         <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.baths} Bath</span>
                       </div>
                     </div>
