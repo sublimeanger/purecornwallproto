@@ -378,3 +378,22 @@ export const stIvesData: DestinationData = {
     },
   ],
 };
+
+// Minimal-data variant — proves graceful degradation works for low-content towns.
+// Renders only: hero, breadcrumb, compact intro, cottage grid, related, FAQ, footer.
+export const stIvesDataMinimal: DestinationData = {
+  slug: "st-ives",
+  name: "St Ives",
+  region: "West Cornwall",
+  hero: {
+    image: CORNWALL_IMAGES.heroCoastCliff,
+    eyebrow: "West Cornwall",
+    tagline: "A light-washed harbour town on Cornwall's western edge",
+    caption: PLACEHOLDER_CAPTION,
+  },
+  compactIntro:
+    "Twenty-seven handpicked cottages in St Ives. Filter below to find yours.",
+  cottagesIntro: { eyebrow: "Cottages", leadIn: "", totalCount: 27 },
+  related: stIvesData.related,
+  faqs: stIvesData.faqs.slice(0, 5),
+};
