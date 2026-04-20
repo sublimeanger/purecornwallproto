@@ -18,6 +18,7 @@ const FeaturePill = ({ label, active, onToggle }: FeaturePillProps) => {
         height: 44,
         background: active ? "#d3a36e" : "#ffffff",
         border: `1px solid ${active ? "#d3a36e" : "#e5e0da"}`,
+        borderRadius: 0,
         color: active ? "#ffffff" : "#3a3a3a",
         fontFamily: "var(--font-body)",
         fontSize: 14,
