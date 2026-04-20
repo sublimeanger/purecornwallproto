@@ -209,6 +209,7 @@ const PropertyToolbar = ({
                           padding: "10px 16px",
                           background: sort === opt.key ? "#f7f5f2" : "transparent",
                           border: "none",
+                          borderRadius: 0,
                           cursor: "pointer",
                           fontSize: 15,
                           color: "#3a3a3a",
