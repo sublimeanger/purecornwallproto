@@ -1,7 +1,7 @@
 interface DestinationEditorialProps {
   name: string;
   paragraphs: string[];
-  pullQuote: string;
+  pullQuote?: string;
 }
 
 // Tiny inline-bold renderer for **keyword** spans (SEO emphasis)
