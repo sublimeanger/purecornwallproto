@@ -1,5 +1,29 @@
 import { FeatureKey, MockCottage } from "@/components/filters/types";
 
+// St Ives commissioned imagery (AI-generated, on-context)
+import heroHarbour from "@/assets/st-ives/hero-harbour.jpg";
+import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
+import atmosLane from "@/assets/st-ives/atmos-lane.jpg";
+import atmosBeach from "@/assets/st-ives/atmos-beach.jpg";
+import stIvesMap from "@/assets/st-ives/map.jpg";
+import tdPorthmeor from "@/assets/st-ives/td-porthmeor.jpg";
+import tdTate from "@/assets/st-ives/td-tate.jpg";
+import tdIsland from "@/assets/st-ives/td-island.jpg";
+import tdCafe from "@/assets/st-ives/td-cafe.jpg";
+import tdHepworth from "@/assets/st-ives/td-hepworth.jpg";
+import tdCoastpath from "@/assets/st-ives/td-coastpath.jpg";
+import relCarbis from "@/assets/st-ives/related-carbis.jpg";
+import relLelant from "@/assets/st-ives/related-lelant.jpg";
+import relZennor from "@/assets/st-ives/related-zennor.jpg";
+
+// Local cottage imagery already in repo
+import property1 from "@/assets/property-1.jpg";
+import property2 from "@/assets/property-2.jpg";
+import property3 from "@/assets/property-3.jpg";
+import property4 from "@/assets/property-4.jpg";
+import property5 from "@/assets/property-5.jpg";
+import property6 from "@/assets/property-6.jpg";
+
 export interface DestinationStat {
   value: string;
   label: string;
@@ -76,41 +100,18 @@ export interface DestinationData {
   travel?: DestinationTravelItem[];
 }
 
-// Reliable Unsplash photo IDs — generic Cornwall coast imagery
-// To be replaced with commissioned St Ives photography post-launch
-const CORNWALL_IMAGES = {
-  heroCoastCliff:
-    "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?auto=format&fit=crop&w=1920&q=70",
-  harbourBoats:
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=70",
-  coastalPath:
-    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=70",
-  beachSunset:
-    "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&q=70",
-  cottageExterior:
-    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
-  cottageInterior:
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
-};
-
 const PLACEHOLDER_CAPTION =
-  "Placeholder imagery — generic Cornwall coast photography, to be replaced with commissioned St Ives imagery.";
+  "Commissioned imagery — St Ives photography by Pure Cornwall.";
 
 // ---- Mock cottages for St Ives -------------------------------------------
 
 const COTTAGE_IMAGES = [
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1200&q=70",
+  property1,
+  property2,
+  property3,
+  property4,
+  property5,
+  property6,
 ];
 
 const ST_IVES_COTTAGE_NAMES = [
@@ -180,7 +181,7 @@ export const stIvesData: DestinationData = {
   name: "St Ives",
   region: "West Cornwall",
   hero: {
-    image: CORNWALL_IMAGES.heroCoastCliff,
+    image: heroHarbour,
     eyebrow: "West Cornwall",
     tagline: "A light-washed harbour town on Cornwall's western edge",
     caption: PLACEHOLDER_CAPTION,
@@ -195,7 +196,7 @@ export const stIvesData: DestinationData = {
     { value: "56 miles", label: "To Newquay airport" },
   ],
   map: {
-    imageUrl: CORNWALL_IMAGES.harbourBoats,
+    imageUrl: stIvesMap,
     caption: PLACEHOLDER_CAPTION,
     pins: [
       { n: 1, name: "Porthmeor Beach", description: "Surfers' beach, north-facing, big skies" },
@@ -219,9 +220,9 @@ export const stIvesData: DestinationData = {
   },
   atmosphere: {
     images: [
-      { src: CORNWALL_IMAGES.harbourBoats, alt: "Cornwall harbour with fishing boats" },
-      { src: CORNWALL_IMAGES.coastalPath, alt: "Cornwall coastal path" },
-      { src: CORNWALL_IMAGES.beachSunset, alt: "Cornwall beach at sunset" },
+      { src: atmosHarbour, alt: "St Ives harbour with traditional wooden fishing boats" },
+      { src: atmosLane, alt: "Cobblestone lane in Downalong, St Ives" },
+      { src: atmosBeach, alt: "Porthmeor Beach, St Ives, at sunset" },
     ],
     caption: PLACEHOLDER_CAPTION,
   },
@@ -251,7 +252,7 @@ export const stIvesData: DestinationData = {
       slug: "/collections/st-ives-harbour",
       cottages: [
         previewCottage(4, { name: "Fisherman's Rest", location: "Downalong", pricePerWeek: 1450, sleeps: 4, bedrooms: 2, bathrooms: 1 }),
-        previewCottage(6, { name: "Smeaton's Cottage", location: "St Ives", pricePerWeek: 1650, sleeps: 5, bedrooms: 3, bathrooms: 2 }),
+        previewCottage(1, { name: "Smeaton's Cottage", location: "St Ives", pricePerWeek: 1650, sleeps: 5, bedrooms: 3, bathrooms: 2 }),
       ],
     },
     {
@@ -261,8 +262,8 @@ export const stIvesData: DestinationData = {
       count: 6,
       slug: "/collections/st-ives-larger-homes",
       cottages: [
-        previewCottage(8, { name: "Hepworth House", location: "St Ives", pricePerWeek: 3200, sleeps: 10, bedrooms: 5, bathrooms: 3 }),
-        previewCottage(10, { name: "Carbis Bay Retreat", location: "Carbis Bay", pricePerWeek: 2950, sleeps: 8, bedrooms: 4, bathrooms: 3 }),
+        previewCottage(3, { name: "Hepworth House", location: "St Ives", pricePerWeek: 3200, sleeps: 10, bedrooms: 5, bathrooms: 3 }),
+        previewCottage(5, { name: "Carbis Bay Retreat", location: "Carbis Bay", pricePerWeek: 2950, sleeps: 8, bedrooms: 4, bathrooms: 3 }),
       ],
     },
   ],
@@ -272,42 +273,42 @@ export const stIvesData: DestinationData = {
       name: "Porthmeor Beach",
       description:
         "North-facing surf beach with lessons at Wavehunters and a Sunday-morning parkrun along the sand.",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=70",
+      image: tdPorthmeor,
     },
     {
       category: "Gallery",
       name: "Tate St Ives",
       description:
         "Modern British painting in a striking cliffside gallery. Barbara Hepworth sculptures on the terrace.",
-      image: "https://images.unsplash.com/photo-1565060169187-5284f2c0d2bb?auto=format&fit=crop&w=1200&q=70",
+      image: tdTate,
     },
     {
       category: "Walks",
       name: "The Island headland walk",
       description:
         "Twenty minutes round the St Nicholas Chapel. Panoramic views, benches for afternoon reading.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=70",
+      image: tdIsland,
     },
     {
       category: "Food",
       name: "Porthminster Beach Café",
       description:
         "Locally caught fish, lunch with the sea as the backdrop. Book — it fills fast on sunny days.",
-      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=70",
+      image: tdCafe,
     },
     {
       category: "Gallery",
       name: "Barbara Hepworth Museum",
       description:
         "The sculptor's house and garden studio, kept as she left it in 1975. Small, moving, memorable.",
-      image: "https://images.unsplash.com/photo-1577083552431-6e5fd75a9160?auto=format&fit=crop&w=1200&q=70",
+      image: tdHepworth,
     },
     {
       category: "Walks",
       name: "The South West Coast Path",
       description:
         "To Zennor via Clodgy Point (5 miles, dramatic). Or to Carbis Bay (1.5 miles, gentler). Both ends of a perfect day.",
-      image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=70",
+      image: tdCoastpath,
     },
   ],
   travel: [
@@ -332,19 +333,19 @@ export const stIvesData: DestinationData = {
       name: "Carbis Bay",
       slug: "/destinations/carbis-bay",
       description: "The next cove south. Turquoise water, a long soft-sanded beach, and the famous hotel above.",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=70",
+      image: relCarbis,
     },
     {
       name: "Lelant",
       slug: "/destinations/lelant",
       description: "Across the estuary. Saltings, sand dunes, and one of Cornwall's best links golf courses.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=70",
+      image: relLelant,
     },
     {
       name: "Zennor",
       slug: "/destinations/zennor",
       description: "Five miles along the coast path. Mermaids, moorland, and the legendary Tinner's Arms.",
-      image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=70",
+      image: relZennor,
     },
   ],
   faqs: [
@@ -386,7 +387,7 @@ export const stIvesDataMinimal: DestinationData = {
   name: "St Ives",
   region: "West Cornwall",
   hero: {
-    image: CORNWALL_IMAGES.heroCoastCliff,
+    image: heroHarbour,
     eyebrow: "West Cornwall",
     tagline: "A light-washed harbour town on Cornwall's western edge",
     caption: PLACEHOLDER_CAPTION,
