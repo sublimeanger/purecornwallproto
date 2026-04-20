@@ -22,7 +22,7 @@ const Footer = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Col 1 */}
           <div>
-            <img src={logo} alt="Pure Cornwall" style={{ height: 50 }} className="mb-6" />
+            <img src={logo} alt="Pure Cornwall" style={{ height: 110 }} className="mb-6 w-auto" />
             <p className="text-white/70 text-sm leading-relaxed">
               Pure Cornwall is a luxury holiday cottage rental company dedicated to showcasing the very best properties across Cornwall's stunning coastline.
             </p>
