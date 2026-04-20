@@ -6,7 +6,7 @@
 
 **Repo:** https://github.com/sublimeanger/purecornwallproto
 **Raw map URL:** https://raw.githubusercontent.com/sublimeanger/purecornwallproto/main/PROJECT_MAP.md
-**Last updated:** 20 April 2026 (v2 — data architecture locked, amenity map added)
+**Last updated:** 20 April 2026 (v4 — destination page redesigned + minimal route + teal brand refresh)
 
 ---
 
@@ -82,8 +82,8 @@
 
 | Role              | Hex        | HSL                 | Usage                                                                                       |
 | ----------------- | ---------- | ------------------- | ------------------------------------------------------------------------------------------- |
-| Primary teal      | `#6fb6ae`  | `172 28% 56%`       | Search bar bg, testimonial section bg, interactive hover states, link hovers, nav hover     |
-| Accent gold       | `#d3a36e`  | `28 52% 63%`        | Gold bar motif, price, property names, CTAs, badges, decorative accents, star ratings       |
+| Primary teal      | `#6fb6ae`  | `172 28% 56%`       | **Brand identity & functional accents** — cottage card icons, section eyebrows, location eyebrows, hero eyebrows, breadcrumb separators, map pins, 2px section-transition top borders, "Talk to us" links, nav hovers, testimonial band. Target visual load: 15–25% of colour signals per page. |
+| Accent gold       | `#d3a36e`  | `28 52% 63%`        | **Conversion signals & signature accents** — prices, primary CTAs (FILTER, CHECK AVAILABILITY, SEARCH, VIEW PROPERTY, SHOW ALL COTTAGES), the 200×2 gold bar motif under H2s, feature pill Sparkles icon, active filter pills, property names (Cormorant italic), drop caps. |
 | Dark teal         | `#2f5550`  | `163 28% 25%`       | **FOOTER ONLY** — dark anchor at bottom of page                                             |
 | Body text         | `#3a3a3a`  | `0 0% 23%`          | All paragraph body text                                                                     |
 | Muted text        | `#7a7a7a`  | `0 0% 48%`          | Meta, captions, secondary info                                                              |
@@ -122,7 +122,7 @@
 
 ### Design rules (permanent)
 
-1. Gold is for decoration. Teal is for interaction. Dark teal is for footer only.
+1. Gold = conversion signals (prices, CTAs, signature accents). Teal = brand identity & navigation (icons, eyebrows, section-transition borders). Dark teal = footer only. Decision test: "does clicking or reading this drive a booking?" → gold. "Is it identifying, labelling, or decorating?" → teal.
 2. No bold typography anywhere — elegance over shout.
 3. Property cards use image carousels (not single static images).
 4. Every content slot editable via ACF from the WP dashboard — nothing hardcoded.
@@ -267,11 +267,12 @@ This means the homepage search IS the only place where SC availability is querie
 
 | Template                      | Status              | Notes                                                              |
 | ----------------------------- | ------------------- | ------------------------------------------------------------------ |
-| Homepage                      | ✅ Signed off        | Current preview URL live. Minor editorial polish still open.       |
-| Single property page          | ✅ Signed off        | Treleigh reference at `/properties/treleigh`                       |
-| Filter drawer component       | 🟡 Prompt written   | Prompt ready to paste into Lovable (`lovable-prompt-01-filter-drawer.md`). Awaiting generation. Target route: `/filter-drawer-demo`. |
-| Single destination page       | ⏳ Not started       | Next after filter drawer signed off. Biggest SEO page.             |
-| Single collection page        | ⏳ Not started       | Near-copy of single destination. After that's signed off.          |
+| Homepage                      | ✅ Signed off        | Teal refresh applied (card icons teal, location eyebrows teal).    |
+| Single property page          | ✅ Signed off        | Treleigh reference at `/properties/treleigh`. Teal refresh applied. |
+| Filter drawer component       | ✅ Signed off        | Route: `/filter-drawer-demo`. 16 filters across 3 sections. Teal VIEW toggle post-refresh. Consumed by destination grid. |
+| Single destination page       | ✅ Signed off        | Route: `/destinations/st-ives`. Redesigned v2 user-first (hero 50vh, cottages above fold). 14 components in `src/components/destination/` + `CompactIntro.tsx`. Data shape supports graceful degradation via optional fields. 14 real St-Ives asset images in `src/assets/st-ives/`. Teal refresh applied. |
+| Destination minimal proof     | ✅ Signed off        | Route: `/destinations/st-ives-minimal`. Renders only required fields (hero, compactIntro, grid, related, 5 FAQs). Proves template handles low-content towns cleanly. |
+| Single collection page        | ⏳ Next              | Near-copy of single destination, filter axis = feature not location. |
 | Destinations hub              | ⏳ Not started       |                                                                    |
 | Collections hub               | ⏳ Not started       |                                                                    |
 | Region page                   | ⏳ Not started       | West / North / South Cornwall                                      |
@@ -358,6 +359,9 @@ Format: `YYYY-MM-DD — [who] — [what]`
 - **2026-04-16 — Claude chat — Handover document created** — Full handover doc written for cross-session context transfer. Property page flagged as stub requiring rebuild. Homepage and property page Lovable signed off.
 - **2026-04-20 — Claude chat — Project reset & IA lock** — Reviewed current state. Confirmed "nuclear" means rebuild theme's template layer only; DB and media library preserved. Locked URL structure (`/destinations/`, `/collections/`, `/cottages/`, `/journal/`). Locked IA per-template content slots. Locked filter drawer as first priority component because it appears on 4 templates. Hybrid URL-sync rule decided (sync on `/cottages/` and `/search/`, no sync on destination/collection pages to protect canonical). Wrote Lovable Prompt 01 (filter drawer). Created this PROJECT_MAP.md as the permanent living context.
 - **2026-04-20 — Claude chat — Data architecture locked** — Decided: WordPress is the filter/SEO surface; SuperControl is write authority + booking only. Sync is unidirectional SC→WP, via dedicated `pc-supercontrol-sync` plugin. Filters always hit local `WP_Query` + `meta_query`, never live SC. Added §3b to this map with full rationale, sync schedule, and authoritative 16-filter → ACF → SC source mapping table. Lovable filter drawer prompt confirmed unaffected (it's a UI component; data source is orthogonal).
+- **2026-04-20 — Lovable + Claude chat — Filter drawer built & signed off** — Lovable generated filter drawer, toolbar, stepper, slider, section wrapper, pill components + demo route (commit `3a216c9`). Claude chat reviewed source code directly via git pull, identified hero gradient violation (dark teal used outside footer) + border-radius audit needed. Refinement prompt applied (commit `7e77104`): hero now cream `#f7f5f2`, all interactive elements have explicit `borderRadius: 0`. Component signed off. All 16 filters working, full accessibility, mobile responsive. Ready to consume in destination/collection/cottages/search templates.
+- **2026-04-20 — Lovable + Claude chat — Destination page v1 built & redesigned to v2** — Lovable generated first pass of single destination page for St Ives (4-act structure: Arrival → Sense of place → Choose your cottage → Support content). Initial build landed all 14 components but Jamie flagged UX problem: 2500px of editorial above the cottage grid was wrong for users landing from "holiday cottages st ives" search intent. Redesign prompt 04 applied: hero reduced 70vh→50vh desktop, 60vh→35vh mobile; 3-paragraph drop-cap opening replaced with single-sentence CompactIntro; cottage grid moved above the fold (first cottage visible within ~900px of page top); editorial, stats, map, atmosphere all moved below grid. Graceful degradation architecture locked: required sections (hero, breadcrumb, intro, grid, related, FAQ) always render; optional sections (stats, map, editorial, atmosphere, miniCollections, thingsToDo, travel) only render when data thresholds met. Minimal proof route `/destinations/st-ives-minimal` demonstrates template works with only required fields (supports 55 minimal-content towns at launch). Lovable added 14 real St-Ives-named asset images under `src/assets/st-ives/` replacing the earlier broken Unsplash queries. Jamie refined FAQ accordion directly: Plus-icon 45° rotation with gold border box, open-state background tint, "GOOD TO KNOW" eyebrow, italic tagline, "Talk to us →" CTA. Hero legibility issue fixed with triple-layered text shadows + radial vignette + darker gradient. Both routes signed off.
+- **2026-04-20 — Lovable + Claude chat — Teal brand refresh (global)** — Audited colour distribution: Primary teal `#6fb6ae` was being used 4× across entire project; gold `#d3a36e` 135×. Pure Cornwall was visually indistinguishable from Cornish Secrets. Redesigned the colour rule: teal = brand identity & functional accents (icons, eyebrows, breadcrumb separators, hero eyebrows, section-transition 2px top borders, map pins, "Talk to us" links, VIEW toggle active state); gold = conversion signals only (prices, primary CTAs, gold bar motif, feature pill active). Applied across 15 files in one pass, 38 gold→teal swaps with matched symmetric diffs. Result: teal count went 4→42 (10.5× increase, ~24% visual load — slightly over target 15–20% but correct direction). Gold count dropped 135→107 (-21%) with conversion signals 100% preserved. All sign-offs verified: prices still gold, gold bar motif still gold, feature pill Sparkles still gold, all CTAs still gold. Commit `110ca86`. Destination page + homepage + property page + filter drawer demo all now on the new colour rule.
 
 ---
 
@@ -369,7 +373,12 @@ Format: `YYYY-MM-DD — [who] — [what]`
 | --------------------------------------------------- | ---------------------------------------------- |
 | `pure-cornwall-handover.md`                         | April 16 handover — partially superseded by this map |
 | `pure-cornwall-ia-and-urls-v1.md`                   | Full IA detail (longer than §3 above)          |
-| `lovable-prompt-01-filter-drawer.md`                | Filter drawer Lovable prompt — paste ready     |
+| `lovable-prompt-01-filter-drawer.md`                | Filter drawer Lovable prompt (shipped, signed off) |
+| `lovable-prompt-02-single-destination.md`           | Destination page v1 — 4-act editorial-first structure (shipped, superseded by 04) |
+| `lovable-prompt-04-destination-redesign.md`         | Destination page v2 — user-first, cottages above fold, graceful degradation (shipped, signed off) |
+| `lovable-prompt-05-teal-brand-refresh.md`           | Global teal brand refresh (shipped, signed off) |
+| `claude-code-standing-instructions.md`              | Standing instructions for Claude Code sessions to update PROJECT_MAP.md at session end |
+| `github-token-setup.md`                             | One-time setup docs for Claude Code GitHub auto-commit |
 
 ### In the Lovable repo (source of truth)
 
@@ -377,12 +386,18 @@ Format: `YYYY-MM-DD — [who] — [what]`
 purecornwallproto/
 ├── PROJECT_MAP.md              ← this file
 ├── src/
-│   ├── index.css               ← design tokens
+│   ├── index.css               ← design tokens (Jost + Cormorant Garamond)
 │   ├── tailwind.config.ts
-│   ├── App.tsx                 ← router
+│   ├── App.tsx                 ← router (5 routes live)
+│   ├── assets/
+│   │   ├── property-1.jpg..property-6.jpg   ← cottage images used by homepage + minimal demos
+│   │   └── st-ives/            ← 14 real St-Ives-named assets (hero, map, atmos-*, td-*, related-*)
 │   ├── pages/
-│   │   ├── Index.tsx           ← homepage composition
-│   │   ├── PropertyPage.tsx    ← single property composition
+│   │   ├── Index.tsx           ← homepage composition (signed off)
+│   │   ├── PropertyPage.tsx    ← single property composition (signed off)
+│   │   ├── FilterDrawerDemo.tsx ← filter drawer demo route (signed off)
+│   │   ├── DestinationPage.tsx ← destination composition, data-driven (signed off)
+│   │   ├── DestinationPageMinimal.tsx ← graceful-degradation proof (signed off)
 │   │   └── NotFound.tsx
 │   ├── components/
 │   │   ├── Header.tsx
@@ -390,14 +405,38 @@ purecornwallproto/
 │   │   ├── Hero.tsx
 │   │   ├── BrandIntro.tsx
 │   │   ├── FeatureTiles.tsx
-│   │   ├── FeaturedProperties.tsx
+│   │   ├── FeaturedProperties.tsx  ← homepage cottage card pattern — canonical, reused by destination grid
 │   │   ├── Testimonials.tsx
 │   │   ├── Journal.tsx
 │   │   ├── Footer.tsx
 │   │   ├── PropertyImageCarousel.tsx
-│   │   └── property/           ← 13 property page components
+│   │   ├── property/           ← 13 property page components
+│   │   ├── filters/            ← filter drawer (signed off)
+│   │   │   ├── FilterDrawer.tsx
+│   │   │   ├── PropertyToolbar.tsx
+│   │   │   ├── FilterSection.tsx
+│   │   │   ├── NumberStepper.tsx
+│   │   │   ├── RangeSlider.tsx
+│   │   │   ├── FeaturePill.tsx
+│   │   │   └── types.ts        ← FilterState, FeatureKey, ranges, MockCottage, PRICE_MAX, isFilterActive
+│   │   └── destination/        ← destination page (signed off — 14 components)
+│   │       ├── DestinationHero.tsx       ← 50vh desktop / 35vh mobile, triple-layered legibility shadows
+│   │       ├── DestinationBreadcrumb.tsx ← sticky, teal separators
+│   │       ├── CompactIntro.tsx          ← single-paragraph intro, 2px teal top border
+│   │       ├── DestinationGrid.tsx       ← alternating cottage rows, consumes PropertyToolbar + FilterDrawer
+│   │       ├── DestinationMiniCollections.tsx ← 3-row curated groupings (the new pattern CS doesn't have)
+│   │       ├── DestinationStats.tsx      ← 5-column stats, 2px teal top border
+│   │       ├── DestinationMap.tsx        ← teal pins with white numbers
+│   │       ├── DestinationEditorial.tsx  ← 2-paragraph "Why X" with inline **bold** parser
+│   │       ├── DestinationAtmosphere.tsx ← 3 equal-column town photos
+│   │       ├── DestinationThingsToDo.tsx ← 6-item grid, teal category eyebrows
+│   │       ├── DestinationTravel.tsx     ← 3 modes with teal icons
+│   │       ├── DestinationRelated.tsx    ← 3-up nearby towns
+│   │       ├── DestinationFAQ.tsx        ← accordion, Plus-icon 45° rotation, teal border box, "Talk to us →"
+│   │       └── DestinationCottageIntro.tsx (legacy — no longer called, kept for now)
 │   └── data/
-│       └── treleighData.ts     ← mock data for property page
+│       ├── treleighData.ts     ← mock data for property page
+│       └── stIvesData.ts       ← DestinationData type + stIvesData (rich) + stIvesDataMinimal (required-only)
 ```
 
 ### On the Cloudways server
