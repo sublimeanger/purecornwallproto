@@ -63,7 +63,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
           fontFamily: "var(--font-body)",
           fontSize: 11,
           fontWeight: 500,
-          color: "#ffffff",
+          color: "#6fb6ae",
           letterSpacing: 3,
           textTransform: "uppercase",
           marginBottom: 16,
