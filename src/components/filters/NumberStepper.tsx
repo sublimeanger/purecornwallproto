@@ -45,6 +45,7 @@ const NumberStepper = ({ label, value, min, max, onChange }: NumberStepperProps)
     width: 32,
     height: 32,
     border: "1px solid #e5e0da",
+    borderRadius: 0,
     background: "#ffffff",
     color: "#d3a36e",
     display: "flex",
