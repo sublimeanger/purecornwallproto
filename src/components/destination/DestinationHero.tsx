@@ -25,14 +25,25 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
     }}
     className="min-h-[35vh] md:min-h-[50vh]"
   >
-    {/* Gradient overlay */}
+    {/* Gradient overlay — darker for text legibility */}
     <div
       aria-hidden="true"
       style={{
         position: "absolute",
         inset: 0,
         background:
-          "linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%)",
+          "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.55) 100%)",
+        zIndex: 1,
+      }}
+    />
+    {/* Centred radial vignette behind the headline */}
+    <div
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        inset: 0,
+        background:
+          "radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 65%)",
         zIndex: 1,
       }}
     />
@@ -56,6 +67,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
           letterSpacing: 3,
           textTransform: "uppercase",
           marginBottom: 16,
+          textShadow: "0 1px 8px rgba(0,0,0,0.55)",
         }}
       >
         {eyebrow}
@@ -69,6 +81,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
           lineHeight: 1.0,
           color: "#ffffff",
           margin: 0,
+          textShadow: "0 2px 24px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.4)",
         }}
       >
         {name}
@@ -79,12 +92,13 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
           fontStyle: "italic",
           fontWeight: 400,
           fontSize: "clamp(18px, 1.5vw, 22px)",
-          color: "rgba(255,255,255,0.9)",
+          color: "#ffffff",
           marginTop: 20,
           maxWidth: 600,
           marginLeft: "auto",
           marginRight: "auto",
           lineHeight: 1.4,
+          textShadow: "0 1px 12px rgba(0,0,0,0.65)",
         }}
       >
         {tagline}
