@@ -9,9 +9,9 @@ const Header = () => {
 
   return (
     <header className="relative z-50 bg-white">
-      <div className="pc-container flex items-center justify-between" style={{ height: 90 }}>
+      <div className="pc-container flex items-center justify-between h-[90px] md:h-[120px]">
         <a href="/">
-          <img src={logo} alt="Pure Cornwall" style={{ height: 60 }} />
+          <img src={logo} alt="Pure Cornwall" className="h-[72px] md:h-[96px] w-auto" />
         </a>
 
         {/* Desktop nav */}
