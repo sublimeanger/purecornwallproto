@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bed, Bath, Users, Sparkles } from "lucide-react";
 import PropertyImageCarousel from "@/components/PropertyImageCarousel";

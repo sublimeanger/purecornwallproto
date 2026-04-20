@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { DestinationFAQ as FAQItem } from "@/data/stIvesData";

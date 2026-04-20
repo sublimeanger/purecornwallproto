@@ -1,3 +1,4 @@
+// Reused across destination + collection pages
 interface BreadcrumbItem {
   label: string;
   href?: string;
