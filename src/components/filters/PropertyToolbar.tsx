@@ -236,6 +236,7 @@ const PropertyToolbar = ({
                   background: "none",
                   border: "none",
                   borderBottom: "2px solid #d3a36e",
+                  borderRadius: 0,
                   color: "#d3a36e",
                   fontSize: 13,
                   fontWeight: 500,
