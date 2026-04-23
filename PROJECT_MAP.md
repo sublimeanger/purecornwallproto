@@ -6,7 +6,7 @@
 
 **Repo:** https://github.com/sublimeanger/purecornwallproto
 **Raw map URL:** https://raw.githubusercontent.com/sublimeanger/purecornwallproto/main/PROJECT_MAP.md
-**Last updated:** 20 April 2026 (v4 — destination page redesigned + minimal route + teal brand refresh)
+**Last updated:** 23 April 2026 (v5 — collection page signed off + Claude Design pipeline stage added + SuperControl API doc linked)
 
 ---
 
@@ -62,7 +62,7 @@
 - **Domain:** purecornwall.co.uk
 - **Status:** owned, not yet pointed at staging. Launch is post-design/dev/integration.
 
-### SuperControl (write authority — see §3b for architecture)
+### SuperControl (write authority — see §3b for architecture, `SUPERCONTROL_API.md` for full endpoint reference)
 
 - **API base:** `https://api.supercontrol.co.uk/v3/`
 - **SC-TOKEN:** `aac3f13b-fb87-4f16-9677-8f9955736ff4`
@@ -261,6 +261,80 @@ This means the homepage search IS the only place where SC availability is querie
 
 ---
 
+## §3c — Design → build pipeline (locked 23 April 2026)
+
+**Pure Cornwall is built via a four-role pipeline. Each role produces a specific artefact. Each role has a clear handoff.**
+
+```
+Lovable  →  Claude Design  →  Claude Code  →  Live WordPress
+    ↑            ↑                 ↑                 ↑
+    └───────────Claude Chat (orchestrator across all stages)───────────┘
+```
+
+### Role 1 — Lovable (the designer)
+- **Produces:** full visual prototype. All pages, all components, all responsive behaviour. React + TypeScript + Tailwind.
+- **Source of truth:** everything downstream consumes Lovable's output; nothing re-invents copy or restyles.
+- **Sign-off:** client/Jamie reviews the preview URL directly. Once signed off, that Lovable state is locked.
+- **Tool:** Lovable's own editor + preview. Auto-commits to GitHub.
+
+### Role 2 — Claude Design (the 1:1 cloner / WP translator)
+- **Produces:** 1:1 HTML/CSS clone of each signed-off Lovable template, rendered as plain semantic HTML + BEM CSS + a `tokens.css` layer. Per-template bundle folder in the repo.
+- **Why it exists:**
+  1. **Visual checkpoint** — portable static HTML the client can open, screenshot, and approve without needing a dev environment
+  2. **WP-friendly spec** — plain HTML + BEM + tokens ports to PHP/ACF far cleaner than React + Tailwind utilities would. Claude Code gets an unambiguous build target instead of interpreting React.
+- **Ground rule:** 1:1 with the signed-off Lovable version. No creative reinterpretation, no new design decisions. Any uplift work happens in a fresh bundle (e.g. `-uplift/`) and does not touch the port bundle.
+- **Input per template:** Lovable repo + brief from Claude Chat specifying files to read, token rules, responsive requirements, output folder.
+- **Output per template:** `bundles/{template-name}/` containing `index.html`, `style.css`, `tokens.css`, and any per-component partials.
+- **Tool:** Claude Design (Anthropic Labs, launched 17 April 2026, research preview in Claude Pro/Max/Team/Enterprise).
+
+### Role 3 — Claude Code (the executor)
+- **Produces:** live WordPress theme templates + ACF field groups + CPT definitions + seed data, built from the Claude Design bundle and deployed via SSH to Cloudways staging.
+- **Ground rule:** matches the Claude Design bundle 1:1. Does not second-guess. If ambiguous, halts and escalates.
+- **Also owns:** the `pc-supercontrol-sync` plugin build (separate from the theme — SC integration concerns don't belong in template bundles).
+- **Tool:** Claude Code (web, via SSH to `cloudways-jm`).
+
+### Role 4 — Claude Chat (the orchestrator)
+- **Runs the pipeline.** Not in it — around it.
+- **Per-template sequence:**
+  1. Writes the Lovable prompt
+  2. Reviews Lovable output by pulling the GitHub repo
+  3. Writes the Claude Design brief
+  4. Reviews the Claude Design bundle
+  5. Writes the Claude Code prompt with phase breakdown + halt conditions
+  6. Reviews Claude Code output via MCP between phases
+  7. Updates `PROJECT_MAP.md` and `SUPERCONTROL_API.md`
+- **Also owns:** architecture decisions, landmine catching, scope adjustments, handover docs, launch runbook.
+- **Tool:** Claude chat (claude.ai — this conversation and its successors).
+
+### Current stage-by-stage status
+
+| Template                    | Lovable | Claude Design | Claude Code |
+| --------------------------- | :-----: | :-----------: | :---------: |
+| Homepage                    | ✅      | ⏳             | ⏳          |
+| Single property page        | ✅      | ⏳             | ⏳          |
+| Filter drawer               | ✅      | ⏳             | ⏳          |
+| Single destination page     | ✅      | ⏳             | ⏳          |
+| Single collection page      | ✅      | ⏳             | ⏳          |
+| Destinations hub            | ⏳      | ⏳             | ⏳          |
+| Collections hub             | ⏳      | ⏳             | ⏳          |
+| Region page                 | ⏳      | ⏳             | ⏳          |
+| Cottages index              | ⏳      | ⏳             | ⏳          |
+| Search results              | ⏳      | ⏳             | ⏳          |
+| Journal hub + single post   | ⏳      | ⏳             | ⏳          |
+| About + Contact             | ⏳      | ⏳             | ⏳          |
+
+**Claude Design stage doesn't begin until all Lovable templates are signed off AND the Amandine font refactor is applied globally.** Running Claude Design on a moving Lovable target (or on Cormorant-italic templates that'll need re-cloning after the font swap) is wasted effort. The Claude Design wave happens once, across the whole site, on locked typography.
+
+### Precedent: Greenscapes
+
+This pipeline is proven on the Greenscapes build (Isle of Wight tree surgery — Jude Ridley). Greenscapes used Lovable → Claude Design 1:1 clone → Claude Code WordPress port. The 1:1 clone produced a bundle folder per page (e.g. `greenscapes-homepage/`) with `tokens.css` + plain HTML + BEM CSS, which Claude Code then ported to WordPress templates. The client reviewed the static HTML in the bundle before Claude Code touched WordPress.
+
+### What this means for the `PROJECT_MAP.md` build status table (§4)
+
+§4 tracks Lovable status only. Once Claude Design stage begins, §4 gains a "Claude Design status" column per template. For now, all rows are "awaiting Lovable completion + font refactor."
+
+---
+
 ## §4 — Build status (LIVING — overwrite each session)
 
 ### Design (Lovable)
@@ -269,12 +343,14 @@ This means the homepage search IS the only place where SC availability is querie
 | ----------------------------- | ------------------- | ------------------------------------------------------------------ |
 | Homepage                      | ✅ Signed off        | Teal refresh applied (card icons teal, location eyebrows teal).    |
 | Single property page          | ✅ Signed off        | Treleigh reference at `/properties/treleigh`. Teal refresh applied. |
-| Filter drawer component       | ✅ Signed off        | Route: `/filter-drawer-demo`. 16 filters across 3 sections. Teal VIEW toggle post-refresh. Consumed by destination grid. |
-| Single destination page       | ✅ Signed off        | Route: `/destinations/st-ives`. Redesigned v2 user-first (hero 50vh, cottages above fold). 14 components in `src/components/destination/` + `CompactIntro.tsx`. Data shape supports graceful degradation via optional fields. 14 real St-Ives asset images in `src/assets/st-ives/`. Teal refresh applied. |
-| Destination minimal proof     | ✅ Signed off        | Route: `/destinations/st-ives-minimal`. Renders only required fields (hero, compactIntro, grid, related, 5 FAQs). Proves template handles low-content towns cleanly. |
-| Single collection page        | ⏳ Next              | Near-copy of single destination, filter axis = feature not location. |
-| Destinations hub              | ⏳ Not started       |                                                                    |
-| Collections hub               | ⏳ Not started       |                                                                    |
+| Filter drawer component       | ✅ Signed off        | Route: `/filter-drawer-demo`. 16 filters across 3 sections. Teal VIEW toggle post-refresh. Consumed by destination + collection grids. |
+| Single destination page       | ✅ Signed off        | Route: `/destinations/st-ives`. Redesigned v2 user-first. 14 components in `src/components/destination/` + `CompactIntro.tsx`. Graceful degradation via optional fields. 14 St-Ives asset images in `src/assets/st-ives/`. Teal refresh applied. |
+| Destination minimal proof     | ✅ Signed off        | Route: `/destinations/st-ives-minimal`. Required-fields-only render proves template handles low-content towns. |
+| Single collection page        | ✅ Signed off        | Route: `/collections/dog-friendly`. Separate template reusing 8 shared components from `destination/` (each marked with `// Reused across destination + collection pages`) + 3 new collection-specific components in `src/components/collection/` (CollectionDestinationsGrid, CollectionEditorial, CollectionRelated). Data shape mirrors destination with graceful degradation. Mock data: 42 cottages across 6 destinations. Commit `3f069ba`. |
+| Collection minimal proof      | ✅ Signed off        | Route: `/collections/dog-friendly-minimal`. Required-fields-only render proves template handles minimal collections. |
+| **Amandine font refactor**    | ⏳ Next              | Global pass across all 7 signed-off templates. Replaces Cormorant Garamond italic with Amandine regular non-italic to match Cornish Secrets. Jamie to extend CS Adobe Fonts project to include purecornwall.co.uk before launch. Lock typography before building remaining templates. |
+| Destinations hub              | ⏳ After font refactor | 56-town card listing. Reuses signed-off card components.          |
+| Collections hub               | ⏳ After font refactor | 12-collection card listing.                                        |
 | Region page                   | ⏳ Not started       | West / North / South Cornwall                                      |
 | Cottages index (`/cottages/`) | ⏳ Not started       | Will reuse filter drawer                                           |
 | Search results (`/search/`)   | ⏳ Not started       | Near-copy of `/cottages/`, URL-param driven                        |
@@ -362,6 +438,9 @@ Format: `YYYY-MM-DD — [who] — [what]`
 - **2026-04-20 — Lovable + Claude chat — Filter drawer built & signed off** — Lovable generated filter drawer, toolbar, stepper, slider, section wrapper, pill components + demo route (commit `3a216c9`). Claude chat reviewed source code directly via git pull, identified hero gradient violation (dark teal used outside footer) + border-radius audit needed. Refinement prompt applied (commit `7e77104`): hero now cream `#f7f5f2`, all interactive elements have explicit `borderRadius: 0`. Component signed off. All 16 filters working, full accessibility, mobile responsive. Ready to consume in destination/collection/cottages/search templates.
 - **2026-04-20 — Lovable + Claude chat — Destination page v1 built & redesigned to v2** — Lovable generated first pass of single destination page for St Ives (4-act structure: Arrival → Sense of place → Choose your cottage → Support content). Initial build landed all 14 components but Jamie flagged UX problem: 2500px of editorial above the cottage grid was wrong for users landing from "holiday cottages st ives" search intent. Redesign prompt 04 applied: hero reduced 70vh→50vh desktop, 60vh→35vh mobile; 3-paragraph drop-cap opening replaced with single-sentence CompactIntro; cottage grid moved above the fold (first cottage visible within ~900px of page top); editorial, stats, map, atmosphere all moved below grid. Graceful degradation architecture locked: required sections (hero, breadcrumb, intro, grid, related, FAQ) always render; optional sections (stats, map, editorial, atmosphere, miniCollections, thingsToDo, travel) only render when data thresholds met. Minimal proof route `/destinations/st-ives-minimal` demonstrates template works with only required fields (supports 55 minimal-content towns at launch). Lovable added 14 real St-Ives-named asset images under `src/assets/st-ives/` replacing the earlier broken Unsplash queries. Jamie refined FAQ accordion directly: Plus-icon 45° rotation with gold border box, open-state background tint, "GOOD TO KNOW" eyebrow, italic tagline, "Talk to us →" CTA. Hero legibility issue fixed with triple-layered text shadows + radial vignette + darker gradient. Both routes signed off.
 - **2026-04-20 — Lovable + Claude chat — Teal brand refresh (global)** — Audited colour distribution: Primary teal `#6fb6ae` was being used 4× across entire project; gold `#d3a36e` 135×. Pure Cornwall was visually indistinguishable from Cornish Secrets. Redesigned the colour rule: teal = brand identity & functional accents (icons, eyebrows, breadcrumb separators, hero eyebrows, section-transition 2px top borders, map pins, "Talk to us" links, VIEW toggle active state); gold = conversion signals only (prices, primary CTAs, gold bar motif, feature pill active). Applied across 15 files in one pass, 38 gold→teal swaps with matched symmetric diffs. Result: teal count went 4→42 (10.5× increase, ~24% visual load — slightly over target 15–20% but correct direction). Gold count dropped 135→107 (-21%) with conversion signals 100% preserved. All sign-offs verified: prices still gold, gold bar motif still gold, feature pill Sparkles still gold, all CTAs still gold. Commit `110ca86`. Destination page + homepage + property page + filter drawer demo all now on the new colour rule.
+- **2026-04-23 — Lovable + Claude chat — Single collection page built & signed off** — Lovable generated the Dog Friendly collection page (`/collections/dog-friendly`) plus minimal proof route (`/collections/dog-friendly-minimal`). Commit `3f069ba`. Architectural precedent: 8 components from `src/components/destination/*` now marked `// Reused across destination + collection pages` and imported (not duplicated). 3 new collection-specific components added in `src/components/collection/`: `CollectionDestinationsGrid` (the "Dog Friendly in St Ives (8)" hub-and-spoke internal-linking pattern — 2px teal top border, 6-card grid, linking to `/destinations/{slug}/?filter=pet_welcome`), `CollectionEditorial` (left-aligned 80px gold bar, 2-column prose, floated pull quote — distinct rhythm from destination editorial), `CollectionRelated` (3-up related-collection cards, lighter eyebrow-only heading treatment). Data file `src/data/dogFriendlyData.ts` includes `dogFriendlyData` (rich) + `dogFriendlyDataMinimal` (required-fields-only) + `generateDogFriendlyCottages()` (42 mock cottages across 6 destinations: St Ives, Padstow, Falmouth, Fowey, Bude, Newquay). FAQ content covers 7 genuinely-useful questions (fees, dog count limits, beach rules, equipment, leaving dogs alone, seasonality). Graceful degradation working across both routes. This is the first template to genuinely prove the shared-component pattern — future hubs/regions/search templates can freely reuse the 8 shared primitives.
+- **2026-04-23 — Claude chat — SuperControl API reference doc committed** — Created `SUPERCONTROL_API.md` in repo root (commit `da553a3`). Documents auth pattern (SC-TOKEN + `134.209.22.220` IP whitelist), four API endpoints (`/Properties/Index`, `/Properties/Listing/{id}`, `/Properties/PropertyConfiguration/{id}`, plus the Prices + Availability surface), exact smoke-test curl commands for future Claude Code sessions (including `-w "HTTP %{http_code}"` error-capture pattern), payload shapes verified against Compass Point (669466), complete WP ACF field mapping per feed, sync strategy restated from §3b for self-containment, error handling for 401/403/404/empty-images, four open questions (reviews population, pet fee modelling, currency handling, EPC rating display). Purpose: any future Claude Code session building the `pc-supercontrol-sync` plugin has the complete build spec without needing to re-explore the API.
+- **2026-04-23 — Claude chat — Claude Design stage added to pipeline (§3c)** — Reviewed the Greenscapes build workflow, where Claude Design (launched 17 April 2026, Anthropic Labs research preview) was used as a 1:1 HTML/CSS cloning stage between Lovable sign-off and Claude Code WordPress porting. Decided to adopt the same four-role pipeline for Pure Cornwall: Lovable → Claude Design → Claude Code → Live, with Claude Chat orchestrating. Value: (1) visual checkpoint — portable static HTML the client can review without a dev environment, (2) WP-friendly spec — plain HTML + BEM + tokens ports cleaner to PHP/ACF than React + Tailwind utilities, eliminating translation ambiguity for Claude Code. Timing locked: Claude Design wave does NOT start until ALL Lovable templates are signed off AND Amandine font refactor is applied globally — running Claude Design on a moving target or Cormorant-italic templates is wasted effort. §3c added to this map documenting the full pipeline with role definitions, current stage-by-stage status table, and the Greenscapes precedent. §4 build status table now notes font refactor as the immediate next priority before building more Lovable templates, so the remaining hubs/regions/static pages are built on locked typography.
 
 ---
 
@@ -377,6 +456,9 @@ Format: `YYYY-MM-DD — [who] — [what]`
 | `lovable-prompt-02-single-destination.md`           | Destination page v1 — 4-act editorial-first structure (shipped, superseded by 04) |
 | `lovable-prompt-04-destination-redesign.md`         | Destination page v2 — user-first, cottages above fold, graceful degradation (shipped, signed off) |
 | `lovable-prompt-05-teal-brand-refresh.md`           | Global teal brand refresh (shipped, signed off) |
+| `lovable-prompt-06-single-collection.md`            | Single collection page Dog Friendly (shipped, signed off — commit `3f069ba`) |
+| `lovable-prompt-07-amandine-font-refactor.md`       | Amandine non-italic global refactor (NOT YET WRITTEN — next prompt to author) |
+| `SUPERCONTROL_API.md`                               | SC API reference — endpoints, payloads, smoke tests, WP mapping (in repo root) |
 | `claude-code-standing-instructions.md`              | Standing instructions for Claude Code sessions to update PROJECT_MAP.md at session end |
 | `github-token-setup.md`                             | One-time setup docs for Claude Code GitHub auto-commit |
 
@@ -385,12 +467,13 @@ Format: `YYYY-MM-DD — [who] — [what]`
 ```
 purecornwallproto/
 ├── PROJECT_MAP.md              ← this file
+├── SUPERCONTROL_API.md         ← SC API reference (endpoints, payloads, smoke tests, WP mapping)
 ├── src/
-│   ├── index.css               ← design tokens (Jost + Cormorant Garamond)
+│   ├── index.css               ← design tokens (Jost + Cormorant Garamond — Amandine refactor pending)
 │   ├── tailwind.config.ts
-│   ├── App.tsx                 ← router (5 routes live)
+│   ├── App.tsx                 ← router (7 routes live)
 │   ├── assets/
-│   │   ├── property-1.jpg..property-6.jpg   ← cottage images used by homepage + minimal demos
+│   │   ├── property-1.jpg..property-6.jpg   ← cottage images used by homepage + mock data
 │   │   └── st-ives/            ← 14 real St-Ives-named assets (hero, map, atmos-*, td-*, related-*)
 │   ├── pages/
 │   │   ├── Index.tsx           ← homepage composition (signed off)
@@ -398,6 +481,8 @@ purecornwallproto/
 │   │   ├── FilterDrawerDemo.tsx ← filter drawer demo route (signed off)
 │   │   ├── DestinationPage.tsx ← destination composition, data-driven (signed off)
 │   │   ├── DestinationPageMinimal.tsx ← graceful-degradation proof (signed off)
+│   │   ├── CollectionPage.tsx  ← collection composition, data-driven (signed off)
+│   │   ├── CollectionPageMinimal.tsx ← collection graceful-degradation proof (signed off)
 │   │   └── NotFound.tsx
 │   ├── components/
 │   │   ├── Header.tsx
@@ -405,7 +490,7 @@ purecornwallproto/
 │   │   ├── Hero.tsx
 │   │   ├── BrandIntro.tsx
 │   │   ├── FeatureTiles.tsx
-│   │   ├── FeaturedProperties.tsx  ← homepage cottage card pattern — canonical, reused by destination grid
+│   │   ├── FeaturedProperties.tsx  ← homepage cottage card pattern — canonical, reused by destination + collection grids
 │   │   ├── Testimonials.tsx
 │   │   ├── Journal.tsx
 │   │   ├── Footer.tsx
@@ -419,24 +504,29 @@ purecornwallproto/
 │   │   │   ├── RangeSlider.tsx
 │   │   │   ├── FeaturePill.tsx
 │   │   │   └── types.ts        ← FilterState, FeatureKey, ranges, MockCottage, PRICE_MAX, isFilterActive
-│   │   └── destination/        ← destination page (signed off — 14 components)
-│   │       ├── DestinationHero.tsx       ← 50vh desktop / 35vh mobile, triple-layered legibility shadows
-│   │       ├── DestinationBreadcrumb.tsx ← sticky, teal separators
-│   │       ├── CompactIntro.tsx          ← single-paragraph intro, 2px teal top border
-│   │       ├── DestinationGrid.tsx       ← alternating cottage rows, consumes PropertyToolbar + FilterDrawer
-│   │       ├── DestinationMiniCollections.tsx ← 3-row curated groupings (the new pattern CS doesn't have)
-│   │       ├── DestinationStats.tsx      ← 5-column stats, 2px teal top border
-│   │       ├── DestinationMap.tsx        ← teal pins with white numbers
-│   │       ├── DestinationEditorial.tsx  ← 2-paragraph "Why X" with inline **bold** parser
-│   │       ├── DestinationAtmosphere.tsx ← 3 equal-column town photos
-│   │       ├── DestinationThingsToDo.tsx ← 6-item grid, teal category eyebrows
-│   │       ├── DestinationTravel.tsx     ← 3 modes with teal icons
-│   │       ├── DestinationRelated.tsx    ← 3-up nearby towns
-│   │       ├── DestinationFAQ.tsx        ← accordion, Plus-icon 45° rotation, teal border box, "Talk to us →"
-│   │       └── DestinationCottageIntro.tsx (legacy — no longer called, kept for now)
+│   │   ├── destination/        ← destination page (signed off — 14 components, 8 also reused by collection)
+│   │   │   ├── DestinationHero.tsx       ← SHARED — 50vh desktop / 35vh mobile, triple-layered legibility shadows
+│   │   │   ├── DestinationBreadcrumb.tsx ← SHARED — sticky, teal separators
+│   │   │   ├── CompactIntro.tsx          ← SHARED — single-paragraph intro, 2px teal top border
+│   │   │   ├── DestinationGrid.tsx       ← SHARED — alternating cottage rows, consumes PropertyToolbar + FilterDrawer
+│   │   │   ├── DestinationStats.tsx      ← SHARED — 5-column stats, 2px teal top border
+│   │   │   ├── DestinationMap.tsx        ← SHARED — teal pins with white numbers
+│   │   │   ├── DestinationAtmosphere.tsx ← SHARED — 3 equal-column town photos
+│   │   │   ├── DestinationFAQ.tsx        ← SHARED — accordion, Plus-icon 45° rotation, teal border box, "Talk to us →"
+│   │   │   ├── DestinationMiniCollections.tsx ← destination-only — 3-row curated groupings
+│   │   │   ├── DestinationEditorial.tsx  ← destination-only — 2-paragraph "Why X" with inline **bold** parser
+│   │   │   ├── DestinationThingsToDo.tsx ← destination-only — 6-item grid, teal category eyebrows
+│   │   │   ├── DestinationTravel.tsx     ← destination-only — 3 modes with teal icons
+│   │   │   ├── DestinationRelated.tsx    ← destination-only — 3-up nearby towns
+│   │   │   └── DestinationCottageIntro.tsx (legacy — no longer called, kept for now)
+│   │   └── collection/         ← collection page (signed off — 3 NEW components, 8 shared imported from destination/)
+│   │       ├── CollectionDestinationsGrid.tsx ← "Dog Friendly in St Ives (8)" hub-and-spoke pattern
+│   │       ├── CollectionEditorial.tsx        ← left-aligned 80px gold bar, 2-col prose, floated pull quote
+│   │       └── CollectionRelated.tsx          ← 3-up related-collection cards, eyebrow-only heading
 │   └── data/
 │       ├── treleighData.ts     ← mock data for property page
-│       └── stIvesData.ts       ← DestinationData type + stIvesData (rich) + stIvesDataMinimal (required-only)
+│       ├── stIvesData.ts       ← DestinationData type + stIvesData (rich) + stIvesDataMinimal
+│       └── dogFriendlyData.ts  ← CollectionData type + dogFriendlyData (rich) + dogFriendlyDataMinimal + generateDogFriendlyCottages (42 across 6 destinations)
 ```
 
 ### On the Cloudways server
