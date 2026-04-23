@@ -26,7 +26,7 @@ import {
   applySort,
 } from "@/lib/cottagesFilterUrl";
 import { cottagesCatalogueData } from "@/data/cottagesCatalogueData";
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/coll-popular.jpg";
 
 const PER_PAGE = 24;
 

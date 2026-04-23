@@ -1,4 +1,4 @@
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/hero-contact-coastguard.jpg";
 import type { ContactMethod } from "@/components/contact/ContactMethodsGrid";
 
 export interface ContactData {
@@ -14,7 +14,7 @@ export const contactData: ContactData = {
     name: "Contact Us",
     tagline:
       "A small team answering the phone ourselves. No call centres, no ticketing systems.",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   compactIntro:
     "Phone, email, form, or post — whichever suits you. We're a small Cornwall-based team and we answer queries ourselves, usually within a working day. For urgent booking issues we're quicker.",

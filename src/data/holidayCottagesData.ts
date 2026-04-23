@@ -1,4 +1,4 @@
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/hero-holiday-cottages.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -212,7 +212,7 @@ export const holidayCottagesData: HolidayCottagesData = {
     name: "Cornwall Holiday Cottages",
     tagline:
       "One hundred and nineteen handpicked Cornish cottages across the three Cornwalls — each one personally visited, curated, and cared for",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   trustStats: [
     { value: "119", label: "Cornish Cottages" },

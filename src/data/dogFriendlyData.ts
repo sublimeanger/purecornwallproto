@@ -76,8 +76,7 @@ export interface CollectionData {
   atmosphere?: { images: { src: string; alt: string }[]; caption: string };
 }
 
-const PLACEHOLDER_CAPTION =
-  "Placeholder imagery — to be swapped with commissioned dog-friendly cottage photography.";
+const PLACEHOLDER_CAPTION = "";
 
 // ---- Mock cottages for Dog Friendly --------------------------------------
 

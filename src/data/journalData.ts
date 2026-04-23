@@ -1,4 +1,4 @@
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/hero-journal.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -64,7 +64,7 @@ export const journalData: JournalData = {
     name: "Journal",
     tagline:
       "Cornwall writing from Rebecca Moore — places, people, seasons, and the things worth knowing before you come",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   articles: [
     {

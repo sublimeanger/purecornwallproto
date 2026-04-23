@@ -108,26 +108,28 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
       </p>
     </div>
 
-    <div
-      style={{
-        position: "absolute",
-        bottom: 16,
-        right: 24,
-        zIndex: 2,
-        fontFamily: "var(--font-body)",
-        fontSize: 11,
-        fontWeight: 500,
-        color: "#ffffff",
-        letterSpacing: 2,
-        textTransform: "uppercase",
-        background: "rgba(0,0,0,0.45)",
-        padding: "6px 12px",
-        backdropFilter: "blur(4px)",
-        WebkitBackdropFilter: "blur(4px)",
-      }}
-    >
-      {caption}
-    </div>
+    {caption && (
+      <div
+        style={{
+          position: "absolute",
+          bottom: 16,
+          right: 24,
+          zIndex: 2,
+          fontFamily: "var(--font-body)",
+          fontSize: 11,
+          fontWeight: 500,
+          color: "#ffffff",
+          letterSpacing: 2,
+          textTransform: "uppercase",
+          background: "rgba(0,0,0,0.45)",
+          padding: "6px 12px",
+          backdropFilter: "blur(4px)",
+          WebkitBackdropFilter: "blur(4px)",
+        }}
+      >
+        {caption}
+      </div>
+    )}
   </section>
 );
 

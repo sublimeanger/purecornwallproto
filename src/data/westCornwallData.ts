@@ -1,7 +1,7 @@
 import type { DestinationStat, DestinationFAQ, DestinationTravelItem } from "@/data/stIvesData";
 import type { SidebarFeatureKey, TopBarCollection, MockCottage } from "@/components/filters/types";
 
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/hero-west-cornwall.jpg";
 import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
 import atmosBeach from "@/assets/st-ives/atmos-beach.jpg";
 import property1 from "@/assets/property-1.jpg";
@@ -124,7 +124,7 @@ export const westCornwallData: RegionData = {
     eyebrow: "THE FAR WEST",
     name: "West Cornwall",
     tagline: "Atlantic on both sides, light that painters chase, towns that have shaped Cornwall's story for a thousand years",
-    caption: "Placeholder imagery — to be replaced with commissioned West Cornwall photography",
+    caption: "",
   },
   compactIntro:
     "West Cornwall is the end of England. A granite finger pointing into the Atlantic, edged by both coasts on three sides, with Land's End as its tip. It's the region of St Ives' artistic light, Penzance's working harbour, and the Lizard's wild clifftop coves. Smaller roads, older villages, and some of the finest holiday cottages on our books.",
