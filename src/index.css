@@ -170,6 +170,44 @@
   background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%);
 }
 
+/* Ken Burns hero effect — slow cinematic pan-and-zoom */
+.hero-kenburns {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-kenburns > img,
+.hero-kenburns > .hero-kenburns__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, filter;
+  animation: heroKenBurns 28s ease-in-out infinite alternate;
+  transform-origin: 50% 55%;
+}
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1.08) translate3d(-1.5%, 1%, 0);
+    transform-origin: 30% 65%;
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.02) saturate(1.04);
+  }
+  100% {
+    transform: scale(1.18) translate3d(1.5%, -1%, 0);
+    transform-origin: 70% 40%;
+    filter: brightness(1) saturate(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns > img,
+  .hero-kenburns > .hero-kenburns__img {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 /* Nav link hover */
 .nav-link {
   position: relative;

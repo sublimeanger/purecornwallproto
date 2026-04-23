@@ -14,9 +14,6 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
       position: "relative",
       width: "100%",
       minHeight: "50vh",
-      backgroundImage: `url(${image})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -26,6 +23,11 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
     }}
     className="min-h-[35vh] md:min-h-[50vh]"
   >
+    {/* Ken Burns background */}
+    <div className="hero-kenburns" aria-hidden="true">
+      <img src={image} alt="" />
+    </div>
+
     {/* Gradient overlay — darker for text legibility */}
     <div
       aria-hidden="true"
@@ -48,6 +50,7 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
         zIndex: 1,
       }}
     />
+
 
     <div
       style={{

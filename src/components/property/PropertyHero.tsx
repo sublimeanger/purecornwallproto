@@ -7,30 +7,18 @@ interface PropertyHeroProps {
 }
 
 const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
-  const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setLoaded(true);
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <section ref={heroRef} className="relative w-full overflow-hidden" style={{ minHeight: "85vh" }}>
-      <img
-        src={image}
-        alt="Treleigh clifftop retreat"
-        className="absolute left-0 w-full object-cover"
-        style={{
-          top: "-10%",
-          height: "120%",
-          transform: `translateY(${-scrollY * 0.3}px)`,
-          willChange: "transform",
-        }}
-      />
+      <div className="hero-kenburns">
+        <img src={image} alt="Treleigh clifftop retreat" />
+      </div>
       <div
         className="absolute inset-0"
         style={{
