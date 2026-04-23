@@ -5,13 +5,19 @@ import PropertyToolbar, { SortKey } from "@/components/filters/PropertyToolbar";
 import FilterDrawer from "@/components/filters/FilterDrawer";
 import {
   FilterState,
-  FEATURE_KEYS,
-  FeatureKey,
+  SidebarFeatureKey,
+  TopBarCollection,
+  RegionKey,
   initialFilterState,
   isFilterActive,
   MockCottage,
   PRICE_MIN,
   PRICE_MAX,
+  LOCATION_CHARACTER_KEYS,
+  OUTDOOR_SPACE_KEYS,
+  ESSENTIAL_KEYS,
+  ACTIVITY_KEYS,
+  TOP_BAR_FEATURE_COLLECTIONS,
 } from "@/components/filters/types";
 
 // ---- Mock data ------------------------------------------------------------
@@ -23,12 +29,27 @@ const COTTAGE_NAMES = [
   "Lamorna", "Sennen", "Zennor", "Lanivet", "Tregrehan", "Restormel",
 ];
 
-const LOCATIONS = [
-  "St Ives", "Padstow", "Falmouth", "Fowey", "Newquay", "Rock", "St Mawes",
-  "Mevagissey", "Mawgan Porth", "Polzeath", "Mousehole", "Sennen",
+const LOCATIONS: { name: string; slug: string; region: RegionKey }[] = [
+  { name: "St Ives", slug: "st-ives", region: "west-cornwall" },
+  { name: "Padstow", slug: "padstow", region: "north-cornwall" },
+  { name: "Falmouth", slug: "falmouth", region: "south-cornwall" },
+  { name: "Fowey", slug: "fowey", region: "south-cornwall" },
+  { name: "Newquay", slug: "newquay", region: "north-cornwall" },
+  { name: "Rock", slug: "rock", region: "north-cornwall" },
+  { name: "St Mawes", slug: "st-mawes", region: "south-cornwall" },
+  { name: "Mevagissey", slug: "mevagissey", region: "south-cornwall" },
+  { name: "Mawgan Porth", slug: "mawgan-porth", region: "north-cornwall" },
+  { name: "Polzeath", slug: "polzeath", region: "north-cornwall" },
+  { name: "Mousehole", slug: "mousehole", region: "west-cornwall" },
+  { name: "Sennen", slug: "sennen", region: "west-cornwall" },
 ];
 
-const COVER_IMAGES = [
+const SIDEBAR_FEATURE_POOL: SidebarFeatureKey[] = [
+  ...LOCATION_CHARACTER_KEYS,
+  ...OUTDOOR_SPACE_KEYS,
+  ...ESSENTIAL_KEYS,
+  ...ACTIVITY_KEYS,
+];
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
   "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=70",

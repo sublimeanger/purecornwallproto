@@ -9,10 +9,11 @@ import CollectionFilterChips, { CollectionChipKey } from "@/components/hub/Colle
 import CollectionsGrid, { type CollectionHubCard } from "@/components/hub/CollectionsGrid";
 import CollectionHeroFeature from "@/components/hub/CollectionHeroFeature";
 import { collectionsHubData } from "@/data/collectionsHubData";
+import type { TopBarCollection } from "@/components/filters/types";
 
 // Featured collection on the hub: swap this slug to change which collection gets the hero treatment
-const FEATURED_SLUG = "hot-tubs";
-const COMPANION_SLUGS = ["christmas-nye", "dog-friendly"];
+const FEATURED_SLUG: TopBarCollection = "hot-tubs-pools";
+const COMPANION_SLUGS: TopBarCollection[] = ["october-half-term", "dog-friendly"];
 
 const CollectionsHub = () => {
   const [activeFilter, setActiveFilter] = useState<CollectionChipKey>("all");

@@ -1,4 +1,4 @@
-import { FeatureKey, MockCottage } from "@/components/filters/types";
+import type { SidebarFeatureKey, TopBarCollection, MockCottage } from "@/components/filters/types";
 
 // St Ives commissioned imagery (AI-generated, on-context)
 import heroHarbour from "@/assets/st-ives/hero-harbour.jpg";
@@ -126,10 +126,38 @@ const ST_IVES_COTTAGE_NAMES = [
 
 const ST_IVES_LOCATIONS = ["St Ives", "Porthmeor", "Porthminster", "Downalong", "Carbis Bay"];
 
-const ALL_FEATURES: FeatureKey[] = [
-  "Sea View", "Dog Friendly", "Hot Tub", "Pool", "Parking", "Pet Welcome",
-  "Wood Burner", "Garden", "EV Charger", "Sauna", "Balcony", "WiFi",
+// Pool of sidebar features used by the generator. Top-bar collections (sea-views,
+// dog-friendly, hot-tubs-pools, etc.) live in the cottage's `collections` array.
+const SIDEBAR_FEATURE_POOL: SidebarFeatureKey[] = [
+  "near-the-beach",
+  "near-coast-path",
+  "harbour-marina",
+  "town-setting",
+  "hot-tub",
+  "garden",
+  "enclosed-garden",
+  "patio-decking",
+  "balcony",
+  "log-burner-open-fire",
+  "dishwasher",
+  "coffee-machine",
+  "highchair",
+  "cot-travel-crib",
+  "walking-coast-path",
+  "surfing",
+  "parking",
+  "ev-charging",
+  "wifi",
+  "washing-machine",
 ];
+
+const ST_IVES_TOWN_SLUGS: Record<string, string> = {
+  "St Ives": "st-ives",
+  "Porthmeor": "st-ives",
+  "Porthminster": "st-ives",
+  "Downalong": "st-ives",
+  "Carbis Bay": "carbis-bay",
+};
 
 const rng = (seed: number) => {
   let s = seed;
@@ -146,18 +174,32 @@ export const generateStIvesCottages = (): MockCottage[] => {
     const bedrooms = Math.max(1, Math.min(8, Math.round(sleeps / 2 + (r() - 0.5))));
     const bathrooms = Math.max(1, Math.min(6, Math.round(bedrooms / 2 + (r() < 0.4 ? 1 : 0))));
     const price = Math.floor((800 + r() * 2700) / 50) * 50;
-    const featureCount = 2 + Math.floor(r() * 5);
-    const shuffled = [...ALL_FEATURES].sort(() => r() - 0.5);
+    const featureCount = 3 + Math.floor(r() * 6);
+    const shuffled = [...SIDEBAR_FEATURE_POOL].sort(() => r() - 0.5);
     const features = shuffled.slice(0, featureCount);
+
+    // Derive top-bar collections from properties of this cottage
+    const collections: TopBarCollection[] = [];
+    if (r() < 0.45) collections.push("sea-views");
+    if (features.includes("hot-tub")) collections.push("hot-tubs-pools");
+    if (r() < 0.6) collections.push("dog-friendly");
+    if (sleeps >= 8) collections.push("large-holiday-homes");
+    if (sleeps <= 4 && r() < 0.35) collections.push("romantic-retreats");
+    if (r() < 0.3) collections.push("short-breaks");
+
+    const location = ST_IVES_LOCATIONS[Math.floor(r() * ST_IVES_LOCATIONS.length)];
     return {
       id: `sti-${i + 1}`,
       name,
-      location: ST_IVES_LOCATIONS[Math.floor(r() * ST_IVES_LOCATIONS.length)],
+      location,
+      townSlug: ST_IVES_TOWN_SLUGS[location] ?? "st-ives",
+      region: "west-cornwall" as const,
       pricePerWeek: price,
       sleeps,
       bedrooms,
       bathrooms,
       features,
+      collections,
       image: COTTAGE_IMAGES[i % COTTAGE_IMAGES.length],
     };
   });

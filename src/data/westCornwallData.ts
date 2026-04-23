@@ -1,5 +1,5 @@
 import type { DestinationStat, DestinationFAQ, DestinationTravelItem } from "@/data/stIvesData";
-import type { FeatureKey, MockCottage } from "@/components/filters/types";
+import type { SidebarFeatureKey, TopBarCollection, MockCottage } from "@/components/filters/types";
 
 import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
 import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
@@ -51,6 +51,9 @@ export interface RegionData {
   }>;
 }
 
+const slugifyTown = (name: string) =>
+  name.toLowerCase().replace(/['']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
 const cottage = (
   id: string,
   name: string,
@@ -59,23 +62,37 @@ const cottage = (
   sleeps: number,
   bedrooms: number,
   bathrooms: number,
-  features: FeatureKey[],
+  features: SidebarFeatureKey[],
+  collections: TopBarCollection[],
   image: string,
-): MockCottage => ({ id, name, location, pricePerWeek, sleeps, bedrooms, bathrooms, features, image });
+): MockCottage => ({
+  id,
+  name,
+  location,
+  townSlug: slugifyTown(location),
+  region: "west-cornwall",
+  pricePerWeek,
+  sleeps,
+  bedrooms,
+  bathrooms,
+  features,
+  collections,
+  image,
+});
 
 const featuredCottages: MockCottage[] = [
-  cottage("wc-1", "Porthmeor Light", "St Ives", 1495, 6, 3, 2, ["Sea View", "Wood Burner", "WiFi"], property1),
-  cottage("wc-2", "The Old Pilchard Store", "St Ives", 1295, 4, 2, 2, ["Sea View", "Parking", "WiFi"], property2),
-  cottage("wc-3", "Painters' Loft", "St Ives", 1095, 4, 2, 1, ["Balcony", "WiFi", "Wood Burner"], property3),
-  cottage("wc-4", "The Salt House", "Penzance", 850, 6, 3, 2, ["Garden", "Parking", "WiFi", "Pet Welcome"], property4),
-  cottage("wc-5", "Harbour Steps", "Penzance", 695, 4, 2, 1, ["WiFi", "Wood Burner"], property5),
-  cottage("wc-6", "Mermaid Cottage", "Mousehole", 1195, 4, 2, 2, ["Sea View", "WiFi", "Wood Burner"], property6),
-  cottage("wc-7", "Gull Rock Cottage", "Mousehole", 995, 2, 1, 1, ["Sea View", "WiFi"], property1),
-  cottage("wc-8", "The Crofts", "Porthleven", 895, 6, 3, 2, ["Hot Tub", "Garden", "Parking", "WiFi"], property2),
-  cottage("wc-9", "St Michael's View", "Marazion", 1095, 6, 3, 2, ["Sea View", "Garden", "Parking", "WiFi"], property3),
-  cottage("wc-10", "Sennen Cove Cottage", "Sennen", 1195, 8, 4, 3, ["Sea View", "Hot Tub", "Parking", "WiFi"], property4),
-  cottage("wc-11", "Cadgwith Catch", "Cadgwith", 1495, 6, 3, 2, ["Sea View", "Wood Burner", "Garden", "WiFi"], property5),
-  cottage("wc-12", "Tinners' Cottage", "Praa Sands", 950, 4, 2, 2, ["Dog Friendly", "Pet Welcome", "Garden", "Parking", "WiFi"], property6),
+  cottage("wc-1", "Porthmeor Light", "St Ives", 1495, 6, 3, 2, ["near-the-beach", "balcony", "log-burner-open-fire", "wifi"], ["sea-views"], property1),
+  cottage("wc-2", "The Old Pilchard Store", "St Ives", 1295, 4, 2, 2, ["harbour-marina", "parking", "wifi", "dishwasher"], ["sea-views", "romantic-retreats"], property2),
+  cottage("wc-3", "Painters' Loft", "St Ives", 1095, 4, 2, 1, ["town-setting", "balcony", "wifi", "log-burner-open-fire"], ["romantic-retreats"], property3),
+  cottage("wc-4", "The Salt House", "Penzance", 850, 6, 3, 2, ["garden", "enclosed-garden", "parking", "wifi"], ["dog-friendly", "country-cottages"], property4),
+  cottage("wc-5", "Harbour Steps", "Penzance", 695, 4, 2, 1, ["harbour-marina", "wifi", "log-burner-open-fire"], ["short-breaks"], property5),
+  cottage("wc-6", "Mermaid Cottage", "Mousehole", 1195, 4, 2, 2, ["near-the-beach", "wifi", "log-burner-open-fire"], ["sea-views", "romantic-retreats"], property6),
+  cottage("wc-7", "Gull Rock Cottage", "Mousehole", 995, 2, 1, 1, ["near-the-beach", "wifi"], ["sea-views", "romantic-retreats"], property1),
+  cottage("wc-8", "The Crofts", "Porthleven", 895, 6, 3, 2, ["hot-tub", "garden", "parking", "wifi"], ["hot-tubs-pools"], property2),
+  cottage("wc-9", "St Michael's View", "Marazion", 1095, 6, 3, 2, ["near-the-beach", "garden", "parking", "wifi"], ["sea-views"], property3),
+  cottage("wc-10", "Sennen Cove Cottage", "Sennen", 1195, 8, 4, 3, ["near-the-beach", "hot-tub", "parking", "wifi"], ["sea-views", "hot-tubs-pools", "large-holiday-homes"], property4),
+  cottage("wc-11", "Cadgwith Catch", "Cadgwith", 1495, 6, 3, 2, ["near-the-beach", "log-burner-open-fire", "garden", "wifi"], ["sea-views", "country-cottages"], property5),
+  cottage("wc-12", "Tinners' Cottage", "Praa Sands", 950, 4, 2, 2, ["enclosed-garden", "garden", "parking", "wifi"], ["dog-friendly"], property6),
 ];
 
 const towns: RegionTown[] = [
