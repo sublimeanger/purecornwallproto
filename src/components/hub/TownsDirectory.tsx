@@ -85,7 +85,7 @@ const TownsDirectory = ({ towns }: TownsDirectoryProps) => {
               margin: 0,
             }}
           >
-            Browse the full directory
+            Browse all destinations
           </h2>
           <div
             style={{
