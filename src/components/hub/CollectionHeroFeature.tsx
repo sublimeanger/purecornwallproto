@@ -33,11 +33,11 @@ const HeroCard = ({ c, mode }: { c: CollectionHubCard; mode: "desktop" | "tablet
       textDecoration: "none",
       color: "inherit",
       overflow: "hidden",
-      height: "100%",
     }}
   >
     <div
       style={{
+        position: "relative",
         width: "100%",
         aspectRatio: mode === "mobile" ? "4 / 3" : "16 / 10",
         overflow: "hidden",
@@ -52,6 +52,7 @@ const HeroCard = ({ c, mode }: { c: CollectionHubCard; mode: "desktop" | "tablet
           width: "100%",
           height: "100%",
           objectFit: "cover",
+          display: "block",
           transition: "transform 250ms ease",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
@@ -147,6 +148,7 @@ const CompanionCard = ({ c }: { c: CollectionHubCard }) => (
   >
     <div
       style={{
+        position: "relative",
         width: "100%",
         aspectRatio: "4 / 3",
         overflow: "hidden",
@@ -161,6 +163,7 @@ const CompanionCard = ({ c }: { c: CollectionHubCard }) => (
           width: "100%",
           height: "100%",
           objectFit: "cover",
+          display: "block",
           transition: "transform 250ms ease",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
@@ -241,8 +244,8 @@ const CollectionHeroFeature = ({ hero, companions }: CollectionHeroFeatureProps)
     gridStyle = {
       display: "grid",
       gridTemplateColumns: "2fr 1fr",
-      gridTemplateRows: "1fr 1fr",
       gap: 24,
+      alignItems: "stretch",
     };
   } else if (mode === "tablet") {
     gridStyle = {
@@ -266,14 +269,14 @@ const CollectionHeroFeature = ({ hero, companions }: CollectionHeroFeatureProps)
         <div style={gridStyle}>
           {hasCompanions && mode === "desktop" ? (
             <>
-              <div style={{ gridColumn: "1 / 2", gridRow: "1 / 3" }}>
-                <HeroCard c={hero} mode={mode} />
-              </div>
-              <div style={{ gridColumn: "2 / 3", gridRow: "1 / 2" }}>
-                <CompanionCard c={companions[0]} />
-              </div>
-              <div style={{ gridColumn: "2 / 3", gridRow: "2 / 3" }}>
-                <CompanionCard c={companions[1]} />
+              <HeroCard c={hero} mode={mode} />
+              <div style={{ display: "flex", flexDirection: "column", gap: 24, minHeight: 0 }}>
+                <div style={{ flex: 1, minHeight: 0 }}>
+                  <CompanionCard c={companions[0]} />
+                </div>
+                <div style={{ flex: 1, minHeight: 0 }}>
+                  <CompanionCard c={companions[1]} />
+                </div>
               </div>
             </>
           ) : hasCompanions && mode === "tablet" ? (
