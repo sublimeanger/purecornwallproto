@@ -1,4 +1,4 @@
-import { FeatureKey, MockCottage } from "@/components/filters/types";
+import type { SidebarFeatureKey, TopBarCollection, RegionKey, MockCottage } from "@/components/filters/types";
 
 // Reuse existing Cornwall imagery for demo (will be swapped for commissioned photography)
 import dogFriendlyHero from "@/assets/dog-friendly-hero-cornwall.jpg";
@@ -97,11 +97,35 @@ const DOG_COTTAGE_NAMES = [
   "Driftwood Lodge", "The Coast Path",
 ];
 
-const DOG_LOCATIONS = ["St Ives", "Padstow", "Falmouth", "Fowey", "Bude", "Newquay"];
+const DOG_LOCATIONS: { name: string; slug: string; region: RegionKey }[] = [
+  { name: "St Ives", slug: "st-ives", region: "west-cornwall" },
+  { name: "Padstow", slug: "padstow", region: "north-cornwall" },
+  { name: "Falmouth", slug: "falmouth", region: "south-cornwall" },
+  { name: "Fowey", slug: "fowey", region: "south-cornwall" },
+  { name: "Bude", slug: "bude", region: "north-cornwall" },
+  { name: "Newquay", slug: "newquay", region: "north-cornwall" },
+];
 
-const ALL_FEATURES: FeatureKey[] = [
-  "Sea View", "Dog Friendly", "Hot Tub", "Pool", "Parking", "Pet Welcome",
-  "Wood Burner", "Garden", "EV Charger", "Sauna", "Balcony", "WiFi",
+// Sidebar feature pool — top-bar collections (dog-friendly, sea-views, etc.) sit
+// in the cottage's `collections` array, not in `features`.
+const SIDEBAR_FEATURE_POOL: SidebarFeatureKey[] = [
+  "near-the-beach",
+  "near-coast-path",
+  "rural-countryside",
+  "village-setting",
+  "hot-tub",
+  "garden",
+  "enclosed-garden",
+  "patio-decking",
+  "log-burner-open-fire",
+  "dishwasher",
+  "family-friendly",
+  "walking-coast-path",
+  "parking",
+  "ev-charging",
+  "wifi",
+  "washing-machine",
+  "tumble-dryer",
 ];
 
 const rng = (seed: number) => {
@@ -119,20 +143,33 @@ export const generateDogFriendlyCottages = (): MockCottage[] => {
     const bedrooms = Math.max(1, Math.min(8, Math.round(sleeps / 2 + (r() - 0.5))));
     const bathrooms = Math.max(1, Math.min(6, Math.round(bedrooms / 2 + (r() < 0.4 ? 1 : 0))));
     const price = Math.floor((695 + r() * 1700) / 50) * 50;
-    // Every cottage has Pet Welcome (defining filter for collection)
-    const otherFeaturePool = ALL_FEATURES.filter((f) => f !== "Pet Welcome");
-    const featureCount = 2 + Math.floor(r() * 4);
-    const shuffled = [...otherFeaturePool].sort(() => r() - 0.5);
-    const features: FeatureKey[] = ["Pet Welcome", ...shuffled.slice(0, featureCount)];
+    // Every cottage gets enclosed-garden (defining trait for the dog collection).
+    const baseFeatures: SidebarFeatureKey[] = ["enclosed-garden"];
+    const otherPool = SIDEBAR_FEATURE_POOL.filter((f) => f !== "enclosed-garden");
+    const featureCount = 3 + Math.floor(r() * 5);
+    const shuffled = [...otherPool].sort(() => r() - 0.5);
+    const features: SidebarFeatureKey[] = [...baseFeatures, ...shuffled.slice(0, featureCount)];
+
+    // Every cottage in this collection is dog-friendly by definition.
+    const collections: TopBarCollection[] = ["dog-friendly"];
+    if (r() < 0.4) collections.push("sea-views");
+    if (features.includes("hot-tub")) collections.push("hot-tubs-pools");
+    if (sleeps >= 8) collections.push("large-holiday-homes");
+    if (r() < 0.35) collections.push("short-breaks");
+
+    const loc = DOG_LOCATIONS[Math.floor(r() * DOG_LOCATIONS.length)];
     return {
       id: `dog-${i + 1}`,
       name,
-      location: DOG_LOCATIONS[Math.floor(r() * DOG_LOCATIONS.length)],
+      location: loc.name,
+      townSlug: loc.slug,
+      region: loc.region,
       pricePerWeek: price,
       sleeps,
       bedrooms,
       bathrooms,
       features,
+      collections,
       image: COTTAGE_IMAGES[i % COTTAGE_IMAGES.length],
     };
   });
