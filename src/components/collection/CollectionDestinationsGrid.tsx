@@ -125,10 +125,8 @@ const CollectionDestinationsGrid = ({
                 }}
               >
                 {/*
-                  Eyebrow on photo: white text with solid teal dot prefix.
-                  Teal as a shape reads reliably against imagery where teal as letterforms does not.
-                  Do not revert to teal text colour — the dot carries the brand signal instead.
-                  Dot uses borderRadius 50% as a deliberate exception to the project's no-radius rule.
+                  Eyebrow on photo: white text for legibility against imagery.
+                  Two-layer shadow keeps the letters crisp on any background.
                 */}
                 <p
                   style={{
@@ -141,22 +139,8 @@ const CollectionDestinationsGrid = ({
                     margin: 0,
                     marginBottom: 6,
                     textShadow: "0 1px 3px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 12,
                   }}
                 >
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      display: "inline-block",
-                      width: 8,
-                      height: 8,
-                      borderRadius: "50%",
-                      backgroundColor: "#6fb6ae",
-                      flexShrink: 0,
-                    }}
-                  />
                   {collectionName} in
                 </p>
                 <h3
