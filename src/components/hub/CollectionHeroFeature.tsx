@@ -244,8 +244,8 @@ const CollectionHeroFeature = ({ hero, companions }: CollectionHeroFeatureProps)
     gridStyle = {
       display: "grid",
       gridTemplateColumns: "2fr 1fr",
-      gridTemplateRows: "1fr 1fr",
       gap: 24,
+      alignItems: "stretch",
     };
   } else if (mode === "tablet") {
     gridStyle = {
