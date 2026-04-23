@@ -16,6 +16,7 @@ import CollectionPage from "./pages/CollectionPage.tsx";
 import CollectionPageMinimal from "./pages/CollectionPageMinimal.tsx";
 import HolidayCottages from "./pages/HolidayCottages.tsx";
 import CottagesCatalogue from "./pages/CottagesCatalogue.tsx";
+import SearchResults from "./pages/SearchResults.tsx";
 import JournalHub from "./pages/JournalHub.tsx";
 import JournalPost from "./pages/JournalPost.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/collections/dog-friendly-minimal" element={<CollectionPageMinimal />} />
           <Route path="/holiday-cottages" element={<HolidayCottages />} />
           <Route path="/cottages" element={<CottagesCatalogue />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/journal" element={<JournalHub />} />
           <Route path="/journal/:slug" element={<JournalPost />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
