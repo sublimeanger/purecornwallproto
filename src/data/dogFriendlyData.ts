@@ -1,6 +1,7 @@
 import { FeatureKey, MockCottage } from "@/components/filters/types";
 
 // Reuse existing Cornwall imagery for demo (will be swapped for commissioned photography)
+import dogFriendlyHero from "@/assets/dog-friendly-hero-cornwall.jpg";
 import heroHarbour from "@/assets/st-ives/hero-harbour.jpg";
 import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
 import atmosBeach from "@/assets/st-ives/atmos-beach.jpg";
@@ -142,7 +143,7 @@ export const dogFriendlyData: CollectionData = {
   name: "Dog Friendly",
   filterKey: "pet_welcome",
   hero: {
-    image: heroHarbour,
+    image: dogFriendlyHero,
     eyebrow: "The Collection",
     tagline: "Cottages that welcome the whole family, dog included",
     caption: PLACEHOLDER_CAPTION,
