@@ -19,6 +19,8 @@ import CottagesCatalogue from "./pages/CottagesCatalogue.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
 import JournalHub from "./pages/JournalHub.tsx";
 import JournalPost from "./pages/JournalPost.tsx";
+import About from "./pages/About.tsx";
+import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/search" element={<SearchResults />} />
           <Route path="/journal" element={<JournalHub />} />
           <Route path="/journal/:slug" element={<JournalPost />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
