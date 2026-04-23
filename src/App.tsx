@@ -14,6 +14,7 @@ import RegionPageMinimal from "./pages/RegionPageMinimal.tsx";
 import CollectionsHub from "./pages/CollectionsHub.tsx";
 import CollectionPage from "./pages/CollectionPage.tsx";
 import CollectionPageMinimal from "./pages/CollectionPageMinimal.tsx";
+import HolidayCottages from "./pages/HolidayCottages.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/collections" element={<CollectionsHub />} />
           <Route path="/collections/dog-friendly" element={<CollectionPage />} />
           <Route path="/collections/dog-friendly-minimal" element={<CollectionPageMinimal />} />
+          <Route path="/holiday-cottages" element={<HolidayCottages />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
