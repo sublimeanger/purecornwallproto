@@ -6,12 +6,25 @@ import DestinationBreadcrumb from "@/components/destination/DestinationBreadcrum
 import CompactIntro from "@/components/destination/CompactIntro";
 import DestinationFAQ from "@/components/destination/DestinationFAQ";
 import CollectionFilterChips, { CollectionChipKey } from "@/components/hub/CollectionFilterChips";
-import CollectionsGrid from "@/components/hub/CollectionsGrid";
+import CollectionsGrid, { type CollectionHubCard } from "@/components/hub/CollectionsGrid";
+import CollectionHeroFeature from "@/components/hub/CollectionHeroFeature";
 import { collectionsHubData } from "@/data/collectionsHubData";
+
+// Featured collection on the hub: swap this slug to change which collection gets the hero treatment
+const FEATURED_SLUG = "hot-tubs";
+const COMPANION_SLUGS = ["christmas-nye", "dog-friendly"];
 
 const CollectionsHub = () => {
   const [activeFilter, setActiveFilter] = useState<CollectionChipKey>("all");
   const data = collectionsHubData;
+
+  const featured = data.collections.find((c) => c.slug === FEATURED_SLUG);
+  const companions = COMPANION_SLUGS
+    .map((slug) => data.collections.find((c) => c.slug === slug))
+    .filter((c): c is CollectionHubCard => c !== undefined);
+
+  const showHero = activeFilter === "all" && !!featured && companions.length === 2;
+  const excludeSlugs = showHero ? [FEATURED_SLUG, ...COMPANION_SLUGS] : [];
 
   return (
     <div style={{ background: "#ffffff" }}>
@@ -31,7 +44,14 @@ const CollectionsHub = () => {
       />
       <CompactIntro text={data.compactIntro} />
       <CollectionFilterChips active={activeFilter} onChange={setActiveFilter} />
-      <CollectionsGrid collections={data.collections} activeFilter={activeFilter} />
+      {showHero && featured && (
+        <CollectionHeroFeature hero={featured} companions={companions} />
+      )}
+      <CollectionsGrid
+        collections={data.collections}
+        activeFilter={activeFilter}
+        excludeSlugs={excludeSlugs}
+      />
       <DestinationFAQ faqs={data.faqs} />
       <Footer />
     </div>
