@@ -130,18 +130,6 @@ const DestinationThingsToDo = ({ items }: DestinationThingsToDoProps) => (
         ))}
       </div>
 
-      <p
-        style={{
-          fontFamily: "var(--font-body)",
-          fontSize: 11,
-          fontWeight: 400,
-          color: "#7a7a7a",
-          textAlign: "center",
-          marginTop: 32,
-        }}
-      >
-        Placeholder imagery — to be swapped with commissioned photography
-      </p>
     </div>
   </section>
 );

@@ -33,18 +33,20 @@ const DestinationAtmosphere = ({ images, caption }: DestinationAtmosphereProps) 
         </div>
       ))}
     </div>
-    <p
-      style={{
-        fontFamily: "var(--font-body)",
-        fontSize: 11,
-        fontWeight: 400,
-        color: "#7a7a7a",
-        textAlign: "center",
-        marginTop: 12,
-      }}
-    >
-      {caption}
-    </p>
+    {caption && (
+      <p
+        style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 11,
+          fontWeight: 400,
+          color: "#7a7a7a",
+          textAlign: "center",
+          marginTop: 12,
+        }}
+      >
+        {caption}
+      </p>
+    )}
   </section>
 );
 
