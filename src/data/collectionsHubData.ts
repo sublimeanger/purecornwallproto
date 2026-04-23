@@ -1,4 +1,4 @@
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroSurf from "@/assets/collections-hero-surf.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -18,7 +18,7 @@ export interface CollectionsHubData {
 
 export const collectionsHubData: CollectionsHubData = {
   hero: {
-    image: heroCornwall,
+    image: heroSurf,
     eyebrow: "SHOP BY TYPE",
     name: "Collections",
     tagline:
