@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { CollectionChipKey } from "./CollectionFilterChips";
+import type { TopBarCollection } from "@/components/filters/types";
 
 export interface CollectionHubCard {
-  slug: string;
+  slug: TopBarCollection;
   name: string;
-  group: CollectionChipKey;
-  groupLabel: string;
+  group: "features" | "occasions";
+  groupLabel: "FEATURE" | "OCCASION";
   image: string;
   descriptor: string;
   cottageCount: number;

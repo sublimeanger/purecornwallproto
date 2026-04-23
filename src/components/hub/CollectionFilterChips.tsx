@@ -1,4 +1,4 @@
-export type CollectionChipKey = "all" | "features" | "character" | "seasonal" | "activity";
+export type CollectionChipKey = "all" | "features" | "occasions";
 
 interface CollectionFilterChipsProps {
   active: CollectionChipKey;
@@ -8,9 +8,7 @@ interface CollectionFilterChipsProps {
 const CHIPS: { key: CollectionChipKey; label: string }[] = [
   { key: "all", label: "ALL" },
   { key: "features", label: "FEATURES" },
-  { key: "character", label: "CHARACTER" },
-  { key: "seasonal", label: "SEASONAL" },
-  { key: "activity", label: "ACTIVITY" },
+  { key: "occasions", label: "OCCASIONS" },
 ];
 
 const CollectionFilterChips = ({ active, onChange }: CollectionFilterChipsProps) => {
