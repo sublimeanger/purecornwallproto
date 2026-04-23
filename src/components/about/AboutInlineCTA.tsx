@@ -1,8 +1,8 @@
-{/*
+/*
   Dark teal #2f5550 usage: documented exception to "footer-only" rule.
   This section is functionally a secondary navigational band with primary CTA,
   treated as footer-adjacent. Pattern matches JournalContentCTA.
-*/}
+*/
 const AboutInlineCTA = () => (
   <section style={{ background: "#2f5550", padding: "6vw 0" }}>
     <div className="pc-container" style={{ textAlign: "center" }}>
