@@ -1,5 +1,5 @@
 import heroHarbour from "@/assets/st-ives/hero-harbour.jpg";
-import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
+import heroCornwall from "@/assets/hero-destinations-aerial.jpg";
 import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
 import atmosBeach from "@/assets/st-ives/atmos-beach.jpg";
 import property1 from "@/assets/property-1.jpg";
@@ -150,7 +150,7 @@ export const destinationsHubData: DestinationsHubData = {
     eyebrow: "DISCOVER",
     name: "Destinations",
     tagline: "From the light of St Ives to the surf of Newquay, the full Cornwall we cover",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   compactIntro:
     "Cornwall divides naturally into three. West Cornwall for the light, North Cornwall for the surf and the cliffs, South Cornwall for the estuaries and gardens. Fifty-six towns across the three. Every cottage we look after lives in one of them.",

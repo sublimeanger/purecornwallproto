@@ -23,7 +23,7 @@ export const collectionsHubData: CollectionsHubData = {
     name: "Collections",
     tagline:
       "Cottages grouped by the thing that matters most to your stay — a hot tub, a sea view, a pet-friendly garden, or the right time of year",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   compactIntro:
     "Twelve collections across the Pure Cornwall portfolio. Some are about the cottage itself — a hot tub, a sea view, a secure garden for the dog. Others are about when you're going — a short break, a winter escape, an Easter week. Each collection is a filter across all of our cottages.",

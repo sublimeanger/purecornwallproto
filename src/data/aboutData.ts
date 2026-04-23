@@ -24,7 +24,7 @@ export const aboutData: AboutData = {
     name: "About Pure Cornwall",
     tagline:
       "A small team, Cornwall-based, curating handpicked holiday cottages across the three Cornwalls",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   trustStats: [
     { value: "119", label: "Cornish Cottages" },

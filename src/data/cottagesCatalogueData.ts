@@ -281,7 +281,7 @@ export const cottagesCatalogueData: CottagesCatalogueData = {
     name: "All Cottages",
     tagline:
       "One hundred and nineteen cottages across the three Cornwalls — filter by region, collection, or amenity to find yours",
-    caption: "Placeholder imagery — to be replaced with commissioned Cornwall photography",
+    caption: "",
   },
   cottages: generateCottages(),
 };
