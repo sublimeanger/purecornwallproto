@@ -39,7 +39,10 @@ const HeroCard = ({ c, mode }: { c: CollectionHubCard; mode: "desktop" | "tablet
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: mode === "mobile" ? "4 / 3" : "16 / 10",
+        aspectRatio:
+          mode === "mobile" ? "4 / 3"
+          : mode === "tablet" ? "16 / 10"
+          : "4 / 5",
         overflow: "hidden",
         background: "#e5e0da",
       }}
@@ -60,31 +63,19 @@ const HeroCard = ({ c, mode }: { c: CollectionHubCard; mode: "desktop" | "tablet
       />
     </div>
     <div style={{ padding: 28, display: "flex", flexDirection: "column", flex: 1 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-        <span style={{ display: "inline-block", width: 2, height: 12, background: "#d3a36e" }} />
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+        <span style={{ display: "inline-block", width: 2, height: 14, background: "#d3a36e" }} />
         <span
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: 500,
             color: "#d3a36e",
             letterSpacing: 3,
             textTransform: "uppercase",
           }}
         >
-          Featured
-        </span>
-        <span
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 11,
-            fontWeight: 500,
-            color: "#6fb6ae",
-            letterSpacing: 3,
-            textTransform: "uppercase",
-          }}
-        >
-          · {c.groupLabel}
+          Featured Collection
         </span>
       </div>
       <h3
