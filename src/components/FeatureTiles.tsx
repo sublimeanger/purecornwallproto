@@ -10,15 +10,15 @@ import collGuide from "@/assets/coll-guide.jpg";
 import { useEffect, useRef, useState } from "react";
 
 const tiles = [
-  { img: collPopular, title: "Most Popular", subtitle: "Our portfolio highlights" },
-  { img: collSeaviews, title: "Sea View Cottages", subtitle: "Spectacular coastal outlooks" },
-  { img: collHottubs, title: "Hot Tub Cottages", subtitle: "Relax in style with a hot tub" },
-  { img: collLarge, title: "Large Holiday Cottages", subtitle: "Space for big groups and families" },
-  { img: collDogs, title: "Dog Friendly Cottages", subtitle: "Your pet is welcome too" },
-  { img: collSurfing, title: "Surfing Escapes", subtitle: "Surf's up with these retreats" },
-  { img: collBeach, title: "Cornwall Beach Retreats", subtitle: "Coastal cottages by the sea" },
-  { img: collPools, title: "Cottages with Pools", subtitle: "Dive into our swimming pool collection" },
-  { img: collGuide, title: "The Great Cornwall Guide", subtitle: "The essential guide for visiting Cornwall" },
+  { img: collPopular, title: "Most Popular", subtitle: "Our portfolio highlights", href: "/collections/dog-friendly" },
+  { img: collSeaviews, title: "Sea View Cottages", subtitle: "Spectacular coastal outlooks", href: "/collections/sea-views" },
+  { img: collHottubs, title: "Hot Tub Cottages", subtitle: "Relax in style with a hot tub", href: "/collections/hot-tubs-pools" },
+  { img: collLarge, title: "Large Holiday Cottages", subtitle: "Space for big groups and families", href: "/collections/large-holiday-homes" },
+  { img: collDogs, title: "Dog Friendly Cottages", subtitle: "Your pet is welcome too", href: "/collections/dog-friendly" },
+  { img: collSurfing, title: "Surfing Escapes", subtitle: "Surf's up with these retreats", href: "/collections/dog-friendly" },
+  { img: collBeach, title: "Cornwall Beach Retreats", subtitle: "Coastal cottages by the sea", href: "/collections/dog-friendly" },
+  { img: collPools, title: "Cottages with Pools", subtitle: "Dive into our swimming pool collection", href: "/collections/hot-tubs-pools" },
+  { img: collGuide, title: "The Great Cornwall Guide", subtitle: "The essential guide for visiting Cornwall", href: "/journal" },
 ];
 
 const FeatureTiles = () => {
@@ -53,7 +53,7 @@ const FeatureTiles = () => {
           {tiles.map((t, idx) => (
             <a
               key={t.title}
-              href="#"
+              href={t.href}
               className="relative block group overflow-hidden cursor-pointer"
               style={{
                 aspectRatio: "3/2",

@@ -2,7 +2,13 @@ import { useState } from "react";
 import logo from "@/assets/pure-cornwall-logo.png";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Destinations", "Collections", "Journal", "About", "Contact"];
+const navItems = [
+  { label: "Destinations", href: "/destinations" },
+  { label: "Collections", href: "/collections" },
+  { label: "Journal", href: "/journal" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,11 +24,11 @@ const Header = () => {
         <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <a
-              key={item}
-              href="#"
+              key={item.label}
+              href={item.href}
               className="nav-link text-brand-dark"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -68,8 +74,8 @@ const Header = () => {
         <nav className="flex flex-col">
           {navItems.map((item) => (
             <a
-              key={item}
-              href="#"
+              key={item.label}
+              href={item.href}
               onClick={() => setMenuOpen(false)}
               style={{
                 padding: "20px 32px",
@@ -84,7 +90,7 @@ const Header = () => {
               onMouseEnter={(e) => (e.currentTarget.style.color = "#d3a36e")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#2f5550")}
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>

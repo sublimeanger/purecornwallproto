@@ -47,7 +47,7 @@ const ActivitiesSection = ({ paragraphs }: ActivitiesSectionProps) => {
 
         <p className="mt-8" style={{ fontSize: 15, lineHeight: 1.7, color: "#3a3a3a" }}>
           {closing.replace(/<[^>]*>/g, "").replace("Read more, here.", "")}{" "}
-          <a href="#" style={{ color: "#d3a36e", textDecoration: "underline", textUnderlineOffset: 4 }}>
+          <a href="/journal" style={{ color: "#d3a36e", textDecoration: "underline", textUnderlineOffset: 4 }}>
             Read more, here.
           </a>
         </p>

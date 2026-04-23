@@ -88,7 +88,9 @@ const FeaturedProperties = () => (
               {/* Image */}
               <div className="w-full md:w-[60%] overflow-hidden">
                 <AnimatedCard>
-                  <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
+                  <a href="/properties/treleigh" style={{ display: "block", textDecoration: "none", color: "inherit" }}>
+                    <PropertyImageCarousel images={p.images} alt={p.name} aspectRatio="5/4" />
+                  </a>
                 </AnimatedCard>
               </div>
 
@@ -98,94 +100,96 @@ const FeaturedProperties = () => (
                 style={{ padding: 48 }}
               >
                 <AnimatedCard delay={200}>
-                  <div className="flex flex-col w-full" style={{ gap: 20 }}>
-                    <div className="flex items-baseline justify-between">
-                      <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#6fb6ae" }}>
-                        {p.location}
+                  <a href="/properties/treleigh" style={{ display: "block", textDecoration: "none", color: "inherit" }}>
+                    <div className="flex flex-col w-full" style={{ gap: 20 }}>
+                      <div className="flex items-baseline justify-between">
+                        <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3, fontWeight: 500, color: "#6fb6ae" }}>
+                          {p.location}
+                        </p>
+                        <div className="text-right flex items-baseline gap-1">
+                          <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>From</span>
+                          <span style={{ fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 400, color: "#d3a36e" }}>£{p.price.toLocaleString()}</span>
+                          <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>per week</span>
+                        </div>
+                      </div>
+
+                      <h3 style={{
+                        fontFamily: "var(--font-serif)",
+                        fontSize: "clamp(28px, 2.5vw, 36px)",
+                        fontWeight: 300,
+                        lineHeight: 1.2,
+                        color: "#d3a36e",
+                      }}>
+                        {p.name}
+                      </h3>
+
+                      <p style={{
+                        fontFamily: "var(--font-serif)",
+                        fontSize: 18,
+                        fontWeight: 400,
+                        color: "#3a3a3a",
+                        lineHeight: 1.5,
+                      }}>
+                        {p.tagline}
                       </p>
-                      <div className="text-right flex items-baseline gap-1">
-                        <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>From</span>
-                        <span style={{ fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 400, color: "#d3a36e" }}>£{p.price.toLocaleString()}</span>
-                        <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>per week</span>
-                      </div>
-                    </div>
 
-                    <h3 style={{
-                      fontFamily: "var(--font-serif)",
-                      fontSize: "clamp(28px, 2.5vw, 36px)",
-                      fontWeight: 300,
-                      lineHeight: 1.2,
-                      color: "#d3a36e",
-                    }}>
-                      {p.name}
-                    </h3>
-
-                    <p style={{
-                      fontFamily: "var(--font-serif)",
-                      fontSize: 18,
-                      fontWeight: 400,
-                      color: "#3a3a3a",
-                      lineHeight: 1.5,
-                    }}>
-                      {p.tagline}
-                    </p>
-
-                    <div className="flex gap-6">
-                      <div className="flex items-center gap-2">
-                        <Users size={18} style={{ color: "#6fb6ae" }} />
-                        <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>Sleeps {p.sleeps}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Bed size={18} style={{ color: "#6fb6ae" }} />
-                        <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.beds} Bed</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Bath size={18} style={{ color: "#6fb6ae" }} />
-                        <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.baths} Bath</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-6">
-                      {p.parking && (
+                      <div className="flex gap-6">
                         <div className="flex items-center gap-2">
-                          <Car size={16} style={{ color: "#7a7a7a" }} />
-                          <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>Parking</span>
+                          <Users size={18} style={{ color: "#6fb6ae" }} />
+                          <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>Sleeps {p.sleeps}</span>
                         </div>
-                      )}
-                      {p.pets && (
                         <div className="flex items-center gap-2">
-                          <Dog size={16} style={{ color: "#7a7a7a" }} />
-                          <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>Pet Welcome</span>
+                          <Bed size={18} style={{ color: "#6fb6ae" }} />
+                          <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.beds} Bed</span>
                         </div>
-                      )}
-                      <div className="flex items-center gap-2">
-                        <Sparkles size={16} style={{ color: "#7a7a7a" }} />
-                        <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>{p.feature}</span>
+                        <div className="flex items-center gap-2">
+                          <Bath size={18} style={{ color: "#6fb6ae" }} />
+                          <span style={{ fontSize: 14, textTransform: "uppercase", letterSpacing: 2, color: "#3a3a3a" }}>{p.baths} Bath</span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-6">
+                        {p.parking && (
+                          <div className="flex items-center gap-2">
+                            <Car size={16} style={{ color: "#7a7a7a" }} />
+                            <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>Parking</span>
+                          </div>
+                        )}
+                        {p.pets && (
+                          <div className="flex items-center gap-2">
+                            <Dog size={16} style={{ color: "#7a7a7a" }} />
+                            <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>Pet Welcome</span>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-2">
+                          <Sparkles size={16} style={{ color: "#7a7a7a" }} />
+                          <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: 2, color: "#7a7a7a" }}>{p.feature}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2" style={{ marginBottom: 4 }}>
+                        {p.highlights.map((h) => (
+                          <span
+                            key={h}
+                            style={{
+                              fontSize: 11,
+                              textTransform: "uppercase",
+                              letterSpacing: 2,
+                              color: "#2f5550",
+                              border: "1px solid #e5e0da",
+                              padding: "4px 12px",
+                            }}
+                          >
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="text-right">
+                        <span className="btn-flat text-xs">View Property</span>
                       </div>
                     </div>
-
-                    <div className="flex flex-wrap gap-2" style={{ marginBottom: 4 }}>
-                      {p.highlights.map((h) => (
-                        <span
-                          key={h}
-                          style={{
-                            fontSize: 11,
-                            textTransform: "uppercase",
-                            letterSpacing: 2,
-                            color: "#2f5550",
-                            border: "1px solid #e5e0da",
-                            padding: "4px 12px",
-                          }}
-                        >
-                          {h}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="text-right">
-                      <button className="btn-flat text-xs">View Property</button>
-                    </div>
-                  </div>
+                  </a>
                 </AnimatedCard>
               </div>
             </div>

@@ -1,9 +1,9 @@
 import { User, Heart, MessageSquare } from "lucide-react";
 
 const links = [
-  { label: "Customer Stories", icon: MessageSquare },
-  { label: "View Wishlist", icon: Heart },
-  { label: "My Account", icon: User },
+  { label: "Customer Stories", icon: MessageSquare, href: "/contact" },
+  { label: "View Wishlist", icon: Heart, href: "/contact" },
+  { label: "My Account", icon: User, href: "/contact" },
 ];
 
 const UtilityBar = () => (
@@ -12,7 +12,7 @@ const UtilityBar = () => (
       {links.map((l) => (
         <a
           key={l.label}
-          href="#"
+          href={l.href}
           className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors"
           style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "2px" }}
         >
