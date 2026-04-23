@@ -59,16 +59,20 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
         maxWidth: 900,
       }}
     >
+      {/*
+        Eyebrow on photo: teal `#6fb6ae` requires fontWeight 600 + two-layer shadow
+        for legibility against imagery. Standard teal usage elsewhere uses 500 weight.
+      */}
       <p
         style={{
           fontFamily: "var(--font-body)",
-          fontSize: 11,
-          fontWeight: 500,
+          fontSize: 13,
+          fontWeight: 600,
           color: "#6fb6ae",
-          letterSpacing: 3,
+          letterSpacing: 4,
           textTransform: "uppercase",
           marginBottom: 16,
-          textShadow: "0 1px 8px rgba(0,0,0,0.55)",
+          textShadow: "0 1px 3px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)",
         }}
       >
         {eyebrow}

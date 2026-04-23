@@ -87,91 +87,106 @@ const RegionCardsGrid = ({ regions }: RegionCardsGridProps) => (
                 overflow: "hidden",
               }}
             >
-              {/* Image scale wrapper via inner overlay; keep simple via transform on hover */}
+              {/* Base vertical gradient — strong at top + bottom */}
               <div
                 aria-hidden="true"
                 style={{
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.65) 100%)",
+                    "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.8) 100%)",
+                }}
+              />
+              {/* Left-weighted gradient — makes left-aligned content pop */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0) 100%)",
                 }}
               />
 
-              {/* Content left, vertically centred */}
+              {/* Content left, top + bottom anchored */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "center",
+                  justifyContent: "space-between",
                   padding: "32px 28px",
                   zIndex: 2,
                 }}
               >
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 11,
-                    fontWeight: 500,
-                    color: "#6fb6ae",
-                    letterSpacing: 3,
-                    textTransform: "uppercase",
-                    margin: 0,
-                    textShadow: "0 1px 6px rgba(0,0,0,0.5)",
-                  }}
-                >
-                  {r.shortName}
-                </p>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontWeight: 400,
-                    fontSize: "clamp(36px, 4vw, 56px)",
-                    lineHeight: 1.1,
-                    color: "#ffffff",
-                    margin: 0,
-                    marginTop: 12,
-                    textShadow: "0 2px 16px rgba(0,0,0,0.55)",
-                  }}
-                >
-                  {r.fullName}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 11,
-                    fontWeight: 500,
-                    color: "rgba(255,255,255,0.85)",
-                    letterSpacing: 3,
-                    textTransform: "uppercase",
-                    margin: 0,
-                    marginTop: 14,
-                    textShadow: "0 1px 6px rgba(0,0,0,0.6)",
-                  }}
-                >
-                  {r.townCount} Towns · {r.cottageCount} Cottages · From £{r.fromPrice} / week
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 15,
-                    fontWeight: 400,
-                    color: "rgba(255,255,255,0.9)",
-                    lineHeight: 1.5,
-                    marginTop: 16,
-                    marginBottom: 0,
-                    maxWidth: 280,
-                    textShadow: "0 1px 8px rgba(0,0,0,0.55)",
-                  }}
-                >
-                  {r.descriptor}
-                </p>
+                <div>
+                  {/*
+                    Eyebrow on photo: teal `#6fb6ae` requires fontWeight 600 + two-layer shadow
+                    for legibility against imagery. Standard teal usage elsewhere uses 500 weight.
+                  */}
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: "#6fb6ae",
+                      letterSpacing: 4,
+                      textTransform: "uppercase",
+                      margin: 0,
+                      textShadow: "0 1px 3px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {r.shortName}
+                  </p>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontWeight: 400,
+                      fontSize: "clamp(36px, 4vw, 56px)",
+                      lineHeight: 1.1,
+                      color: "#ffffff",
+                      margin: 0,
+                      marginTop: 12,
+                      textShadow: "0 2px 16px rgba(0,0,0,0.55)",
+                    }}
+                  >
+                    {r.fullName}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 11,
+                      fontWeight: 500,
+                      color: "rgba(255,255,255,0.9)",
+                      letterSpacing: 3,
+                      textTransform: "uppercase",
+                      margin: 0,
+                      marginTop: 14,
+                      textShadow: "0 2px 14px rgba(0,0,0,0.65)",
+                    }}
+                  >
+                    {r.townCount} Towns · {r.cottageCount} Cottages · From £{r.fromPrice} / week
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 15,
+                      fontWeight: 400,
+                      color: "rgba(255,255,255,0.95)",
+                      lineHeight: 1.5,
+                      marginTop: 16,
+                      marginBottom: 0,
+                      maxWidth: 280,
+                      textShadow: "0 2px 14px rgba(0,0,0,0.65)",
+                    }}
+                  >
+                    {r.descriptor}
+                  </p>
+                </div>
 
                 <span
                   style={{
-                    marginTop: "auto",
                     display: "inline-block",
                     fontFamily: "var(--font-body)",
                     fontSize: 12,
@@ -182,7 +197,7 @@ const RegionCardsGrid = ({ regions }: RegionCardsGridProps) => (
                     borderBottom: "1px solid #d3a36e",
                     paddingBottom: 2,
                     alignSelf: "flex-start",
-                    textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+                    textShadow: "0 2px 10px rgba(0,0,0,0.65)",
                   }}
                   className="group-hover:border-b-2"
                 >
@@ -190,14 +205,14 @@ const RegionCardsGrid = ({ regions }: RegionCardsGridProps) => (
                 </span>
               </div>
 
-              {/* Thumbnails bottom-right */}
+              {/* Thumbnails top-right */}
               <div
                 style={{
                   position: "absolute",
-                  bottom: 16,
+                  top: 16,
                   right: 16,
                   display: "flex",
-                  gap: 8,
+                  gap: 6,
                   zIndex: 2,
                 }}
               >
@@ -205,8 +220,8 @@ const RegionCardsGrid = ({ regions }: RegionCardsGridProps) => (
                   <div
                     key={i}
                     style={{
-                      width: 60,
-                      height: 60,
+                      width: 48,
+                      height: 48,
                       backgroundImage: `url(${src})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
