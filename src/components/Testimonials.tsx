@@ -6,19 +6,19 @@ const testimonials = [
     quote: "An absolutely stunning property in the most magical location. Pure Cornwall made everything seamless from booking to checkout. We'll be back every summer.",
     name: "Sarah & James Mitchell",
     property: "Treleigh, St Ives",
-    since: "Guests since 2023",
+    since: "Guests since 2026",
   },
   {
     quote: "The cottage exceeded all our expectations. Every detail had been thought of, and the views were simply breathtaking. A truly luxurious experience.",
     name: "The Henderson Family",
     property: "Harbour View, Falmouth",
-    since: "Guests since 2024",
+    since: "Guests since 2026",
   },
   {
     quote: "From the moment we arrived, we knew this was going to be a special holiday. The cottage was immaculate and the local recommendations were spot on.",
     name: "David & Claire Townsend",
     property: "Driftwood Cottage, Padstow",
-    since: "Guests since 2023",
+    since: "Guests since 2026",
   },
 ];
 
@@ -37,81 +37,159 @@ const Testimonials = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-advance
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 7000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <section style={{ backgroundColor: "#6fb6ae", paddingTop: "7vw", paddingBottom: "7vw" }}>
+    <section style={{ backgroundColor: "#6fb6ae", paddingTop: "4vw", paddingBottom: "4vw" }}>
       <div className="pc-container text-center">
-        <h2 className="text-white" style={{ fontSize: "clamp(32px, 3vw, 42px)" }}>
+        {/* Eyebrow */}
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 11,
+            fontWeight: 500,
+            color: "rgba(255,255,255,0.85)",
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            margin: 0,
+            marginBottom: 14,
+          }}
+        >
+          Guest Stories
+        </p>
+
+        <h2
+          className="text-white"
+          style={{
+            fontSize: "clamp(20px, 1.6vw, 24px)",
+            fontWeight: 400,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            margin: 0,
+          }}
+        >
           What Our Guests Say
         </h2>
-        <div className="gold-bar gold-bar--center" />
+
+        <div
+          style={{
+            width: 60,
+            height: 1,
+            backgroundColor: "#d3a36e",
+            margin: "18px auto 0",
+          }}
+        />
 
         <div
           ref={ref}
-          className="mt-14 max-w-[720px] mx-auto"
+          className="mt-10 max-w-[680px] mx-auto"
           style={{
             opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transform: visible ? "translateY(0)" : "translateY(12px)",
             transition: "opacity 600ms ease-out, transform 600ms ease-out",
           }}
         >
-          {/* Decorative quote mark — larger */}
-          <div className="flex justify-center mb-8">
-            <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.7 }}>
-              <path d="M14 40C14 35.6 15.4 31.8 18.2 28.6C21.1 25.4 24.9 23.2 29.6 22L31 25.4C27.5 26.5 24.9 28.2 23.2 30.6C21.5 33 20.7 35.5 20.7 38.2H28V48H14V40ZM38 40C38 35.6 39.4 31.8 42.2 28.6C45.1 25.4 48.9 23.2 53.6 22L55 25.4C51.5 26.5 48.9 28.2 47.2 30.6C45.5 33 44.7 35.5 44.7 38.2H52V48H38V40Z" fill="#d3a36e"/>
-            </svg>
-          </div>
-
-          <div className="flex justify-center gap-1 mb-8">
+          <div className="flex justify-center gap-1 mb-5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={22} className="text-sandy-gold fill-sandy-gold" />
+              <Star key={i} size={14} className="text-sandy-gold fill-sandy-gold" />
             ))}
           </div>
+
           <p
+            key={active}
             style={{
               fontFamily: "var(--font-serif)",
-              fontSize: "clamp(22px, 2vw, 28px)",
+              fontSize: "clamp(17px, 1.4vw, 21px)",
               fontWeight: 300,
+              fontStyle: "italic",
               lineHeight: 1.6,
               color: "#ffffff",
-              textShadow: "0 1px 2px rgba(47,85,80,0.15)",
+              margin: 0,
+              animation: "fadeIn 500ms ease-out",
             }}
           >
             "{t.quote}"
           </p>
-          <p
-            className="text-white mt-12 text-sm"
-            style={{ textTransform: "uppercase", letterSpacing: "3px" }}
-          >
-            {t.name}
-          </p>
-          <p
-            className="mt-2"
+
+          <div
             style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: 16,
-              color: "rgba(255,255,255,0.85)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 14,
+              marginTop: 28,
+              flexWrap: "wrap",
             }}
           >
-            {t.property}
-          </p>
-          <p className="text-white/70 mt-2" style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 3 }}>
-            {t.since}
-          </p>
+            <span
+              style={{
+                color: "#ffffff",
+                fontSize: 12,
+                textTransform: "uppercase",
+                letterSpacing: 2.5,
+                fontWeight: 500,
+              }}
+            >
+              {t.name}
+            </span>
+            <span style={{ color: "rgba(255,255,255,0.4)" }}>·</span>
+            <span
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontStyle: "italic",
+                fontSize: 13,
+                color: "rgba(255,255,255,0.85)",
+              }}
+            >
+              {t.property}
+            </span>
+            <span style={{ color: "rgba(255,255,255,0.4)" }}>·</span>
+            <span
+              style={{
+                color: "rgba(255,255,255,0.7)",
+                fontSize: 10,
+                textTransform: "uppercase",
+                letterSpacing: 2.5,
+              }}
+            >
+              {t.since}
+            </span>
+          </div>
         </div>
 
-        <div className="flex justify-center gap-3 mt-14">
+        <div className="flex justify-center gap-2 mt-8">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`w-3 h-3 rounded-full border-2 transition-colors ${
-                i === active ? "bg-sandy-gold border-sandy-gold" : "bg-transparent border-white"
-              }`}
+              style={{
+                width: i === active ? 24 : 6,
+                height: 6,
+                borderRadius: 3,
+                background: i === active ? "#d3a36e" : "rgba(255,255,255,0.4)",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 300ms ease",
+                padding: 0,
+              }}
               aria-label={`Testimonial ${i + 1}`}
             />
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };
