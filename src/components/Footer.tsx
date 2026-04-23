@@ -37,10 +37,17 @@ const Footer = () => (
               Destinations
             </h4>
             <ul className="space-y-3">
-              {["St Ives", "Padstow", "Falmouth", "Newquay", "Penzance", "Truro"].map((d) => (
-                <li key={d}>
-                  <a href="#" className="text-white/70 text-sm hover:text-brand-teal transition-colors">
-                    {d}
+            {[
+                { label: "St Ives", href: "/destinations/st-ives" },
+                { label: "Padstow", href: "/destinations/padstow" },
+                { label: "Falmouth", href: "/destinations/falmouth" },
+                { label: "Newquay", href: "/destinations/newquay" },
+                { label: "Penzance", href: "/destinations/penzance" },
+                { label: "Truro", href: "/destinations/truro" },
+              ].map((d) => (
+                <li key={d.label}>
+                  <a href={d.href} className="text-white/70 text-sm hover:text-brand-teal transition-colors">
+                    {d.label}
                   </a>
                 </li>
               ))}
@@ -56,10 +63,16 @@ const Footer = () => (
               Discover
             </h4>
             <ul className="space-y-3">
-              {["Collections", "Journal", "About", "Contact", "FAQs"].map((d) => (
-                <li key={d}>
-                  <a href="#" className="text-white/70 text-sm hover:text-brand-teal transition-colors">
-                    {d}
+            {[
+                { label: "Collections", href: "/collections" },
+                { label: "Journal", href: "/journal" },
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+                { label: "FAQs", href: "#" },
+              ].map((d) => (
+                <li key={d.label}>
+                  <a href={d.href} className="text-white/70 text-sm hover:text-brand-teal transition-colors">
+                    {d.label}
                   </a>
                 </li>
               ))}

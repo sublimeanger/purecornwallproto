@@ -190,7 +190,7 @@ const DestinationFAQ = ({ faqs }: DestinationFAQProps) => {
         >
           Still have questions?{" "}
           <a
-            href="#"
+            href="/contact"
             style={{
               color: "#6fb6ae",
               textDecoration: "none",

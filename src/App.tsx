@@ -34,6 +34,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/properties/treleigh" element={<PropertyPage />} />
+          <Route path="/properties/:slug" element={<PropertyPage />} />
           <Route path="/filter-drawer-demo" element={<FilterDrawerDemo />} />
           <Route path="/destinations" element={<DestinationsHub />} />
           <Route path="/destinations/st-ives" element={<DestinationPage />} />
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/collections" element={<CollectionsHub />} />
           <Route path="/collections/dog-friendly" element={<CollectionPage />} />
           <Route path="/collections/dog-friendly-minimal" element={<CollectionPageMinimal />} />
+          <Route path="/collections/:slug" element={<CollectionPage />} />
           <Route path="/holiday-cottages" element={<HolidayCottages />} />
           <Route path="/cottages" element={<CottagesCatalogue />} />
           <Route path="/search" element={<SearchResults />} />

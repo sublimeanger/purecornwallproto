@@ -50,7 +50,7 @@ const Journal = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[2.5vw]">
         {posts.map((p) => (
-          <a key={p.title} href="#" className="block border-b-2 border-sandy-gold cursor-pointer group">
+          <a key={p.title} href="/journal" className="block border-b-2 border-sandy-gold cursor-pointer group">
             <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
               <img
                 src={p.img}
