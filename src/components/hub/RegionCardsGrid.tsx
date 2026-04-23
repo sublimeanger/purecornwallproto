@@ -205,32 +205,6 @@ const RegionCardsGrid = ({ regions }: RegionCardsGridProps) => (
                 </span>
               </div>
 
-              {/* Thumbnails top-right */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 16,
-                  right: 16,
-                  display: "flex",
-                  gap: 6,
-                  zIndex: 2,
-                }}
-              >
-                {r.thumbnails.slice(0, 3).map((src, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: 48,
-                      height: 48,
-                      backgroundImage: `url(${src})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
-                      border: "1px solid rgba(255,255,255,0.4)",
-                    }}
-                  />
-                ))}
-              </div>
             </div>
           </a>
         ))}
