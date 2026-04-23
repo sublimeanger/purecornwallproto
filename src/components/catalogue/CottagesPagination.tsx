@@ -113,6 +113,7 @@ const CottagesPagination = ({ currentPage, totalPages, onPageChange }: CottagesP
                 aria-current={active ? "page" : undefined}
                 aria-label={`Go to page ${p}`}
                 disabled={active}
+                // TODO: consider replacing dark teal active-page background with gold (#d3a36e) — dark teal is reserved for footer + documented exceptions
                 style={{
                   ...buttonBaseStyle,
                   background: active ? "#2f5550" : "#ffffff",

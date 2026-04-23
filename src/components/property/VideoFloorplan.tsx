@@ -9,6 +9,7 @@ const VideoFloorplan = () => (
         {/* Video */}
         <div>
           <SectionHeading title="Video" small />
+          {/* TODO: consider replacing dark teal with cream or light-grey placeholder (dark teal is reserved for footer + documented exceptions) */}
           <div className="relative mt-8 cursor-pointer group" style={{ aspectRatio: "16/9", background: "#2f5550" }}>
             <img
               src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&q=80"
