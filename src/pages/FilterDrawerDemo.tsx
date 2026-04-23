@@ -3,21 +3,23 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyToolbar, { SortKey } from "@/components/filters/PropertyToolbar";
 import FilterDrawer from "@/components/filters/FilterDrawer";
+import TopBarFilters from "@/components/filters/TopBarFilters";
 import {
   FilterState,
   SidebarFeatureKey,
   TopBarCollection,
   RegionKey,
+  REGION_KEYS,
   initialFilterState,
   isFilterActive,
   MockCottage,
-  PRICE_MIN,
   PRICE_MAX,
   LOCATION_CHARACTER_KEYS,
   OUTDOOR_SPACE_KEYS,
   ESSENTIAL_KEYS,
   ACTIVITY_KEYS,
   TOP_BAR_FEATURE_COLLECTIONS,
+  TOP_BAR_OCCASION_COLLECTIONS,
 } from "@/components/filters/types";
 
 // ---- Mock data ------------------------------------------------------------
@@ -50,6 +52,13 @@ const SIDEBAR_FEATURE_POOL: SidebarFeatureKey[] = [
   ...ESSENTIAL_KEYS,
   ...ACTIVITY_KEYS,
 ];
+
+const TOP_BAR_POOL: TopBarCollection[] = [
+  ...TOP_BAR_FEATURE_COLLECTIONS,
+  ...TOP_BAR_OCCASION_COLLECTIONS,
+];
+
+const COVER_IMAGES = [
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
   "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=70",
@@ -77,18 +86,25 @@ const generateCottages = (count: number): MockCottage[] => {
     const bathrooms = Math.max(1, Math.min(6, Math.round(bedrooms / 2 + (r() < 0.4 ? 1 : 0))));
     const price = (Math.floor((400 + r() * 5400) / 50)) * 50;
     const featureCount = Math.floor(r() * 6);
-    const shuffled = [...FEATURE_KEYS].sort(() => r() - 0.5);
-    const features = shuffled.slice(0, featureCount) as FeatureKey[];
+    const shuffledFeatures = [...SIDEBAR_FEATURE_POOL].sort(() => r() - 0.5);
+    const features = shuffledFeatures.slice(0, featureCount) as SidebarFeatureKey[];
+    const collectionsCount = 1 + Math.floor(r() * 3);
+    const shuffledCollections = [...TOP_BAR_POOL].sort(() => r() - 0.5);
+    const collections = shuffledCollections.slice(0, collectionsCount) as TopBarCollection[];
     const name = COTTAGE_NAMES[Math.floor(r() * COTTAGE_NAMES.length)];
+    const loc = LOCATIONS[Math.floor(r() * LOCATIONS.length)];
     return {
       id: `c-${i + 1}`,
       name: `${name}${i > 23 ? ` ${Math.floor(i / 24) + 1}` : ""}`,
-      location: LOCATIONS[Math.floor(r() * LOCATIONS.length)],
+      location: loc.name,
+      townSlug: loc.slug,
+      region: loc.region,
       pricePerWeek: Math.min(price, 6500),
       sleeps,
       bedrooms,
       bathrooms,
       features,
+      collections,
       image: COVER_IMAGES[i % COVER_IMAGES.length],
     };
   });
@@ -98,11 +114,13 @@ const generateCottages = (count: number): MockCottage[] => {
 
 const applyFilters = (data: MockCottage[], f: FilterState): MockCottage[] => {
   return data.filter((c) => {
+    if (f.topBarCollection !== null && !c.collections.includes(f.topBarCollection)) return false;
+    if (f.region !== null && c.region !== f.region) return false;
+    if (f.townSlug !== null && c.townSlug !== f.townSlug) return false;
     if (f.sleeps !== null && c.sleeps < f.sleeps) return false;
     if (f.bedrooms !== null && c.bedrooms < f.bedrooms) return false;
     if (f.bathrooms !== null && c.bathrooms < f.bathrooms) return false;
     if (c.pricePerWeek < f.priceMin) return false;
-    // priceMax of PRICE_MAX is "+" cap, so anything above counts as in-range
     if (f.priceMax < PRICE_MAX && c.pricePerWeek > f.priceMax) return false;
     for (const feat of f.features) {
       if (!c.features.includes(feat)) return false;
@@ -230,6 +248,14 @@ const FilterDrawerDemo = () => {
           </h1>
         </div>
       </section>
+
+      <TopBarFilters
+        active={filters.topBarCollection}
+        onChange={(next) => {
+          setFilters({ ...filters, topBarCollection: next });
+          setVisible(PAGE_SIZE);
+        }}
+      />
 
       <PropertyToolbar
         totalCount={allCottages.length}
