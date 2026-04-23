@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search, ChevronDown, ChevronRight, X } from "lucide-react";
 
 const destinations = {
@@ -9,6 +10,11 @@ const destinations = {
 };
 
 const SearchBar = () => {
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    // Prototype: all searches land on /search. Real query wiring at WP port.
+    navigate("/search");
+  };
   const [destOpen, setDestOpen] = useState(false);
   const [selectedDest, setSelectedDest] = useState("All Destinations");
   const [propertySearch, setPropertySearch] = useState("");
@@ -164,6 +170,7 @@ const SearchBar = () => {
             </div>
 
             <button
+              onClick={handleSearch}
               className="flex items-center justify-center gap-2 px-8 py-3 transition-colors"
               style={{ backgroundColor: "#d3a36e", color: "#ffffff", textTransform: "uppercase", letterSpacing: 3, fontSize: 14, fontWeight: 500, minWidth: 140 }}
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#c09360")}
@@ -500,7 +507,7 @@ const SearchBar = () => {
                 <button
                   onClick={() => {
                     setSheetOpen(false);
-                    // Placeholder: navigation to /search?... wired at WP port phase
+                    handleSearch();
                   }}
                   style={{
                     width: "100%",
