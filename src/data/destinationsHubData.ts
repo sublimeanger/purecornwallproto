@@ -1,4 +1,5 @@
 import heroHarbour from "@/assets/st-ives/hero-harbour.jpg";
+import heroCornwall from "@/assets/destinations-hero-cornwall.jpg";
 import atmosHarbour from "@/assets/st-ives/atmos-harbour.jpg";
 import atmosBeach from "@/assets/st-ives/atmos-beach.jpg";
 import property1 from "@/assets/property-1.jpg";
@@ -145,7 +146,7 @@ const faqs: FAQItem[] = [
 
 export const destinationsHubData: DestinationsHubData = {
   hero: {
-    image: heroHarbour,
+    image: heroCornwall,
     eyebrow: "DISCOVER",
     name: "Destinations",
     tagline: "From the light of St Ives to the surf of Newquay, the full Cornwall we cover",
