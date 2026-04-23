@@ -23,8 +23,13 @@ const PropertyHero = ({ image, tagline, onViewGallery }: PropertyHeroProps) => {
       <img
         src={image}
         alt="Treleigh clifftop retreat"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ transform: `translateY(${scrollY * 0.3}px)`, willChange: "transform" }}
+        className="absolute left-0 w-full object-cover"
+        style={{
+          top: "-10%",
+          height: "120%",
+          transform: `translateY(${-scrollY * 0.3}px)`,
+          willChange: "transform",
+        }}
       />
       <div
         className="absolute inset-0"

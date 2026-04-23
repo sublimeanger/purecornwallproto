@@ -15,8 +15,13 @@ const Hero = () => {
       <img
         src={heroImg}
         alt="Cornwall coastline"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ transform: `translateY(${scrollY * 0.3}px)`, willChange: "transform" }}
+        className="absolute left-0 w-full object-cover"
+        style={{
+          top: "-10%",
+          height: "120%",
+          transform: `translateY(${-scrollY * 0.3}px)`,
+          willChange: "transform",
+        }}
         width={1920}
         height={1080}
       />
