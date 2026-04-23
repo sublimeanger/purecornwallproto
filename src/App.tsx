@@ -9,6 +9,7 @@ import FilterDrawerDemo from "./pages/FilterDrawerDemo.tsx";
 import DestinationPage from "./pages/DestinationPage.tsx";
 import DestinationPageMinimal from "./pages/DestinationPageMinimal.tsx";
 import DestinationsHub from "./pages/DestinationsHub.tsx";
+import CollectionsHub from "./pages/CollectionsHub.tsx";
 import CollectionPage from "./pages/CollectionPage.tsx";
 import CollectionPageMinimal from "./pages/CollectionPageMinimal.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/destinations" element={<DestinationsHub />} />
           <Route path="/destinations/st-ives" element={<DestinationPage />} />
           <Route path="/destinations/st-ives-minimal" element={<DestinationPageMinimal />} />
+          <Route path="/collections" element={<CollectionsHub />} />
           <Route path="/collections/dog-friendly" element={<CollectionPage />} />
           <Route path="/collections/dog-friendly-minimal" element={<CollectionPageMinimal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
