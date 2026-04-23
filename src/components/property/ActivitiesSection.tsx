@@ -39,7 +39,7 @@ const ActivitiesSection = ({ paragraphs }: ActivitiesSectionProps) => {
           </div>
           <p
             className="text-center mt-4"
-            style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 16, color: "#d3a36e" }}
+            style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "#d3a36e" }}
           >
             The South West Coast Path at dusk
           </p>

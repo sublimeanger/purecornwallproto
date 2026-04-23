@@ -32,7 +32,7 @@ const VideoFloorplan = () => (
           {/* Caption */}
           <div className="flex flex-col items-center mt-6">
             <div style={{ width: 80, height: 1, backgroundColor: "#d3a36e", marginBottom: 12 }} />
-            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 18, color: "#d3a36e" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, color: "#d3a36e" }}>
               Watch Treleigh come to life
             </p>
           </div>
@@ -58,7 +58,7 @@ const VideoFloorplan = () => (
           {/* Caption */}
           <div className="flex flex-col items-center mt-6">
             <div style={{ width: 80, height: 1, backgroundColor: "#d3a36e", marginBottom: 12 }} />
-            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 18, color: "#d3a36e" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, color: "#d3a36e" }}>
               Two floors, considered by design
             </p>
           </div>

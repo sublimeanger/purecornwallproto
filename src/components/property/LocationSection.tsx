@@ -68,7 +68,7 @@ const LocationSection = () => (
             <div className="absolute" style={{ top: "36%", left: "40%", fontSize: 14, fontWeight: 500, color: "#4a5a54", letterSpacing: 3, fontFamily: "var(--font-body)", textTransform: "uppercase" }}>St Ives</div>
             <div className="absolute" style={{ top: "58%", left: "58%", fontSize: 11, color: "#7a8a82", letterSpacing: 2, fontFamily: "var(--font-body)" }}>Carbis Bay</div>
             <div className="absolute" style={{ top: "62%", left: "74%", fontSize: 11, color: "#7a8a82", letterSpacing: 2, fontFamily: "var(--font-body)" }}>Hayle</div>
-            <div className="absolute" style={{ top: "20%", left: "25%", fontSize: 11, color: "#9aaba3", letterSpacing: 2, fontFamily: "var(--font-body)", fontStyle: "italic" }}>St Ives Bay</div>
+            <div className="absolute" style={{ top: "20%", left: "25%", fontSize: 11, color: "#9aaba3", letterSpacing: 2, fontFamily: "var(--font-body)" }}>St Ives Bay</div>
             <div className="absolute" style={{ top: "28%", left: "35%", fontSize: 10, color: "#9aaba3", letterSpacing: 1.5, fontFamily: "var(--font-body)" }}>Porthmeor Beach</div>
             <div className="absolute" style={{ top: "48%", left: "48%", fontSize: 10, color: "#9aaba3", letterSpacing: 1.5, fontFamily: "var(--font-body)" }}>Porthminster</div>
           </div>
@@ -97,7 +97,7 @@ const LocationSection = () => (
               <p style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 3, color: "#3a3a3a", fontFamily: "var(--font-body)", marginBottom: 4 }}>
                 {spot.name}
               </p>
-              <p style={{ fontSize: 12, color: "#d3a36e", fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
+              <p style={{ fontSize: 12, color: "#d3a36e", fontFamily: "var(--font-serif)" }}>
                 {spot.time}
               </p>
             </div>

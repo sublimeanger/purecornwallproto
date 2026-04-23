@@ -72,7 +72,7 @@ const FacilitiesSection = ({ facilities }: FacilitiesSectionProps) => (
       <SectionHeading title="Facilities" />
       <p
         className="text-center mx-auto mt-8"
-        style={{ maxWidth: 700, fontSize: 15, color: "#d3a36e", fontStyle: "italic", lineHeight: 1.7, fontFamily: "var(--font-serif)" }}
+        style={{ maxWidth: 700, fontSize: 15, color: "#d3a36e", lineHeight: 1.7, fontFamily: "var(--font-serif)" }}
       >
         High-quality bed linen and towels are provided at all Pure Cornwall properties. Where a cot is supplied, guests are kindly asked to bring their own cot bedding.
       </p>

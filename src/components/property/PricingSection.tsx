@@ -26,7 +26,7 @@ const MonthCalendar = ({ year, month }: { year: number; month: number }) => {
   const weeks = generateMonth(year, month);
   return (
     <div>
-      <p className="text-center mb-4" style={{ fontSize: 24, color: "#3a3a3a", fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic" }}>
+      <p className="text-center mb-4" style={{ fontSize: 24, color: "#3a3a3a", fontFamily: "var(--font-serif)", fontWeight: 400 }}>
         {monthNames[month]} {year}
       </p>
       <div className="grid grid-cols-7 gap-1">
@@ -94,7 +94,7 @@ const PricingSection = () => {
               <p style={{ fontSize: 13, color: "#7a7a7a", lineHeight: 1.6, marginTop: 8 }}>
                 <strong style={{ fontWeight: 500, color: "#3a3a3a" }}>Damage deposit:</strong> A refundable damage deposit of £500 is payable.
               </p>
-              <p style={{ fontSize: 12, color: "#7a7a7a", marginTop: 12, fontStyle: "italic" }}>
+              <p style={{ fontSize: 12, color: "#7a7a7a", marginTop: 12 }}>
                 NB. All bookings are subject to our Terms and Conditions.
               </p>
             </div>
