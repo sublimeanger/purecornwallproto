@@ -69,7 +69,6 @@ const Testimonials = () => {
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: "clamp(22px, 2vw, 28px)",
               fontWeight: 300,
               lineHeight: 1.6,
@@ -89,7 +88,6 @@ const Testimonials = () => {
             className="mt-2"
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: 16,
               color: "rgba(255,255,255,0.85)",
             }}

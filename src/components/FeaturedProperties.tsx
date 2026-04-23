@@ -61,7 +61,6 @@ const FeaturedProperties = () => (
           className="mx-auto"
           style={{
             fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
             fontSize: 20,
             fontWeight: 400,
             color: "#3a3a3a",
@@ -113,7 +112,6 @@ const FeaturedProperties = () => (
 
                     <h3 style={{
                       fontFamily: "var(--font-serif)",
-                      fontStyle: "italic",
                       fontSize: "clamp(28px, 2.5vw, 36px)",
                       fontWeight: 300,
                       lineHeight: 1.2,
@@ -124,7 +122,6 @@ const FeaturedProperties = () => (
 
                     <p style={{
                       fontFamily: "var(--font-serif)",
-                      fontStyle: "italic",
                       fontSize: 18,
                       fontWeight: 400,
                       color: "#3a3a3a",

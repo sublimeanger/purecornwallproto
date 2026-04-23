@@ -97,7 +97,6 @@ const PropertyRow = ({ c, index }: { c: MockCottage; index: number }) => {
             <h3
               style={{
                 fontFamily: "var(--font-serif)",
-                fontStyle: "italic",
                 fontSize: "clamp(28px, 2.5vw, 36px)",
                 fontWeight: 300,
                 lineHeight: 1.2,

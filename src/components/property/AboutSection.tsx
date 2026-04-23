@@ -25,7 +25,6 @@ const AboutSection = ({ paragraphs }: AboutSectionProps) => {
                       style={{
                         float: "left",
                         fontFamily: "var(--font-serif)",
-                        fontStyle: "italic",
                         fontSize: 84,
                         lineHeight: 0.75,
                         color: "#d3a36e",
@@ -54,7 +53,6 @@ const AboutSection = ({ paragraphs }: AboutSectionProps) => {
           <blockquote
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: "clamp(24px, 2.5vw, 36px)",
               fontWeight: 300,
               color: "#3a3a3a",

@@ -76,7 +76,6 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
       <h1
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontWeight: 400,
           fontSize: "clamp(64px, 8vw, 128px)",
           lineHeight: 1.0,
@@ -90,7 +89,6 @@ const DestinationHero = ({ image, eyebrow, name, tagline, caption }: Destination
       <p
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontWeight: 400,
           fontSize: "clamp(18px, 1.5vw, 22px)",
           color: "#ffffff",

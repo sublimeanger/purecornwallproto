@@ -69,7 +69,6 @@ const Journal = () => (
               <h3
                 style={{
                   fontFamily: "var(--font-serif)",
-                  fontStyle: "italic",
                   fontSize: 22,
                   fontWeight: 400,
                   color: "#3a3a3a",

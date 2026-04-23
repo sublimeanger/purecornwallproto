@@ -86,7 +86,6 @@ const FeatureTiles = () => {
                   className="mt-2"
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
                     fontSize: "clamp(13px, 1.1vw, 16px)",
                     fontWeight: 400,
                     color: "rgba(255,255,255,0.95)",

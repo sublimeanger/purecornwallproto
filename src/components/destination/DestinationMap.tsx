@@ -105,7 +105,6 @@ const DestinationMap = ({ imageUrl, caption, pins }: DestinationMapProps) => {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              fontStyle: "italic",
               fontSize: 11,
               fontWeight: 400,
               color: "#7a7a7a",

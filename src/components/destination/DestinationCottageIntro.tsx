@@ -47,7 +47,6 @@ const DestinationCottageIntro = ({ eyebrow, name, leadIn }: DestinationCottageIn
         <p
           style={{
             fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
             fontWeight: 400,
             fontSize: 19,
             color: "#3a3a3a",

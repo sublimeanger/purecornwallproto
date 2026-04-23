@@ -36,7 +36,6 @@ const PropertyHeaderSection = ({ name, region, priceFrom, stats }: PropertyHeade
               fontFamily: "var(--font-serif)",
               fontSize: "clamp(52px, 5.5vw, 84px)",
               fontWeight: 300,
-              fontStyle: "italic",
               lineHeight: 1.1,
               color: "#d3a36e",
               marginBottom: 32,

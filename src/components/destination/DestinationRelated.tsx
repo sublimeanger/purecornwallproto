@@ -46,7 +46,6 @@ const DestinationRelated = ({ items }: DestinationRelatedProps) => (
                   left: 24,
                   zIndex: 2,
                   fontFamily: "var(--font-serif)",
-                  fontStyle: "italic",
                   fontWeight: 400,
                   fontSize: 28,
                   color: "#ffffff",
