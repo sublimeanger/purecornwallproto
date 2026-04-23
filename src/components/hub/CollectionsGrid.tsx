@@ -10,11 +10,13 @@ export interface CollectionHubCard {
   descriptor: string;
   cottageCount: number;
   fromPrice: number;
+  themeImageHint?: string;
 }
 
 interface CollectionsGridProps {
   collections: CollectionHubCard[];
   activeFilter: CollectionChipKey;
+  excludeSlugs?: string[];
 }
 
 const useColumns = () => {
@@ -33,13 +35,11 @@ const useColumns = () => {
   return cols;
 };
 
-const CollectionsGrid = ({ collections, activeFilter }: CollectionsGridProps) => {
+const CollectionsGrid = ({ collections, activeFilter, excludeSlugs }: CollectionsGridProps) => {
   const cols = useColumns();
-  const visible = (
-    activeFilter === "all"
-      ? collections
-      : collections.filter((c) => c.group === activeFilter)
-  )
+  const visible = collections
+    .filter((c) => activeFilter === "all" || c.group === activeFilter)
+    .filter((c) => !excludeSlugs || !excludeSlugs.includes(c.slug))
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
 
