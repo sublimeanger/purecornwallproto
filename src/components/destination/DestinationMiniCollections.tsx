@@ -31,7 +31,6 @@ const PreviewCard = ({ c }: { c: MiniCollectionCottage }) => (
       <h4
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontWeight: 400,
           fontSize: 22,
           color: "#2f5550",
@@ -88,7 +87,6 @@ const DestinationMiniCollections = ({ collections }: DestinationMiniCollectionsP
                 <h3
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
                     fontWeight: 400,
                     fontSize: 28,
                     color: "#2f5550",

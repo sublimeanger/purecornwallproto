@@ -38,7 +38,7 @@ const RelatedProperties = ({ properties }: RelatedPropertiesProps) => (
               <h3 style={{ fontSize: 24, fontWeight: 400, color: "#d3a36e", marginBottom: 8 }}>
                 {p.name}
               </h3>
-              <p style={{ fontSize: 14, fontStyle: "italic", color: "#7a7a7a", marginBottom: 16, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 14, color: "#7a7a7a", marginBottom: 16, lineHeight: 1.5 }}>
                 {p.tagline}
               </p>
               <div className="flex gap-4 mb-4">

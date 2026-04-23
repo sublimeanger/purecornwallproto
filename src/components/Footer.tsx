@@ -102,7 +102,6 @@ const Footer = () => (
           className="text-center mt-12"
           style={{
             fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
             fontSize: 14,
             color: "rgba(211,163,110,0.95)",
           }}

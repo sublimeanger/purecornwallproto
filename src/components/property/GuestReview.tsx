@@ -23,7 +23,6 @@ const GuestReview = ({ image, quote, body, attribution }: GuestReviewProps) => (
               lineHeight: 1,
               color: "#d3a36e",
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               opacity: 0.3,
             }}
           >
@@ -32,7 +31,6 @@ const GuestReview = ({ image, quote, body, attribution }: GuestReviewProps) => (
           <h3
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: "clamp(24px, 2.2vw, 32px)",
               fontWeight: 300,
               color: "#3a3a3a",
@@ -50,7 +48,6 @@ const GuestReview = ({ image, quote, body, attribution }: GuestReviewProps) => (
             className="mt-8"
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: 16,
               color: "#d3a36e",
               textAlign: "center",

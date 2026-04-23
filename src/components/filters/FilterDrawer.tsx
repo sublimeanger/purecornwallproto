@@ -125,7 +125,6 @@ const FilterDrawer = ({ open, onClose, filters, onChange, filteredCount }: Filte
             id="filter-drawer-title"
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontWeight: 400,
               fontSize: 24,
               color: "#2f5550",

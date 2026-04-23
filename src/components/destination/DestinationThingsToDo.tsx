@@ -41,7 +41,6 @@ const DestinationThingsToDo = ({ items }: DestinationThingsToDoProps) => (
         <p
           style={{
             fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
             fontWeight: 400,
             fontSize: 18,
             color: "#7a7a7a",
@@ -83,7 +82,6 @@ const DestinationThingsToDo = ({ items }: DestinationThingsToDoProps) => (
               <h3
                 style={{
                   fontFamily: "var(--font-serif)",
-                  fontStyle: "italic",
                   fontWeight: 400,
                   fontSize: 22,
                   color: "#2f5550",
@@ -135,7 +133,6 @@ const DestinationThingsToDo = ({ items }: DestinationThingsToDoProps) => (
       <p
         style={{
           fontFamily: "var(--font-body)",
-          fontStyle: "italic",
           fontSize: 11,
           fontWeight: 400,
           color: "#7a7a7a",

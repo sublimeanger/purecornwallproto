@@ -62,7 +62,6 @@ const DestinationFAQ = ({ faqs }: DestinationFAQProps) => {
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: 17,
               color: "#7a7a7a",
               marginTop: 20,

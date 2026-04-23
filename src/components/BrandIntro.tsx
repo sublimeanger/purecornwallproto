@@ -5,7 +5,6 @@ const BrandIntro = () => (
         className="text-sandy-gold"
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontSize: "clamp(36px, 3.5vw, 52px)",
           fontWeight: 300,
           letterSpacing: 1,
@@ -20,7 +19,6 @@ const BrandIntro = () => (
           style={{
             float: "left",
             fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
             fontSize: 72,
             lineHeight: 0.75,
             color: "#d3a36e",
@@ -57,7 +55,6 @@ const BrandIntro = () => (
         className="mt-8"
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontSize: 16,
           color: "#d3a36e",
         }}

@@ -71,7 +71,6 @@ const CollectionRelated = ({ items }: CollectionRelatedProps) => {
                     bottom: 0,
                     padding: 24,
                     fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
                     fontWeight: 400,
                     fontSize: 28,
                     color: "#ffffff",

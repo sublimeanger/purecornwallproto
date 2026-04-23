@@ -85,7 +85,6 @@ const CollectionEditorial = ({ eyebrow, heading, paragraphs, pullQuote }: Collec
             <blockquote
               style={{
                 fontFamily: "var(--font-serif)",
-                fontStyle: "italic",
                 fontWeight: 400,
                 fontSize: 28,
                 color: "#2f5550",

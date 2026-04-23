@@ -41,7 +41,6 @@ const DestinationOpening = ({ eyebrow, paragraphs }: DestinationOpeningProps) =>
                 <span
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
                     fontWeight: 400,
                     fontSize: 84,
                     color: "#d3a36e",

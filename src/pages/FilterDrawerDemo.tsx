@@ -130,7 +130,6 @@ const PropertyCard = ({ c }: { c: MockCottage }) => (
       <h3
         style={{
           fontFamily: "var(--font-serif)",
-          fontStyle: "italic",
           fontSize: 22,
           color: "#2f5550",
           marginBottom: 8,
@@ -199,7 +198,6 @@ const FilterDrawerDemo = () => {
           <h1
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: 48,
               fontWeight: 400,
               color: "#2f5550",

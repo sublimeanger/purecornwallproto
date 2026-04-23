@@ -66,7 +66,6 @@ const CollectionDestinationsGrid = ({
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
               fontSize: 17,
               color: "#7a7a7a",
               marginTop: 20,
@@ -143,7 +142,6 @@ const CollectionDestinationsGrid = ({
                 <h3
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
                     fontWeight: 400,
                     fontSize: 28,
                     color: "#ffffff",
