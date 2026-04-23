@@ -119,31 +119,8 @@ const TopBarFilters = ({ active, onChange }: TopBarFiltersProps) => {
       }}
     >
       <div className="pc-container">
-        {/* Desktop: two clusters side by side with vertical divider */}
-        <div
-          className="hidden md:flex items-end"
-          style={{ gap: 24 }}
-        >
-          <Cluster
-            eyebrow="By Feature"
-            slugs={TOP_BAR_FEATURE_COLLECTIONS}
-            active={active}
-            onChange={onChange}
-          />
-          <div
-            aria-hidden="true"
-            style={{ width: 1, height: 36, background: "#e5e0da", flexShrink: 0 }}
-          />
-          <Cluster
-            eyebrow="By Occasion"
-            slugs={TOP_BAR_OCCASION_COLLECTIONS}
-            active={active}
-            onChange={onChange}
-          />
-        </div>
-
-        {/* Mobile: stacked clusters, horizontal scroll */}
-        <div className="md:hidden flex flex-col" style={{ gap: 16 }}>
+        {/* Stacked clusters on all screen sizes — prevents overflow clipping */}
+        <div className="flex flex-col" style={{ gap: 20 }}>
           <Cluster
             eyebrow="By Feature"
             slugs={TOP_BAR_FEATURE_COLLECTIONS}
