@@ -11,7 +11,9 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <>
     <Header />
-    <SearchBar />
+    <div className="sticky top-0 z-40">
+      <SearchBar />
+    </div>
     <Hero />
     <BrandIntro />
     <FeatureTiles />
