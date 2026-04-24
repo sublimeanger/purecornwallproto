@@ -3,6 +3,7 @@ import logo from "@/assets/pure-cornwall-logo.png";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "/" },
   { label: "Destinations", href: "/destinations" },
   { label: "Collections", href: "/collections" },
   { label: "Journal", href: "/journal" },
